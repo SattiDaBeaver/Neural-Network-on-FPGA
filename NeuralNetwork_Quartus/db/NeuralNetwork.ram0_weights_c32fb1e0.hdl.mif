@@ -1,0 +1,38 @@
+-- begin_signature
+-- weights(numWeights
+-- 16
+-- neuronNumber
+-- 0
+-- layerNumber
+-- 1
+-- addressWidth
+-- 4
+-- dataWidth
+-- 6
+-- weightFile
+-- "w_n0_l1.mif")
+-- end_signature
+WIDTH=6;
+DEPTH=16;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	15 :	XXXXXX;
+	14 :	XXXXXX;
+	13 :	XXXXXX;
+	12 :	XXXXXX;
+	11 :	XXXXXX;
+	10 :	XXXXXX;
+	9 :	XXXXXX;
+	8 :	XXXXXX;
+	7 :	XXXXXX;
+	6 :	XXXXXX;
+	5 :	XXXXXX;
+	4 :	XXXXXX;
+	3 :	000011;
+	2 :	000010;
+	1 :	000001;
+	0 :	000000;
+END;
