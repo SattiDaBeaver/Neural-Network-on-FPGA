@@ -14,7 +14,7 @@ module NeuralNetwork(
 	output logic    [9:0]   LEDR 
 );
     // Internal signals
-    logic   [5:0]   dataIn;
+    logic   [9:0]   dataIn;
     logic   [5:0]   dataOut;
     logic   [7:0]   addr;
     logic           readEn;
@@ -22,22 +22,32 @@ module NeuralNetwork(
 
     assign readEn = ~KEY[0];
     assign writeEn = ~KEY[1];
-    assign dataIn = SW[9:8];
-    assign addr = SW[7:0];
+    assign dataIn = SW[9:0];
+    // assign addr = SW[7:0];
     assign LEDR[5:0] = dataOut;
+
     // Instantiate the weights module
-    weights #(
-        .numWeights(256),
-        .neuronNumber(0),
-        .layerNumber(1),
-        .addressWidth(8),
-        .dataWidth(6),
-        .weightFile("w_n0_l1.mif")
-    ) Weight (
-        .clk(CLOCK_50),
-        .readEn(readEn),
-        .writeEn(writeEn),
-        .addr(addr),
+
+    // weights #(
+    //     .numWeights(256),
+    //     .neuronNumber(0),
+    //     .layerNumber(1),
+    //     .addressWidth(8),
+    //     .dataWidth(6),
+    //     .weightFile("w_n0_l1.mif")
+    // ) Weight (
+    //     .clk(CLOCK_50),
+    //     .readEn(readEn),
+    //     .writeEn(writeEn),
+    //     .addr(addr),
+    //     .dataIn(dataIn),
+    //     .dataOut(dataOut)
+    // );
+
+    reLU #(
+        .sumWidth(10),
+        .dataWidth(6)
+    ) ReLU (
         .dataIn(dataIn),
         .dataOut(dataOut)
     );

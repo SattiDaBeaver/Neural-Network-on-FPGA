@@ -1,5 +1,5 @@
 Fitter report for NeuralNetwork
-Fri May 23 01:06:18 2025
+Fri May 23 20:10:20 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -26,20 +26,18 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
  18. Fitter Resource Utilization by Entity
  19. Delay Chain Summary
  20. Pad To Core Delay Chain Fanout
- 21. Control Signals
- 22. Global & Other Fast Signals
- 23. Fitter RAM Summary
- 24. Routing Usage Summary
- 25. LAB Logic Elements
- 26. LAB Signals Sourced
- 27. LAB Signals Sourced Out
- 28. I/O Rules Summary
- 29. I/O Rules Details
- 30. I/O Rules Matrix
- 31. Fitter Device Options
- 32. Operating Settings and Conditions
- 33. Fitter Messages
- 34. Fitter Suppressed Messages
+ 21. Routing Usage Summary
+ 22. LAB Logic Elements
+ 23. LAB Signals Sourced
+ 24. LAB Signals Sourced Out
+ 25. LAB Distinct Inputs
+ 26. I/O Rules Summary
+ 27. I/O Rules Details
+ 28. I/O Rules Matrix
+ 29. Fitter Device Options
+ 30. Operating Settings and Conditions
+ 31. Fitter Messages
+ 32. Fitter Suppressed Messages
 
 
 
@@ -66,20 +64,20 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                       ;
 +------------------------------------+-------------------------------------------------+
-; Fitter Status                      ; Successful - Fri May 23 01:06:18 2025           ;
+; Fitter Status                      ; Successful - Fri May 23 20:10:20 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; NeuralNetwork                                   ;
 ; Top-level Entity Name              ; NeuralNetwork                                   ;
 ; Family                             ; MAX 10                                          ;
 ; Device                             ; 10M50DAF484C7G                                  ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 1 / 49,760 ( < 1 % )                            ;
-;     Total combinational functions  ; 1 / 49,760 ( < 1 % )                            ;
+; Total logic elements               ; 6 / 49,760 ( < 1 % )                            ;
+;     Total combinational functions  ; 6 / 49,760 ( < 1 % )                            ;
 ;     Dedicated logic registers      ; 0 / 49,760 ( 0 % )                              ;
 ; Total registers                    ; 0                                               ;
 ; Total pins                         ; 65 / 360 ( 18 % )                               ;
 ; Total virtual pins                 ; 0                                               ;
-; Total memory bits                  ; 512 / 1,677,312 ( < 1 % )                       ;
+; Total memory bits                  ; 0 / 1,677,312 ( 0 % )                           ;
 ; Embedded Multiplier 9-bit elements ; 0 / 288 ( 0 % )                                 ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                                   ;
 ; UFM blocks                         ; 0 / 1 ( 0 % )                                   ;
@@ -152,12 +150,12 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 20          ;
 ; Maximum allowed            ; 14          ;
 ;                            ;             ;
-; Average used               ; 1.03        ;
+; Average used               ; 1.04        ;
 ; Maximum used               ; 14          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-14        ;   0.2%      ;
+;     Processors 2-14        ;   0.3%      ;
 +----------------------------+-------------+
 
 
@@ -295,8 +293,8 @@ on the Quartus Prime software download page.
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 153 ) ; 0.00 % ( 0 / 153 )         ; 0.00 % ( 0 / 153 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 153 ) ; 0.00 % ( 0 / 153 )         ; 0.00 % ( 0 / 153 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 155 ) ; 0.00 % ( 0 / 155 )         ; 0.00 % ( 0 / 155 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 155 ) ; 0.00 % ( 0 / 155 )         ; 0.00 % ( 0 / 155 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -319,7 +317,7 @@ on the Quartus Prime software download page.
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 137 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 139 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 16 )     ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -330,57 +328,57 @@ on the Quartus Prime software download page.
 The pin-out file can be found in C:/Projects/Neural Network on FPGA/NeuralNetwork_Quartus/output_files/NeuralNetwork.pin.
 
 
-+---------------------------------------------------------------------------+
-; Fitter Resource Usage Summary                                             ;
-+---------------------------------------------+-----------------------------+
-; Resource                                    ; Usage                       ;
-+---------------------------------------------+-----------------------------+
-; Total logic elements                        ; 1 / 49,760 ( < 1 % )        ;
-;     -- Combinational with no register       ; 1                           ;
-;     -- Register only                        ; 0                           ;
-;     -- Combinational with a register        ; 0                           ;
-;                                             ;                             ;
-; Logic element usage by number of LUT inputs ;                             ;
-;     -- 4 input functions                    ; 0                           ;
-;     -- 3 input functions                    ; 0                           ;
-;     -- <=2 input functions                  ; 1                           ;
-;     -- Register only                        ; 0                           ;
-;                                             ;                             ;
-; Logic elements by mode                      ;                             ;
-;     -- normal mode                          ; 1                           ;
-;     -- arithmetic mode                      ; 0                           ;
-;                                             ;                             ;
-; Total registers*                            ; 0 / 51,509 ( 0 % )          ;
-;     -- Dedicated logic registers            ; 0 / 49,760 ( 0 % )          ;
-;     -- I/O registers                        ; 0 / 1,749 ( 0 % )           ;
-;                                             ;                             ;
-; Total LABs:  partially or completely used   ; 1 / 3,110 ( < 1 % )         ;
-; Virtual pins                                ; 0                           ;
-; I/O pins                                    ; 65 / 360 ( 18 % )           ;
-;     -- Clock pins                           ; 1 / 8 ( 13 % )              ;
-;     -- Dedicated input pins                 ; 1 / 1 ( 100 % )             ;
-;                                             ;                             ;
-; M9Ks                                        ; 1 / 182 ( < 1 % )           ;
-; UFM blocks                                  ; 0 / 1 ( 0 % )               ;
-; ADC blocks                                  ; 0 / 2 ( 0 % )               ;
-; Total block memory bits                     ; 512 / 1,677,312 ( < 1 % )   ;
-; Total block memory implementation bits      ; 9,216 / 1,677,312 ( < 1 % ) ;
-; Embedded Multiplier 9-bit elements          ; 0 / 288 ( 0 % )             ;
-; PLLs                                        ; 0 / 4 ( 0 % )               ;
-; Global signals                              ; 1                           ;
-;     -- Global clocks                        ; 1 / 20 ( 5 % )              ;
-; JTAGs                                       ; 0 / 1 ( 0 % )               ;
-; CRC blocks                                  ; 0 / 1 ( 0 % )               ;
-; Remote update blocks                        ; 0 / 1 ( 0 % )               ;
-; Oscillator blocks                           ; 0 / 1 ( 0 % )               ;
-; Impedance control blocks                    ; 0 / 1 ( 0 % )               ;
-; Average interconnect usage (total/H/V)      ; 0.0% / 0.0% / 0.0%          ;
-; Peak interconnect usage (total/H/V)         ; 0.3% / 0.3% / 0.3%          ;
-; Maximum fan-out                             ; 17                          ;
-; Highest non-global fan-out                  ; 17                          ;
-; Total fan-out                               ; 92                          ;
-; Average fan-out                             ; 0.61                        ;
-+---------------------------------------------+-----------------------------+
++---------------------------------------------------------------------+
+; Fitter Resource Usage Summary                                       ;
++---------------------------------------------+-----------------------+
+; Resource                                    ; Usage                 ;
++---------------------------------------------+-----------------------+
+; Total logic elements                        ; 6 / 49,760 ( < 1 % )  ;
+;     -- Combinational with no register       ; 6                     ;
+;     -- Register only                        ; 0                     ;
+;     -- Combinational with a register        ; 0                     ;
+;                                             ;                       ;
+; Logic element usage by number of LUT inputs ;                       ;
+;     -- 4 input functions                    ; 0                     ;
+;     -- 3 input functions                    ; 0                     ;
+;     -- <=2 input functions                  ; 6                     ;
+;     -- Register only                        ; 0                     ;
+;                                             ;                       ;
+; Logic elements by mode                      ;                       ;
+;     -- normal mode                          ; 6                     ;
+;     -- arithmetic mode                      ; 0                     ;
+;                                             ;                       ;
+; Total registers*                            ; 0 / 51,509 ( 0 % )    ;
+;     -- Dedicated logic registers            ; 0 / 49,760 ( 0 % )    ;
+;     -- I/O registers                        ; 0 / 1,749 ( 0 % )     ;
+;                                             ;                       ;
+; Total LABs:  partially or completely used   ; 3 / 3,110 ( < 1 % )   ;
+; Virtual pins                                ; 0                     ;
+; I/O pins                                    ; 65 / 360 ( 18 % )     ;
+;     -- Clock pins                           ; 1 / 8 ( 13 % )        ;
+;     -- Dedicated input pins                 ; 1 / 1 ( 100 % )       ;
+;                                             ;                       ;
+; M9Ks                                        ; 0 / 182 ( 0 % )       ;
+; UFM blocks                                  ; 0 / 1 ( 0 % )         ;
+; ADC blocks                                  ; 0 / 2 ( 0 % )         ;
+; Total block memory bits                     ; 0 / 1,677,312 ( 0 % ) ;
+; Total block memory implementation bits      ; 0 / 1,677,312 ( 0 % ) ;
+; Embedded Multiplier 9-bit elements          ; 0 / 288 ( 0 % )       ;
+; PLLs                                        ; 0 / 4 ( 0 % )         ;
+; Global signals                              ; 0                     ;
+;     -- Global clocks                        ; 0 / 20 ( 0 % )        ;
+; JTAGs                                       ; 0 / 1 ( 0 % )         ;
+; CRC blocks                                  ; 0 / 1 ( 0 % )         ;
+; Remote update blocks                        ; 0 / 1 ( 0 % )         ;
+; Oscillator blocks                           ; 0 / 1 ( 0 % )         ;
+; Impedance control blocks                    ; 0 / 1 ( 0 % )         ;
+; Average interconnect usage (total/H/V)      ; 0.0% / 0.0% / 0.0%    ;
+; Peak interconnect usage (total/H/V)         ; 0.2% / 0.3% / 0.1%    ;
+; Maximum fan-out                             ; 17                    ;
+; Highest non-global fan-out                  ; 17                    ;
+; Total fan-out                               ; 91                    ;
+; Average fan-out                             ; 0.59                  ;
++---------------------------------------------+-----------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
 
@@ -392,34 +390,32 @@ The pin-out file can be found in C:/Projects/Neural Network on FPGA/NeuralNetwor
 +---------------------------------------------+---------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                 ; Low                            ;
 ;                                             ;                     ;                                ;
-; Total logic elements                        ; 1 / 49760 ( < 1 % ) ; 0 / 49760 ( 0 % )              ;
-;     -- Combinational with no register       ; 1                   ; 0                              ;
+; Total logic elements                        ; 6 / 49760 ( < 1 % ) ; 0 / 49760 ( 0 % )              ;
+;     -- Combinational with no register       ; 6                   ; 0                              ;
 ;     -- Register only                        ; 0                   ; 0                              ;
 ;     -- Combinational with a register        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Logic element usage by number of LUT inputs ;                     ;                                ;
 ;     -- 4 input functions                    ; 0                   ; 0                              ;
 ;     -- 3 input functions                    ; 0                   ; 0                              ;
-;     -- <=2 input functions                  ; 1                   ; 0                              ;
+;     -- <=2 input functions                  ; 6                   ; 0                              ;
 ;     -- Register only                        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Logic elements by mode                      ;                     ;                                ;
-;     -- normal mode                          ; 1                   ; 0                              ;
+;     -- normal mode                          ; 6                   ; 0                              ;
 ;     -- arithmetic mode                      ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Total registers                             ; 0                   ; 0                              ;
 ;     -- Dedicated logic registers            ; 0 / 49760 ( 0 % )   ; 0 / 49760 ( 0 % )              ;
 ;     -- I/O registers                        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
-; Total LABs:  partially or completely used   ; 1 / 3110 ( < 1 % )  ; 0 / 3110 ( 0 % )               ;
+; Total LABs:  partially or completely used   ; 3 / 3110 ( < 1 % )  ; 0 / 3110 ( 0 % )               ;
 ;                                             ;                     ;                                ;
 ; Virtual pins                                ; 0                   ; 0                              ;
 ; I/O pins                                    ; 65                  ; 0                              ;
 ; Embedded Multiplier 9-bit elements          ; 0 / 288 ( 0 % )     ; 0 / 288 ( 0 % )                ;
-; Total memory bits                           ; 512                 ; 0                              ;
-; Total RAM block bits                        ; 9216                ; 0                              ;
-; M9K                                         ; 1 / 182 ( < 1 % )   ; 0 / 182 ( 0 % )                ;
-; Clock control block                         ; 1 / 24 ( 4 % )      ; 0 / 24 ( 0 % )                 ;
+; Total memory bits                           ; 0                   ; 0                              ;
+; Total RAM block bits                        ; 0                   ; 0                              ;
 ; User Flash Memory                           ; 1 / 1 ( 100 % )     ; 0 / 1 ( 0 % )                  ;
 ; Analog-to-Digital Converter                 ; 2 / 2 ( 100 % )     ; 0 / 2 ( 0 % )                  ;
 ;                                             ;                     ;                                ;
@@ -430,7 +426,7 @@ The pin-out file can be found in C:/Projects/Neural Network on FPGA/NeuralNetwor
 ;     -- Registered Output Connections        ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; Internal Connections                        ;                     ;                                ;
-;     -- Total Connections                    ; 108                 ; 8                              ;
+;     -- Total Connections                    ; 97                  ; 8                              ;
 ;     -- Registered Connections               ; 0                   ; 0                              ;
 ;                                             ;                     ;                                ;
 ; External Connections                        ;                     ;                                ;
@@ -463,19 +459,19 @@ The pin-out file can be found in C:/Projects/Neural Network on FPGA/NeuralNetwor
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
 ; Name     ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; Power Up High ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
-; CLOCK_50 ; P11   ; 3        ; 34           ; 0            ; 28           ; 2                     ; 0                  ; yes    ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; KEY[0]   ; B8    ; 7        ; 46           ; 54           ; 28           ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; KEY[1]   ; A7    ; 7        ; 49           ; 54           ; 28           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[0]    ; C10   ; 7        ; 51           ; 54           ; 28           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[1]    ; C11   ; 7        ; 51           ; 54           ; 21           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[2]    ; D12   ; 7        ; 51           ; 54           ; 0            ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[3]    ; C12   ; 7        ; 54           ; 54           ; 28           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[4]    ; A12   ; 7        ; 54           ; 54           ; 21           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[5]    ; B12   ; 7        ; 49           ; 54           ; 0            ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[6]    ; A13   ; 7        ; 54           ; 54           ; 14           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[7]    ; A14   ; 7        ; 58           ; 54           ; 28           ; 2                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; CLOCK_50 ; P11   ; 3        ; 34           ; 0            ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; KEY[0]   ; B8    ; 7        ; 46           ; 54           ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; KEY[1]   ; A7    ; 7        ; 49           ; 54           ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[0]    ; C10   ; 7        ; 51           ; 54           ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[1]    ; C11   ; 7        ; 51           ; 54           ; 21           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[2]    ; D12   ; 7        ; 51           ; 54           ; 0            ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[3]    ; C12   ; 7        ; 54           ; 54           ; 28           ; 0                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[4]    ; A12   ; 7        ; 54           ; 54           ; 21           ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[5]    ; B12   ; 7        ; 49           ; 54           ; 0            ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[6]    ; A13   ; 7        ; 54           ; 54           ; 14           ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[7]    ; A14   ; 7        ; 58           ; 54           ; 28           ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
 ; SW[8]    ; B14   ; 7        ; 56           ; 54           ; 0            ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
-; SW[9]    ; F15   ; 7        ; 69           ; 54           ; 0            ; 1                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
+; SW[9]    ; F15   ; 7        ; 69           ; 54           ; 0            ; 5                     ; 0                  ; no     ; no             ; no            ; yes             ; no       ; Off          ; 2.5 V        ; --                        ; User                 ; 0         ;
 +----------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+---------------------------+----------------------+-----------+
 
 
@@ -1070,6 +1066,13 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------+-------------------------------+
 ; Pin Name ; Reason                        ;
 +----------+-------------------------------+
+; SW[0]    ; Incomplete set of assignments ;
+; SW[1]    ; Incomplete set of assignments ;
+; SW[2]    ; Incomplete set of assignments ;
+; SW[3]    ; Incomplete set of assignments ;
+; KEY[0]   ; Incomplete set of assignments ;
+; KEY[1]   ; Incomplete set of assignments ;
+; CLOCK_50 ; Incomplete set of assignments ;
 ; HEX5[0]  ; Incomplete set of assignments ;
 ; HEX5[1]  ; Incomplete set of assignments ;
 ; HEX5[2]  ; Incomplete set of assignments ;
@@ -1122,32 +1125,23 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 ; LEDR[7]  ; Incomplete set of assignments ;
 ; LEDR[8]  ; Incomplete set of assignments ;
 ; LEDR[9]  ; Incomplete set of assignments ;
-; KEY[1]   ; Incomplete set of assignments ;
-; CLOCK_50 ; Incomplete set of assignments ;
-; KEY[0]   ; Incomplete set of assignments ;
-; SW[8]    ; Incomplete set of assignments ;
-; SW[0]    ; Incomplete set of assignments ;
-; SW[1]    ; Incomplete set of assignments ;
-; SW[2]    ; Incomplete set of assignments ;
-; SW[3]    ; Incomplete set of assignments ;
 ; SW[4]    ; Incomplete set of assignments ;
+; SW[9]    ; Incomplete set of assignments ;
 ; SW[5]    ; Incomplete set of assignments ;
 ; SW[6]    ; Incomplete set of assignments ;
 ; SW[7]    ; Incomplete set of assignments ;
-; SW[9]    ; Incomplete set of assignments ;
+; SW[8]    ; Incomplete set of assignments ;
 +----------+-------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                                    ;
-+-------------------------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+-----------------------------------------------------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node                ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; ADC blocks ; Full Hierarchy Name                                                               ; Entity Name     ; Library Name ;
-+-------------------------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+-----------------------------------------------------------------------------------+-----------------+--------------+
-; |NeuralNetwork                            ; 1 (1)       ; 0 (0)                     ; 0 (0)         ; 512         ; 1    ; 1          ; 0            ; 0       ; 0         ; 65   ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork                                                                    ; NeuralNetwork   ; work         ;
-;    |weights:Weight|                       ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 512         ; 1    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork|weights:Weight                                                     ; weights         ; work         ;
-;       |altsyncram:mem_rtl_0|              ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 512         ; 1    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork|weights:Weight|altsyncram:mem_rtl_0                                ; altsyncram      ; work         ;
-;          |altsyncram_70f1:auto_generated| ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 512         ; 1    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork|weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated ; altsyncram_70f1 ; work         ;
-+-------------------------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+-----------------------------------------------------------------------------------+-----------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Resource Utilization by Entity                                                                                                                                                                                                                                                                          ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+--------------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M9Ks ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; ADC blocks ; Full Hierarchy Name      ; Entity Name   ; Library Name ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+--------------------------+---------------+--------------+
+; |NeuralNetwork             ; 6 (1)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 1          ; 0            ; 0       ; 0         ; 65   ; 0            ; 6 (1)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork           ; NeuralNetwork ; work         ;
+;    |reLU:ReLU|             ; 5 (5)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0          ; |NeuralNetwork|reLU:ReLU ; reLU          ; work         ;
++----------------------------+-------------+---------------------------+---------------+-------------+------+------------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+------------+--------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -1156,6 +1150,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------+----------+---------------+---------------+-----------------------+-----+------+
 ; Name     ; Pin Type ; Pad to Core 0 ; Pad to Core 1 ; Pad to Input Register ; TCO ; TCOE ;
 +----------+----------+---------------+---------------+-----------------------+-----+------+
+; SW[0]    ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; SW[1]    ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; SW[2]    ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; SW[3]    ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; KEY[0]   ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; KEY[1]   ; Input    ; --            ; --            ; --                    ; --  ; --   ;
+; CLOCK_50 ; Input    ; --            ; --            ; --                    ; --  ; --   ;
 ; HEX5[0]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; HEX5[1]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; HEX5[2]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
@@ -1208,92 +1209,44 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LEDR[7]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; LEDR[8]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
 ; LEDR[9]  ; Output   ; --            ; --            ; --                    ; --  ; --   ;
-; KEY[1]   ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
-; CLOCK_50 ; Input    ; (0) 0 ps      ; --            ; --                    ; --  ; --   ;
-; KEY[0]   ; Input    ; --            ; (6) 868 ps    ; --                    ; --  ; --   ;
-; SW[8]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
-; SW[0]    ; Input    ; --            ; (6) 868 ps    ; --                    ; --  ; --   ;
-; SW[1]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
-; SW[2]    ; Input    ; --            ; (6) 868 ps    ; --                    ; --  ; --   ;
-; SW[3]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
 ; SW[4]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
+; SW[9]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
 ; SW[5]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
 ; SW[6]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
-; SW[7]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
-; SW[9]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
+; SW[7]    ; Input    ; --            ; (6) 868 ps    ; --                    ; --  ; --   ;
+; SW[8]    ; Input    ; (6) 868 ps    ; --            ; --                    ; --  ; --   ;
 +----------+----------+---------------+---------------+-----------------------+-----+------+
 
 
-+----------------------------------------------------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                                                                       ;
-+----------------------------------------------------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                                                                    ; Pad To Core Index ; Setting ;
-+----------------------------------------------------------------------------------------+-------------------+---------+
-; KEY[1]                                                                                 ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; CLOCK_50                                                                               ;                   ;         ;
-; KEY[0]                                                                                 ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
-; SW[8]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[0]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
-; SW[1]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[2]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 1                 ; 6       ;
-; SW[3]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[4]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[5]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[6]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[7]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-; SW[9]                                                                                  ;                   ;         ;
-;      - weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ram_block1a0 ; 0                 ; 6       ;
-+----------------------------------------------------------------------------------------+-------------------+---------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                           ;
-+----------+----------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
-; Name     ; Location ; Fan-Out ; Usage                      ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------+----------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
-; CLOCK_50 ; PIN_P11  ; 1       ; Clock                      ; yes    ; Global Clock         ; GCLK19           ; --                        ;
-; KEY[0]   ; PIN_B8   ; 1       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
-; KEY[1]   ; PIN_A7   ; 1       ; Clock enable, Write enable ; no     ; --                   ; --               ; --                        ;
-+----------+----------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                                ;
-+----------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; Name     ; Location ; Fan-Out ; Fan-Out Using Intentional Clock Skew ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-; CLOCK_50 ; PIN_P11  ; 1       ; 0                                    ; Global Clock         ; GCLK19           ; --                        ;
-+----------+----------+---------+--------------------------------------+----------------------+------------------+---------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter RAM Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ;
-+-------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+------------------------+------------------------+----------+------------------------+---------------+
-; Name                                                                          ; Type ; Mode             ; Clock Mode   ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Port A Input Registers ; Port A Output Registers ; Port B Input Registers ; Port B Output Registers ; Size ; Implementation Port A Depth ; Implementation Port A Width ; Implementation Port B Depth ; Implementation Port B Width ; Implementation Bits ; M9Ks ; MIF  ; Location       ; Mixed Width RDW Mode ; Port A RDW Mode        ; Port B RDW Mode        ; ECC Mode ; ECC Pipeline Registers ; Fits in MLABs ;
-+-------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+------------------------+------------------------+----------+------------------------+---------------+
-; weights:Weight|altsyncram:mem_rtl_0|altsyncram_70f1:auto_generated|ALTSYNCRAM ; M9K  ; Simple Dual Port ; Single Clock ; 256          ; 2            ; 256          ; 2            ; yes                    ; no                      ; yes                    ; no                      ; 512  ; 256                         ; 2                           ; 256                         ; 2                           ; 512                 ; 1    ; None ; M9K_X53_Y53_N0 ; Don't care           ; New data with NBE Read ; New data with NBE Read ; Off      ; No                     ; No - Unknown  ;
-+-------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+------+------+----------------+----------------------+------------------------+------------------------+----------+------------------------+---------------+
-Note: Fitter may spread logical memories into multiple blocks to improve timing. The actual required RAM blocks can be found in the Fitter Resource Usage section.
++-------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                              ;
++-------------------------------+-------------------+---------+
+; Source Pin / Fanout           ; Pad To Core Index ; Setting ;
++-------------------------------+-------------------+---------+
+; SW[0]                         ;                   ;         ;
+; SW[1]                         ;                   ;         ;
+; SW[2]                         ;                   ;         ;
+; SW[3]                         ;                   ;         ;
+; KEY[0]                        ;                   ;         ;
+; KEY[1]                        ;                   ;         ;
+; CLOCK_50                      ;                   ;         ;
+; SW[4]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[0]~0 ; 0                 ; 6       ;
+; SW[9]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[0]~0 ; 0                 ; 6       ;
+;      - reLU:ReLU|dataOut[1]~1 ; 0                 ; 6       ;
+;      - reLU:ReLU|dataOut[2]~2 ; 0                 ; 6       ;
+;      - reLU:ReLU|dataOut[3]~3 ; 0                 ; 6       ;
+;      - reLU:ReLU|dataOut[4]~4 ; 0                 ; 6       ;
+; SW[5]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[1]~1 ; 0                 ; 6       ;
+; SW[6]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[2]~2 ; 0                 ; 6       ;
+; SW[7]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[3]~3 ; 1                 ; 6       ;
+; SW[8]                         ;                   ;         ;
+;      - reLU:ReLU|dataOut[4]~4 ; 0                 ; 6       ;
++-------------------------------+-------------------+---------+
 
 
 +------------------------------------------------+
@@ -1301,27 +1254,27 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 +-----------------------+------------------------+
 ; Routing Resource Type ; Usage                  ;
 +-----------------------+------------------------+
-; Block interconnects   ; 18 / 148,641 ( < 1 % ) ;
+; Block interconnects   ; 16 / 148,641 ( < 1 % ) ;
 ; C16 interconnects     ; 1 / 5,382 ( < 1 % )    ;
-; C4 interconnects      ; 18 / 106,704 ( < 1 % ) ;
+; C4 interconnects      ; 16 / 106,704 ( < 1 % ) ;
 ; Direct links          ; 0 / 148,641 ( 0 % )    ;
-; Global clocks         ; 1 / 20 ( 5 % )         ;
+; Global clocks         ; 0 / 20 ( 0 % )         ;
 ; Local interconnects   ; 0 / 49,760 ( 0 % )     ;
 ; NSLEEPs               ; 0 / 500 ( 0 % )        ;
 ; R24 interconnects     ; 1 / 5,406 ( < 1 % )    ;
-; R4 interconnects      ; 14 / 147,764 ( < 1 % ) ;
+; R4 interconnects      ; 11 / 147,764 ( < 1 % ) ;
 +-----------------------+------------------------+
 
 
 +--------------------------------------------------------------------------+
 ; LAB Logic Elements                                                       ;
 +--------------------------------------------+-----------------------------+
-; Number of Logic Elements  (Average = 1.00) ; Number of LABs  (Total = 1) ;
+; Number of Logic Elements  (Average = 2.00) ; Number of LABs  (Total = 3) ;
 +--------------------------------------------+-----------------------------+
-; 1                                          ; 1                           ;
+; 1                                          ; 2                           ;
 ; 2                                          ; 0                           ;
 ; 3                                          ; 0                           ;
-; 4                                          ; 0                           ;
+; 4                                          ; 1                           ;
 ; 5                                          ; 0                           ;
 ; 6                                          ; 0                           ;
 ; 7                                          ; 0                           ;
@@ -1340,21 +1293,41 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 +---------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                       ;
 +---------------------------------------------+-----------------------------+
-; Number of Signals Sourced  (Average = 1.00) ; Number of LABs  (Total = 1) ;
+; Number of Signals Sourced  (Average = 2.00) ; Number of LABs  (Total = 3) ;
 +---------------------------------------------+-----------------------------+
 ; 0                                           ; 0                           ;
-; 1                                           ; 1                           ;
+; 1                                           ; 2                           ;
+; 2                                           ; 0                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 1                           ;
 +---------------------------------------------+-----------------------------+
 
 
 +-------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                       ;
 +-------------------------------------------------+-----------------------------+
-; Number of Signals Sourced Out  (Average = 1.00) ; Number of LABs  (Total = 1) ;
+; Number of Signals Sourced Out  (Average = 2.00) ; Number of LABs  (Total = 3) ;
 +-------------------------------------------------+-----------------------------+
 ; 0                                               ; 0                           ;
-; 1                                               ; 1                           ;
+; 1                                               ; 2                           ;
+; 2                                               ; 0                           ;
+; 3                                               ; 0                           ;
+; 4                                               ; 1                           ;
 +-------------------------------------------------+-----------------------------+
+
+
++---------------------------------------------------------------------------+
+; LAB Distinct Inputs                                                       ;
++---------------------------------------------+-----------------------------+
+; Number of Distinct Inputs  (Average = 2.33) ; Number of LABs  (Total = 3) ;
++---------------------------------------------+-----------------------------+
+; 0                                           ; 0                           ;
+; 1                                           ; 0                           ;
+; 2                                           ; 1                           ;
+; 3                                           ; 0                           ;
+; 4                                           ; 0                           ;
+; 5                                           ; 1                           ;
++---------------------------------------------+-----------------------------+
 
 
 +------------------------------------------+
@@ -1418,6 +1391,13 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 ; Total Unchecked    ; 0         ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
 ; Total Inapplicable ; 0         ; 65           ; 0         ; 65           ; 65           ; 0         ; 0         ; 65           ; 0         ; 0         ; 65           ; 13           ; 65           ; 65           ; 52           ; 65           ; 13           ; 52           ; 65           ; 65           ; 65           ; 13           ; 65           ; 65           ; 65           ; 65           ; 65           ; 0         ; 65           ; 65           ;
 ; Total Fail         ; 0         ; 0            ; 0         ; 0            ; 0            ; 0         ; 0         ; 0            ; 0         ; 0         ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0            ; 0         ; 0            ; 0            ;
+; SW[0]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; SW[3]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; KEY[0]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; KEY[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; CLOCK_50           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; HEX5[0]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; HEX5[1]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; HEX5[2]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
@@ -1470,19 +1450,12 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 ; LEDR[7]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; LEDR[8]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; LEDR[9]            ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; KEY[1]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; CLOCK_50           ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; KEY[0]             ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[8]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[0]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[1]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[2]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[3]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; SW[4]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; SW[9]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; SW[5]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; SW[6]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 ; SW[7]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
-; SW[9]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
+; SW[8]              ; Pass      ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Pass      ; Pass      ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Pass         ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Inapplicable ; Pass      ; Inapplicable ; Inapplicable ;
 +--------------------+-----------+--------------+-----------+--------------+--------------+-----------+-----------+--------------+-----------+-----------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+-----------+--------------+--------------+
 
 
@@ -1561,14 +1534,13 @@ Info (12825): Data[1]/ASDO dual-purpose pin not reserved
 Info (12825): nCSO dual-purpose pin not reserved
 Info (12825): DCLK dual-purpose pin not reserved
 Warning (15714): Some pins have incomplete I/O assignments. Refer to the I/O Assignment Warnings report for details
-Info (176045): Design uses memory blocks. Violating setup or hold times of memory block address registers for either read or write operations could cause memory contents to be corrupted. Make sure that all memory block address registers meet the setup and hold time requirements.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'NeuralNetwork.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332144): No user constrained base clocks found in the design
+Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
+Warning (332068): No clocks defined in design.
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332154): The derive_clock_uncertainty command did not apply clock uncertainty to any clock-to-clock transfers.
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
-Info (176353): Automatically promoted node CLOCK_50~input (placed in PIN P11 (CLK7p, DIFFIO_TX_RX_B20p, DIFFOUT_B20p, High_Speed)) File: C:/Projects/Neural Network on FPGA/NeuralNetwork_Quartus/NeuralNetwork.sv Line: 6
-    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G19
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -1715,11 +1687,11 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file C:/Projects/Neural Network on FPGA/NeuralNetwork_Quartus/output_files/NeuralNetwork.fit.smsg
-Info: Quartus Prime Fitter was successful. 0 errors, 126 warnings
+Info: Quartus Prime Fitter was successful. 0 errors, 127 warnings
     Info: Peak virtual memory: 6504 megabytes
-    Info: Processing ended: Fri May 23 01:06:18 2025
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Processing ended: Fri May 23 20:10:20 2025
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:09
 
 
 +----------------------------+
