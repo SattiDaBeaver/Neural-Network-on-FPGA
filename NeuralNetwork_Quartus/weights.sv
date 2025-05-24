@@ -1,9 +1,9 @@
 module weights #(
     parameter numWeights = 16, neuronNumber = 0, layerNumber = 1, addressWidth = 4, dataWidth = 16, weightFile = "w_n0_l1.mif"
 ) (
-    input   logic   clk,
-    input   logic   readEn,
-    input   logic   writeEn,
+    input   logic                       clk,
+    input   logic                       readEn,
+    input   logic                       writeEn,
     input   logic   [addressWidth-1:0]  addr,
     input   logic   [dataWidth-1:0]     dataIn,
     output  logic   [dataWidth-1:0]     dataOut
