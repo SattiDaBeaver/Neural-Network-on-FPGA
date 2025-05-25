@@ -1,4 +1,4 @@
-// `define PRETRAINED
+`define PRETRAINED
 
 module NeuralNetwork(
 	input  logic    [9:0]   SW,
@@ -24,7 +24,7 @@ module NeuralNetwork(
     neuron #(
         .layerNumber(0),
         .neuronNumber(0),
-        .numWeights(256),
+        .numWeights(16),
         .dataWidth(8),
         .weightIntWidth(4),
         .biasFile("b_l0_n0.mif"),
@@ -42,7 +42,7 @@ module NeuralNetwork(
         .config_layer_number(32'h0),
         .config_neuron_number(32'h0),
         .neuronOut(LEDR[7:0]),
-        .neuronOutValid(LEDR[9]),
+        .neuronOutValid(LEDR[9])
     );
 
     // // Multiplier Test
@@ -52,19 +52,19 @@ module NeuralNetwork(
 
     // assign readEn = ~KEY[0];
     // assign writeEn = ~KEY[1];
-    // assign dataIn = SW[9:0];
+    // // assign dataIn = SW[9:0];
     // assign addr = SW[7:0];
-    // assign LEDR[5:0] = dataOut;
+    // assign LEDR[7:0] = dataOut;
 
-    // Instantiate the weights module
+    // // Instantiate the weights module
 
     // weights #(
     //     .numWeights(256),
     //     .neuronNumber(0),
     //     .layerNumber(1),
     //     .addressWidth(8),
-    //     .dataWidth(6),
-    //     .weightFile("w_n0_l1.mif")
+    //     .dataWidth(8),
+    //     .weightFile("w_l0_n0.mif")
     // ) Weight (
     //     .clk(CLOCK_50),
     //     .readEn(readEn),
