@@ -1,0 +1,7 @@
+
+State Machine - |NeuralNetwork|neuron:Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 

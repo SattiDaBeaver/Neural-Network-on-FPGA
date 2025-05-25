@@ -26,10 +26,11 @@ module weights #(
         end
     `endif
     
-    always_ff @ (posedge clk) begin
+    always_comb begin
         if (readEn) begin
-            dataOut <= mem[addr];
+            dataOut = mem[addr];
         end
+        else dataOut = 0;
     end
 
 endmodule: weights

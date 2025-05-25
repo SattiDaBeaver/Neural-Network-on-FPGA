@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
-// DATE "05/23/2025 20:10:27"
+// DATE "05/25/2025 00:28:17"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -56,9 +56,12 @@ output 	[9:0] LEDR;
 // SW[1]	=>  Location: PIN_C11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // SW[2]	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // SW[3]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// KEY[0]	=>  Location: PIN_B8,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// KEY[1]	=>  Location: PIN_A7,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// CLOCK_50	=>  Location: PIN_P11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[4]	=>  Location: PIN_A12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[5]	=>  Location: PIN_B12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[6]	=>  Location: PIN_A13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[7]	=>  Location: PIN_A14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[8]	=>  Location: PIN_B14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// SW[9]	=>  Location: PIN_F15,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // HEX5[0]	=>  Location: PIN_J20,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // HEX5[1]	=>  Location: PIN_K20,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // HEX5[2]	=>  Location: PIN_L18,	 I/O Standard: 2.5 V,	 Current Strength: Default
@@ -111,12 +114,9 @@ output 	[9:0] LEDR;
 // LEDR[7]	=>  Location: PIN_D14,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // LEDR[8]	=>  Location: PIN_A11,	 I/O Standard: 2.5 V,	 Current Strength: Default
 // LEDR[9]	=>  Location: PIN_B11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[4]	=>  Location: PIN_A12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[9]	=>  Location: PIN_F15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[5]	=>  Location: PIN_B12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[6]	=>  Location: PIN_A13,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[7]	=>  Location: PIN_A14,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// SW[8]	=>  Location: PIN_B14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// KEY[0]	=>  Location: PIN_B8,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// CLOCK_50	=>  Location: PIN_P11,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// KEY[1]	=>  Location: PIN_A7,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 wire gnd;
@@ -134,9 +134,12 @@ wire \SW[0]~input_o ;
 wire \SW[1]~input_o ;
 wire \SW[2]~input_o ;
 wire \SW[3]~input_o ;
-wire \KEY[0]~input_o ;
-wire \KEY[1]~input_o ;
-wire \CLOCK_50~input_o ;
+wire \SW[4]~input_o ;
+wire \SW[5]~input_o ;
+wire \SW[6]~input_o ;
+wire \SW[7]~input_o ;
+wire \SW[8]~input_o ;
+wire \SW[9]~input_o ;
 wire \~QUARTUS_CREATED_GND~I_combout ;
 wire \~QUARTUS_CREATED_UNVM~~busy ;
 wire \~QUARTUS_CREATED_ADC1~~eoc ;
@@ -193,17 +196,40 @@ wire \LEDR[6]~output_o ;
 wire \LEDR[7]~output_o ;
 wire \LEDR[8]~output_o ;
 wire \LEDR[9]~output_o ;
-wire \SW[4]~input_o ;
-wire \SW[9]~input_o ;
-wire \ReLU|dataOut[0]~0_combout ;
-wire \SW[5]~input_o ;
-wire \ReLU|dataOut[1]~1_combout ;
-wire \SW[6]~input_o ;
-wire \ReLU|dataOut[2]~2_combout ;
-wire \SW[7]~input_o ;
-wire \ReLU|dataOut[3]~3_combout ;
-wire \SW[8]~input_o ;
-wire \ReLU|dataOut[4]~4_combout ;
+wire \CLOCK_50~input_o ;
+wire \CLOCK_50~inputclkctrl_outclk ;
+wire \KEY[0]~input_o ;
+wire \Neuron|weightAddress[0]~8_combout ;
+wire \KEY[1]~input_o ;
+wire \Neuron|state~11_combout ;
+wire \Neuron|state.IDLE~q ;
+wire \Neuron|state~10_combout ;
+wire \Neuron|state.MAC_STATE~q ;
+wire \Neuron|Equal0~0_combout ;
+wire \Neuron|weightAddress[0]~10_combout ;
+wire \Neuron|weightAddress[0]~11_combout ;
+wire \Neuron|weightAddress[0]~9 ;
+wire \Neuron|weightAddress[1]~12_combout ;
+wire \Neuron|weightAddress[1]~13 ;
+wire \Neuron|weightAddress[2]~14_combout ;
+wire \Neuron|weightAddress[2]~15 ;
+wire \Neuron|weightAddress[3]~16_combout ;
+wire \Neuron|weightAddress[3]~17 ;
+wire \Neuron|weightAddress[4]~18_combout ;
+wire \Neuron|weightAddress[4]~19 ;
+wire \Neuron|weightAddress[5]~20_combout ;
+wire \Neuron|weightAddress[5]~21 ;
+wire \Neuron|weightAddress[6]~22_combout ;
+wire \Neuron|weightAddress[6]~23 ;
+wire \Neuron|weightAddress[7]~24_combout ;
+wire \Neuron|Equal0~1_combout ;
+wire \Neuron|state~9_combout ;
+wire \Neuron|state.DELAY_STATE~q ;
+wire \Neuron|state~8_combout ;
+wire \Neuron|state.OUTPUT_STATE~q ;
+wire \Neuron|neuronOutValid~0_combout ;
+wire \Neuron|neuronOutValid~q ;
+wire [7:0] \Neuron|weightAddress ;
 
 
 hard_block auto_generated_inst(
@@ -211,7 +237,7 @@ hard_block auto_generated_inst(
 	.devclrn(devclrn),
 	.devoe(devoe));
 
-// Location: LCCOMB_X44_Y42_N8
+// Location: LCCOMB_X44_Y41_N24
 fiftyfivenm_lcell_comb \~QUARTUS_CREATED_GND~I (
 // Equation(s):
 // \~QUARTUS_CREATED_GND~I_combout  = GND
@@ -776,7 +802,7 @@ defparam \HEX0[6]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X46_Y54_N2
 fiftyfivenm_io_obuf \LEDR[0]~output (
-	.i(\ReLU|dataOut[0]~0_combout ),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -789,7 +815,7 @@ defparam \LEDR[0]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X46_Y54_N23
 fiftyfivenm_io_obuf \LEDR[1]~output (
-	.i(\ReLU|dataOut[1]~1_combout ),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -802,7 +828,7 @@ defparam \LEDR[1]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X51_Y54_N16
 fiftyfivenm_io_obuf \LEDR[2]~output (
-	.i(\ReLU|dataOut[2]~2_combout ),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -815,7 +841,7 @@ defparam \LEDR[2]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X46_Y54_N9
 fiftyfivenm_io_obuf \LEDR[3]~output (
-	.i(\ReLU|dataOut[3]~3_combout ),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -828,7 +854,7 @@ defparam \LEDR[3]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X56_Y54_N30
 fiftyfivenm_io_obuf \LEDR[4]~output (
-	.i(\ReLU|dataOut[4]~4_combout ),
+	.i(gnd),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -893,7 +919,7 @@ defparam \LEDR[8]~output .open_drain_output = "false";
 
 // Location: IOOBUF_X49_Y54_N9
 fiftyfivenm_io_obuf \LEDR[9]~output (
-	.i(gnd),
+	.i(\Neuron|neuronOutValid~q ),
 	.oe(vcc),
 	.seriesterminationcontrol(16'b0000000000000000),
 	.devoe(devoe),
@@ -904,161 +930,596 @@ defparam \LEDR[9]~output .bus_hold = "false";
 defparam \LEDR[9]~output .open_drain_output = "false";
 // synopsys translate_on
 
-// Location: IOIBUF_X54_Y54_N22
-fiftyfivenm_io_ibuf \SW[4]~input (
-	.i(SW[4]),
+// Location: IOIBUF_X34_Y0_N29
+fiftyfivenm_io_ibuf \CLOCK_50~input (
+	.i(CLOCK_50),
 	.ibar(gnd),
 	.nsleep(vcc),
-	.o(\SW[4]~input_o ));
+	.o(\CLOCK_50~input_o ));
 // synopsys translate_off
-defparam \SW[4]~input .bus_hold = "false";
-defparam \SW[4]~input .listen_to_nsleep_signal = "false";
-defparam \SW[4]~input .simulate_z_as = "z";
+defparam \CLOCK_50~input .bus_hold = "false";
+defparam \CLOCK_50~input .listen_to_nsleep_signal = "false";
+defparam \CLOCK_50~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X69_Y54_N1
-fiftyfivenm_io_ibuf \SW[9]~input (
-	.i(SW[9]),
+// Location: CLKCTRL_G19
+fiftyfivenm_clkctrl \CLOCK_50~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\CLOCK_50~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\CLOCK_50~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \CLOCK_50~inputclkctrl .clock_type = "global clock";
+defparam \CLOCK_50~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X46_Y54_N29
+fiftyfivenm_io_ibuf \KEY[0]~input (
+	.i(KEY[0]),
 	.ibar(gnd),
 	.nsleep(vcc),
-	.o(\SW[9]~input_o ));
+	.o(\KEY[0]~input_o ));
 // synopsys translate_off
-defparam \SW[9]~input .bus_hold = "false";
-defparam \SW[9]~input .listen_to_nsleep_signal = "false";
-defparam \SW[9]~input .simulate_z_as = "z";
+defparam \KEY[0]~input .bus_hold = "false";
+defparam \KEY[0]~input .listen_to_nsleep_signal = "false";
+defparam \KEY[0]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LCCOMB_X54_Y53_N8
-fiftyfivenm_lcell_comb \ReLU|dataOut[0]~0 (
+// Location: LCCOMB_X49_Y53_N14
+fiftyfivenm_lcell_comb \Neuron|weightAddress[0]~8 (
 // Equation(s):
-// \ReLU|dataOut[0]~0_combout  = (\SW[4]~input_o  & !\SW[9]~input_o )
+// \Neuron|weightAddress[0]~8_combout  = \Neuron|weightAddress [0] $ (VCC)
+// \Neuron|weightAddress[0]~9  = CARRY(\Neuron|weightAddress [0])
 
 	.dataa(gnd),
-	.datab(\SW[4]~input_o ),
-	.datac(\SW[9]~input_o ),
+	.datab(\Neuron|weightAddress [0]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress[0]~8_combout ),
+	.cout(\Neuron|weightAddress[0]~9 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[0]~8 .lut_mask = 16'h33CC;
+defparam \Neuron|weightAddress[0]~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X49_Y54_N29
+fiftyfivenm_io_ibuf \KEY[1]~input (
+	.i(KEY[1]),
+	.ibar(gnd),
+	.nsleep(vcc),
+	.o(\KEY[1]~input_o ));
+// synopsys translate_off
+defparam \KEY[1]~input .bus_hold = "false";
+defparam \KEY[1]~input .listen_to_nsleep_signal = "false";
+defparam \KEY[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N10
+fiftyfivenm_lcell_comb \Neuron|state~11 (
+// Equation(s):
+// \Neuron|state~11_combout  = (\KEY[0]~input_o  & ((\Neuron|state.IDLE~q ) # (!\KEY[1]~input_o )))
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(\KEY[1]~input_o ),
+	.datac(\Neuron|state.IDLE~q ),
 	.datad(gnd),
 	.cin(gnd),
-	.combout(\ReLU|dataOut[0]~0_combout ),
+	.combout(\Neuron|state~11_combout ),
 	.cout());
 // synopsys translate_off
-defparam \ReLU|dataOut[0]~0 .lut_mask = 16'h0C0C;
-defparam \ReLU|dataOut[0]~0 .sum_lutc_input = "datac";
+defparam \Neuron|state~11 .lut_mask = 16'hA2A2;
+defparam \Neuron|state~11 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: IOIBUF_X49_Y54_N1
-fiftyfivenm_io_ibuf \SW[5]~input (
-	.i(SW[5]),
-	.ibar(gnd),
-	.nsleep(vcc),
-	.o(\SW[5]~input_o ));
+// Location: FF_X49_Y53_N11
+dffeas \Neuron|state.IDLE (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|state~11_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|state.IDLE~q ),
+	.prn(vcc));
 // synopsys translate_off
-defparam \SW[5]~input .bus_hold = "false";
-defparam \SW[5]~input .listen_to_nsleep_signal = "false";
-defparam \SW[5]~input .simulate_z_as = "z";
+defparam \Neuron|state.IDLE .is_wysiwyg = "true";
+defparam \Neuron|state.IDLE .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X54_Y53_N10
-fiftyfivenm_lcell_comb \ReLU|dataOut[1]~1 (
+// Location: LCCOMB_X49_Y53_N12
+fiftyfivenm_lcell_comb \Neuron|state~10 (
 // Equation(s):
-// \ReLU|dataOut[1]~1_combout  = (!\SW[9]~input_o  & \SW[5]~input_o )
+// \Neuron|state~10_combout  = (\KEY[0]~input_o  & (((!\KEY[1]~input_o  & !\Neuron|state.IDLE~q )) # (!\Neuron|weightAddress[0]~10_combout )))
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(\KEY[1]~input_o ),
+	.datac(\Neuron|state.IDLE~q ),
+	.datad(\Neuron|weightAddress[0]~10_combout ),
+	.cin(gnd),
+	.combout(\Neuron|state~10_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~10 .lut_mask = 16'h02AA;
+defparam \Neuron|state~10 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N13
+dffeas \Neuron|state.MAC_STATE (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|state~10_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|state.MAC_STATE~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|state.MAC_STATE .is_wysiwyg = "true";
+defparam \Neuron|state.MAC_STATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N0
+fiftyfivenm_lcell_comb \Neuron|Equal0~0 (
+// Equation(s):
+// \Neuron|Equal0~0_combout  = (((!\Neuron|weightAddress [3]) # (!\Neuron|weightAddress [0])) # (!\Neuron|weightAddress [1])) # (!\Neuron|weightAddress [2])
+
+	.dataa(\Neuron|weightAddress [2]),
+	.datab(\Neuron|weightAddress [1]),
+	.datac(\Neuron|weightAddress [0]),
+	.datad(\Neuron|weightAddress [3]),
+	.cin(gnd),
+	.combout(\Neuron|Equal0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|Equal0~0 .lut_mask = 16'h7FFF;
+defparam \Neuron|Equal0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N2
+fiftyfivenm_lcell_comb \Neuron|weightAddress[0]~10 (
+// Equation(s):
+// \Neuron|weightAddress[0]~10_combout  = ((!\Neuron|Equal0~1_combout  & !\Neuron|Equal0~0_combout )) # (!\Neuron|state.MAC_STATE~q )
+
+	.dataa(\Neuron|state.MAC_STATE~q ),
+	.datab(gnd),
+	.datac(\Neuron|Equal0~1_combout ),
+	.datad(\Neuron|Equal0~0_combout ),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress[0]~10_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|weightAddress[0]~10 .lut_mask = 16'h555F;
+defparam \Neuron|weightAddress[0]~10 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N4
+fiftyfivenm_lcell_comb \Neuron|weightAddress[0]~11 (
+// Equation(s):
+// \Neuron|weightAddress[0]~11_combout  = (\Neuron|state.MAC_STATE~q ) # (!\KEY[0]~input_o )
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\SW[9]~input_o ),
-	.datad(\SW[5]~input_o ),
+	.datac(\KEY[0]~input_o ),
+	.datad(\Neuron|state.MAC_STATE~q ),
 	.cin(gnd),
-	.combout(\ReLU|dataOut[1]~1_combout ),
+	.combout(\Neuron|weightAddress[0]~11_combout ),
 	.cout());
 // synopsys translate_off
-defparam \ReLU|dataOut[1]~1 .lut_mask = 16'h0F00;
-defparam \ReLU|dataOut[1]~1 .sum_lutc_input = "datac";
+defparam \Neuron|weightAddress[0]~11 .lut_mask = 16'hFF0F;
+defparam \Neuron|weightAddress[0]~11 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: IOIBUF_X54_Y54_N15
-fiftyfivenm_io_ibuf \SW[6]~input (
-	.i(SW[6]),
-	.ibar(gnd),
-	.nsleep(vcc),
-	.o(\SW[6]~input_o ));
+// Location: FF_X49_Y53_N15
+dffeas \Neuron|weightAddress[0] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[0]~8_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [0]),
+	.prn(vcc));
 // synopsys translate_off
-defparam \SW[6]~input .bus_hold = "false";
-defparam \SW[6]~input .listen_to_nsleep_signal = "false";
-defparam \SW[6]~input .simulate_z_as = "z";
+defparam \Neuron|weightAddress[0] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[0] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X54_Y53_N20
-fiftyfivenm_lcell_comb \ReLU|dataOut[2]~2 (
+// Location: LCCOMB_X49_Y53_N16
+fiftyfivenm_lcell_comb \Neuron|weightAddress[1]~12 (
 // Equation(s):
-// \ReLU|dataOut[2]~2_combout  = (!\SW[9]~input_o  & \SW[6]~input_o )
+// \Neuron|weightAddress[1]~12_combout  = (\Neuron|weightAddress [1] & (!\Neuron|weightAddress[0]~9 )) # (!\Neuron|weightAddress [1] & ((\Neuron|weightAddress[0]~9 ) # (GND)))
+// \Neuron|weightAddress[1]~13  = CARRY((!\Neuron|weightAddress[0]~9 ) # (!\Neuron|weightAddress [1]))
+
+	.dataa(gnd),
+	.datab(\Neuron|weightAddress [1]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[0]~9 ),
+	.combout(\Neuron|weightAddress[1]~12_combout ),
+	.cout(\Neuron|weightAddress[1]~13 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[1]~12 .lut_mask = 16'h3C3F;
+defparam \Neuron|weightAddress[1]~12 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N17
+dffeas \Neuron|weightAddress[1] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[1]~12_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[1] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N18
+fiftyfivenm_lcell_comb \Neuron|weightAddress[2]~14 (
+// Equation(s):
+// \Neuron|weightAddress[2]~14_combout  = (\Neuron|weightAddress [2] & (\Neuron|weightAddress[1]~13  $ (GND))) # (!\Neuron|weightAddress [2] & (!\Neuron|weightAddress[1]~13  & VCC))
+// \Neuron|weightAddress[2]~15  = CARRY((\Neuron|weightAddress [2] & !\Neuron|weightAddress[1]~13 ))
+
+	.dataa(gnd),
+	.datab(\Neuron|weightAddress [2]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[1]~13 ),
+	.combout(\Neuron|weightAddress[2]~14_combout ),
+	.cout(\Neuron|weightAddress[2]~15 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[2]~14 .lut_mask = 16'hC30C;
+defparam \Neuron|weightAddress[2]~14 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N19
+dffeas \Neuron|weightAddress[2] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[2]~14_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[2] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N20
+fiftyfivenm_lcell_comb \Neuron|weightAddress[3]~16 (
+// Equation(s):
+// \Neuron|weightAddress[3]~16_combout  = (\Neuron|weightAddress [3] & (!\Neuron|weightAddress[2]~15 )) # (!\Neuron|weightAddress [3] & ((\Neuron|weightAddress[2]~15 ) # (GND)))
+// \Neuron|weightAddress[3]~17  = CARRY((!\Neuron|weightAddress[2]~15 ) # (!\Neuron|weightAddress [3]))
+
+	.dataa(gnd),
+	.datab(\Neuron|weightAddress [3]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[2]~15 ),
+	.combout(\Neuron|weightAddress[3]~16_combout ),
+	.cout(\Neuron|weightAddress[3]~17 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[3]~16 .lut_mask = 16'h3C3F;
+defparam \Neuron|weightAddress[3]~16 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N21
+dffeas \Neuron|weightAddress[3] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[3]~16_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[3] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N22
+fiftyfivenm_lcell_comb \Neuron|weightAddress[4]~18 (
+// Equation(s):
+// \Neuron|weightAddress[4]~18_combout  = (\Neuron|weightAddress [4] & (\Neuron|weightAddress[3]~17  $ (GND))) # (!\Neuron|weightAddress [4] & (!\Neuron|weightAddress[3]~17  & VCC))
+// \Neuron|weightAddress[4]~19  = CARRY((\Neuron|weightAddress [4] & !\Neuron|weightAddress[3]~17 ))
+
+	.dataa(\Neuron|weightAddress [4]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[3]~17 ),
+	.combout(\Neuron|weightAddress[4]~18_combout ),
+	.cout(\Neuron|weightAddress[4]~19 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[4]~18 .lut_mask = 16'hA50A;
+defparam \Neuron|weightAddress[4]~18 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N23
+dffeas \Neuron|weightAddress[4] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[4]~18_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[4] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N24
+fiftyfivenm_lcell_comb \Neuron|weightAddress[5]~20 (
+// Equation(s):
+// \Neuron|weightAddress[5]~20_combout  = (\Neuron|weightAddress [5] & (!\Neuron|weightAddress[4]~19 )) # (!\Neuron|weightAddress [5] & ((\Neuron|weightAddress[4]~19 ) # (GND)))
+// \Neuron|weightAddress[5]~21  = CARRY((!\Neuron|weightAddress[4]~19 ) # (!\Neuron|weightAddress [5]))
+
+	.dataa(gnd),
+	.datab(\Neuron|weightAddress [5]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[4]~19 ),
+	.combout(\Neuron|weightAddress[5]~20_combout ),
+	.cout(\Neuron|weightAddress[5]~21 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[5]~20 .lut_mask = 16'h3C3F;
+defparam \Neuron|weightAddress[5]~20 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N25
+dffeas \Neuron|weightAddress[5] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[5]~20_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[5] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N26
+fiftyfivenm_lcell_comb \Neuron|weightAddress[6]~22 (
+// Equation(s):
+// \Neuron|weightAddress[6]~22_combout  = (\Neuron|weightAddress [6] & (\Neuron|weightAddress[5]~21  $ (GND))) # (!\Neuron|weightAddress [6] & (!\Neuron|weightAddress[5]~21  & VCC))
+// \Neuron|weightAddress[6]~23  = CARRY((\Neuron|weightAddress [6] & !\Neuron|weightAddress[5]~21 ))
+
+	.dataa(\Neuron|weightAddress [6]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|weightAddress[5]~21 ),
+	.combout(\Neuron|weightAddress[6]~22_combout ),
+	.cout(\Neuron|weightAddress[6]~23 ));
+// synopsys translate_off
+defparam \Neuron|weightAddress[6]~22 .lut_mask = 16'hA50A;
+defparam \Neuron|weightAddress[6]~22 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N27
+dffeas \Neuron|weightAddress[6] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[6]~22_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[6] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N28
+fiftyfivenm_lcell_comb \Neuron|weightAddress[7]~24 (
+// Equation(s):
+// \Neuron|weightAddress[7]~24_combout  = \Neuron|weightAddress[6]~23  $ (\Neuron|weightAddress [7])
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\SW[9]~input_o ),
-	.datad(\SW[6]~input_o ),
-	.cin(gnd),
-	.combout(\ReLU|dataOut[2]~2_combout ),
+	.datac(gnd),
+	.datad(\Neuron|weightAddress [7]),
+	.cin(\Neuron|weightAddress[6]~23 ),
+	.combout(\Neuron|weightAddress[7]~24_combout ),
 	.cout());
 // synopsys translate_off
-defparam \ReLU|dataOut[2]~2 .lut_mask = 16'h0F00;
-defparam \ReLU|dataOut[2]~2 .sum_lutc_input = "datac";
+defparam \Neuron|weightAddress[7]~24 .lut_mask = 16'h0FF0;
+defparam \Neuron|weightAddress[7]~24 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: IOIBUF_X58_Y54_N29
-fiftyfivenm_io_ibuf \SW[7]~input (
-	.i(SW[7]),
-	.ibar(gnd),
-	.nsleep(vcc),
-	.o(\SW[7]~input_o ));
+// Location: FF_X49_Y53_N29
+dffeas \Neuron|weightAddress[7] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress[7]~24_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(\Neuron|weightAddress[0]~10_combout ),
+	.sload(gnd),
+	.ena(\Neuron|weightAddress[0]~11_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [7]),
+	.prn(vcc));
 // synopsys translate_off
-defparam \SW[7]~input .bus_hold = "false";
-defparam \SW[7]~input .listen_to_nsleep_signal = "false";
-defparam \SW[7]~input .simulate_z_as = "z";
+defparam \Neuron|weightAddress[7] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[7] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X54_Y53_N30
-fiftyfivenm_lcell_comb \ReLU|dataOut[3]~3 (
+// Location: LCCOMB_X49_Y53_N30
+fiftyfivenm_lcell_comb \Neuron|Equal0~1 (
 // Equation(s):
-// \ReLU|dataOut[3]~3_combout  = (!\SW[9]~input_o  & \SW[7]~input_o )
+// \Neuron|Equal0~1_combout  = (((!\Neuron|weightAddress [5]) # (!\Neuron|weightAddress [6])) # (!\Neuron|weightAddress [7])) # (!\Neuron|weightAddress [4])
+
+	.dataa(\Neuron|weightAddress [4]),
+	.datab(\Neuron|weightAddress [7]),
+	.datac(\Neuron|weightAddress [6]),
+	.datad(\Neuron|weightAddress [5]),
+	.cin(gnd),
+	.combout(\Neuron|Equal0~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|Equal0~1 .lut_mask = 16'h7FFF;
+defparam \Neuron|Equal0~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N6
+fiftyfivenm_lcell_comb \Neuron|state~9 (
+// Equation(s):
+// \Neuron|state~9_combout  = (!\Neuron|Equal0~1_combout  & (\KEY[0]~input_o  & (!\Neuron|Equal0~0_combout  & \Neuron|state.MAC_STATE~q )))
+
+	.dataa(\Neuron|Equal0~1_combout ),
+	.datab(\KEY[0]~input_o ),
+	.datac(\Neuron|Equal0~0_combout ),
+	.datad(\Neuron|state.MAC_STATE~q ),
+	.cin(gnd),
+	.combout(\Neuron|state~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~9 .lut_mask = 16'h0400;
+defparam \Neuron|state~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N7
+dffeas \Neuron|state.DELAY_STATE (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|state~9_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|state.DELAY_STATE~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|state.DELAY_STATE .is_wysiwyg = "true";
+defparam \Neuron|state.DELAY_STATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y53_N8
+fiftyfivenm_lcell_comb \Neuron|state~8 (
+// Equation(s):
+// \Neuron|state~8_combout  = (\KEY[0]~input_o  & ((\Neuron|state.OUTPUT_STATE~q ) # (\Neuron|state.DELAY_STATE~q )))
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(gnd),
+	.datac(\Neuron|state.OUTPUT_STATE~q ),
+	.datad(\Neuron|state.DELAY_STATE~q ),
+	.cin(gnd),
+	.combout(\Neuron|state~8_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~8 .lut_mask = 16'hAAA0;
+defparam \Neuron|state~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y53_N9
+dffeas \Neuron|state.OUTPUT_STATE (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|state~8_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|state.OUTPUT_STATE~q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|state.OUTPUT_STATE .is_wysiwyg = "true";
+defparam \Neuron|state.OUTPUT_STATE .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y53_N12
+fiftyfivenm_lcell_comb \Neuron|neuronOutValid~0 (
+// Equation(s):
+// \Neuron|neuronOutValid~0_combout  = (\KEY[0]~input_o  & \Neuron|state.OUTPUT_STATE~q )
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\SW[9]~input_o ),
-	.datad(\SW[7]~input_o ),
+	.datac(\KEY[0]~input_o ),
+	.datad(\Neuron|state.OUTPUT_STATE~q ),
 	.cin(gnd),
-	.combout(\ReLU|dataOut[3]~3_combout ),
+	.combout(\Neuron|neuronOutValid~0_combout ),
 	.cout());
 // synopsys translate_off
-defparam \ReLU|dataOut[3]~3 .lut_mask = 16'h0F00;
-defparam \ReLU|dataOut[3]~3 .sum_lutc_input = "datac";
+defparam \Neuron|neuronOutValid~0 .lut_mask = 16'hF000;
+defparam \Neuron|neuronOutValid~0 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: IOIBUF_X56_Y54_N1
-fiftyfivenm_io_ibuf \SW[8]~input (
-	.i(SW[8]),
-	.ibar(gnd),
-	.nsleep(vcc),
-	.o(\SW[8]~input_o ));
+// Location: FF_X50_Y53_N13
+dffeas \Neuron|neuronOutValid (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|neuronOutValid~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(vcc),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|neuronOutValid~q ),
+	.prn(vcc));
 // synopsys translate_off
-defparam \SW[8]~input .bus_hold = "false";
-defparam \SW[8]~input .listen_to_nsleep_signal = "false";
-defparam \SW[8]~input .simulate_z_as = "z";
-// synopsys translate_on
-
-// Location: LCCOMB_X56_Y52_N0
-fiftyfivenm_lcell_comb \ReLU|dataOut[4]~4 (
-// Equation(s):
-// \ReLU|dataOut[4]~4_combout  = (!\SW[9]~input_o  & \SW[8]~input_o )
-
-	.dataa(\SW[9]~input_o ),
-	.datab(gnd),
-	.datac(\SW[8]~input_o ),
-	.datad(gnd),
-	.cin(gnd),
-	.combout(\ReLU|dataOut[4]~4_combout ),
-	.cout());
-// synopsys translate_off
-defparam \ReLU|dataOut[4]~4 .lut_mask = 16'h5050;
-defparam \ReLU|dataOut[4]~4 .sum_lutc_input = "datac";
+defparam \Neuron|neuronOutValid .is_wysiwyg = "true";
+defparam \Neuron|neuronOutValid .power_up = "low";
 // synopsys translate_on
 
 // Location: IOIBUF_X51_Y54_N29
@@ -1109,40 +1570,76 @@ defparam \SW[3]~input .listen_to_nsleep_signal = "false";
 defparam \SW[3]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X46_Y54_N29
-fiftyfivenm_io_ibuf \KEY[0]~input (
-	.i(KEY[0]),
+// Location: IOIBUF_X54_Y54_N22
+fiftyfivenm_io_ibuf \SW[4]~input (
+	.i(SW[4]),
 	.ibar(gnd),
 	.nsleep(vcc),
-	.o(\KEY[0]~input_o ));
+	.o(\SW[4]~input_o ));
 // synopsys translate_off
-defparam \KEY[0]~input .bus_hold = "false";
-defparam \KEY[0]~input .listen_to_nsleep_signal = "false";
-defparam \KEY[0]~input .simulate_z_as = "z";
+defparam \SW[4]~input .bus_hold = "false";
+defparam \SW[4]~input .listen_to_nsleep_signal = "false";
+defparam \SW[4]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X49_Y54_N29
-fiftyfivenm_io_ibuf \KEY[1]~input (
-	.i(KEY[1]),
+// Location: IOIBUF_X49_Y54_N1
+fiftyfivenm_io_ibuf \SW[5]~input (
+	.i(SW[5]),
 	.ibar(gnd),
 	.nsleep(vcc),
-	.o(\KEY[1]~input_o ));
+	.o(\SW[5]~input_o ));
 // synopsys translate_off
-defparam \KEY[1]~input .bus_hold = "false";
-defparam \KEY[1]~input .listen_to_nsleep_signal = "false";
-defparam \KEY[1]~input .simulate_z_as = "z";
+defparam \SW[5]~input .bus_hold = "false";
+defparam \SW[5]~input .listen_to_nsleep_signal = "false";
+defparam \SW[5]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y0_N29
-fiftyfivenm_io_ibuf \CLOCK_50~input (
-	.i(CLOCK_50),
+// Location: IOIBUF_X54_Y54_N15
+fiftyfivenm_io_ibuf \SW[6]~input (
+	.i(SW[6]),
 	.ibar(gnd),
 	.nsleep(vcc),
-	.o(\CLOCK_50~input_o ));
+	.o(\SW[6]~input_o ));
 // synopsys translate_off
-defparam \CLOCK_50~input .bus_hold = "false";
-defparam \CLOCK_50~input .listen_to_nsleep_signal = "false";
-defparam \CLOCK_50~input .simulate_z_as = "z";
+defparam \SW[6]~input .bus_hold = "false";
+defparam \SW[6]~input .listen_to_nsleep_signal = "false";
+defparam \SW[6]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X58_Y54_N29
+fiftyfivenm_io_ibuf \SW[7]~input (
+	.i(SW[7]),
+	.ibar(gnd),
+	.nsleep(vcc),
+	.o(\SW[7]~input_o ));
+// synopsys translate_off
+defparam \SW[7]~input .bus_hold = "false";
+defparam \SW[7]~input .listen_to_nsleep_signal = "false";
+defparam \SW[7]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X56_Y54_N1
+fiftyfivenm_io_ibuf \SW[8]~input (
+	.i(SW[8]),
+	.ibar(gnd),
+	.nsleep(vcc),
+	.o(\SW[8]~input_o ));
+// synopsys translate_off
+defparam \SW[8]~input .bus_hold = "false";
+defparam \SW[8]~input .listen_to_nsleep_signal = "false";
+defparam \SW[8]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X69_Y54_N1
+fiftyfivenm_io_ibuf \SW[9]~input (
+	.i(SW[9]),
+	.ibar(gnd),
+	.nsleep(vcc),
+	.o(\SW[9]~input_o ));
+// synopsys translate_off
+defparam \SW[9]~input .bus_hold = "false";
+defparam \SW[9]~input .listen_to_nsleep_signal = "false";
+defparam \SW[9]~input .simulate_z_as = "z";
 // synopsys translate_on
 
 // Location: UNVM_X0_Y40_N40

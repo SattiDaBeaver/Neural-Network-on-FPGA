@@ -1,9 +1,9 @@
 // `define PRETRAINED
 
 module NeuralNetwork(
-	input logic     [9:0]   SW,
-	input logic     [1:0]   KEY,
-	input logic             CLOCK_50,
+	input  logic    [9:0]   SW,
+	input  logic    [1:0]   KEY,
+	input  logic            CLOCK_50,
 
 	output logic    [6:0]   HEX5,
 	output logic    [6:0]   HEX4,
@@ -20,11 +20,41 @@ module NeuralNetwork(
     logic           readEn;
     logic           writeEn;
 
-    assign readEn = ~KEY[0];
-    assign writeEn = ~KEY[1];
-    assign dataIn = SW[9:0];
+    // Neuron Test
+    neuron #(
+        .layerNumber(0),
+        .neuronNumber(0),
+        .numWeights(256),
+        .dataWidth(8),
+        .weightIntWidth(4),
+        .biasFile("b_l0_n0.mif"),
+        .weightFile("w_l0_n0.mif")
+    ) Neuron (
+        .clk(CLOCK_50),
+        .reset(~KEY[0]),
+        .neuronIn(SW[7:0]),
+        .neuronValid(~KEY[1]),
+        .weightValid(),
+        .weightWriteEn(),
+        .biasWriteEn(),
+        .weightData(32'h0),
+        .biasData(32'h0),
+        .config_layer_number(32'h0),
+        .config_neuron_number(32'h0),
+        .neuronOut(LEDR[7:0]),
+        .neuronOutValid(LEDR[9]),
+    );
+
+    // // Multiplier Test
+    // always_comb begin
+    //     LEDR[9:0] = $signed(SW[4:0]) * $signed(SW[9:5]);
+    // end
+
+    // assign readEn = ~KEY[0];
+    // assign writeEn = ~KEY[1];
+    // assign dataIn = SW[9:0];
     // assign addr = SW[7:0];
-    assign LEDR[5:0] = dataOut;
+    // assign LEDR[5:0] = dataOut;
 
     // Instantiate the weights module
 
@@ -44,12 +74,12 @@ module NeuralNetwork(
     //     .dataOut(dataOut)
     // );
 
-    reLU #(
-        .sumWidth(10),
-        .dataWidth(6)
-    ) ReLU (
-        .dataIn(dataIn),
-        .dataOut(dataOut)
-    );
+    // reLU #(
+    //     .sumWidth(10),
+    //     .dataWidth(6)
+    // ) ReLU (
+    //     .dataIn(dataIn),
+    //     .dataOut(dataOut)
+    // );
 
 endmodule: NeuralNetwork
