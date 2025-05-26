@@ -111,7 +111,7 @@ module neuron #(
     // Multiply and Accumulate (MAC): Dot Product
     // Multiplier
     always_comb begin
-        multOut = weightOut * neuronIn;
+        multOut = $signed(weightOut) * $signed(neuronIn);
     end
 
     // Adder
@@ -120,7 +120,7 @@ module neuron #(
             adderOut <= 0;
         end
         else if (MACenable) begin
-            adderOut <= multOut + adderOut;
+            adderOut <= $signed(multOut) + $signed(adderOut);
         end
         else begin
             adderOut <= adderOut;
@@ -142,7 +142,7 @@ module neuron #(
     end
 
     always_comb begin
-        sumOut = adderOut + biasOut[0];
+        sumOut = $signed(adderOut) + $signed(biasOut[0]);
     end
     
     // Acitivation Function

@@ -1,2 +1,2 @@
 v1
-DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:Neuron|lpm_mult:Mult0|mult_0ls:auto_generated|mac_out2,
+DSP_BALANCING_IMPLEMENTATION,DSP_BLOCKS,neuron:Neuron|lpm_mult:Mult0|mult_nds:auto_generated|mac_out2,

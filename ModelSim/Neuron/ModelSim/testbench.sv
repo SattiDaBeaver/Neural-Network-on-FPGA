@@ -40,7 +40,7 @@ module testbench ( );
         reset <= 1'b1;
 		#10 
 		reset <= 1'b0;
-		neuronIn <= 8'hB9;
+		neuronIn <= 8'hff;
 		#10
 		neuronValid <= 1'b1;
 	end // initial
