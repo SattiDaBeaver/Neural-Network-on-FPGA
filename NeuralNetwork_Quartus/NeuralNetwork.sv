@@ -27,8 +27,8 @@ module NeuralNetwork(
         .numWeights(16),
         .dataWidth(8),
         .weightIntWidth(4),
-        .biasFile("b_l0_n0.mif"),
-        .weightFile("w_l0_n0.mif")
+        .biasFile("bias_L0_N0.mif"),
+        .weightFile("weight_L0_N0.mif")
     ) Neuron (
         .clk(CLOCK_50),
         .reset(~KEY[0]),

@@ -1,0 +1,282 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ECE241/ModelSim/lab4/part3/ModelSim
+vclockDown
+Z1 !s110 1729625227
+!i10b 1
+!s100 mI>8PHgoh5EBZVo<PX<2M0
+IgMKedHE8^O0hi`Pz[9o[h1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1729449413
+Z4 8../part3.v
+Z5 F../part3.v
+L0 54
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1729625227.000000
+Z8 !s107 ../part3.v|
+Z9 !s90 -reportprogress|300|../part3.v|
+!i113 1
+Z10 tCvgOpt 0
+nclock@down
+vdigit_flipper
+R1
+!i10b 1
+!s100 zg8e180PeS^TZ@CmEL<eB0
+I3JA3hOlA>oDOQV91H<zLd3
+R2
+R0
+R3
+R4
+R5
+L0 36
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vinputCounter
+Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1748319753
+!i10b 1
+!s100 fo2G>K3OeP24idmBFOoFM1
+I8:WcSWE:l16XLZhAHB48m2
+R2
+!s105 inputCounter_sv_unit
+S1
+dC:/Projects/Neural Network on FPGA/ModelSim/preLayerTest/ModelSim
+w1748319750
+8../inputCounter.sv
+F../inputCounter.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1748319753.000000
+!s107 ../inputCounter.sv|
+!s90 -reportprogress|300|-sv|../inputCounter.sv|
+!i113 1
+o-sv
+R10
+ninput@counter
+vinputSerializer
+R11
+Z12 !s110 1748323519
+!i10b 1
+!s100 =^n;MCEIT_3dk;h2V5Fn:3
+I9LALV:A]K[AzkQA3l2gL`2
+R2
+!s105 inputSerializer_sv_unit
+S1
+Z13 dC:/Projects/Neural Network on FPGA/ModelSim/layer/ModelSim
+w1748319948
+8../inputSerializer.sv
+F../inputSerializer.sv
+L0 1
+R6
+r1
+!s85 0
+31
+Z14 !s108 1748323519.000000
+!s107 ../inputSerializer.sv|
+!s90 -reportprogress|300|-sv|../inputSerializer.sv|
+!i113 1
+o-sv
+R10
+ninput@serializer
+vlayer
+R11
+R12
+!i10b 1
+!s100 KVzdc?CdGVkIY0ZnZ<=MC2
+Ic3ojVBWKl[5Y7bPYl[ahF3
+R2
+!s105 layer_sv_unit
+S1
+R13
+w1748323423
+8../layer.sv
+F../layer.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../layer.sv|
+!s90 -reportprogress|300|-sv|../layer.sv|
+!i113 1
+o-sv
+R10
+vneuron
+R11
+R12
+!i10b 1
+!s100 kEa:Sk`ZU;`PZ49_f1GTk3
+I^8Q9HVz>^39I@iI<MKbb60
+R2
+!s105 neuron_sv_unit
+S1
+R13
+w1748322192
+8../neuron.sv
+F../neuron.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../neuron.sv|
+!s90 -reportprogress|300|-sv|../neuron.sv|
+!i113 1
+o-sv
+R10
+vpart3
+R1
+!i10b 1
+!s100 jGM47Hz8BNIhndgIGUT4S2
+Ic?QBeLPL5mU2AGSebM?DD0
+R2
+R0
+R3
+R4
+R5
+L0 23
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vreLU
+R11
+R12
+!i10b 1
+!s100 Dg`mHmPW?_31:8iNgo@g03
+I[J4fN3oYL:428kcRTo3;G1
+R2
+!s105 reLU_sv_unit
+S1
+R13
+w1748192349
+8../reLU.sv
+F../reLU.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../reLU.sv|
+!s90 -reportprogress|300|-sv|../reLU.sv|
+!i113 1
+o-sv
+R10
+nre@l@u
+vseg7
+R1
+!i10b 1
+!s100 5AhNd3d@ol=7clo9QeUEH1
+I1A=C3O9l:bR_B7SCO>QZA1
+R2
+R0
+R3
+R4
+R5
+L0 70
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vtestbench
+R11
+R12
+!i10b 1
+!s100 RzNV>;ooHSN@1?lK`;UoR0
+I3JP=ei8R35zSc_77WK_7@1
+R2
+!s105 testbench_sv_unit
+S1
+R13
+w1748323516
+8testbench.sv
+Ftestbench.sv
+L0 4
+R6
+r1
+!s85 0
+31
+R14
+!s107 testbench.sv|
+!s90 -reportprogress|300|-sv|testbench.sv|
+!i113 1
+o-sv
+R10
+vtop
+R1
+!i10b 1
+!s100 6nP=[lVBQB3GZ0nU`HW8Y2
+IZkR>7zLCWN7_`m:MidA<U3
+R2
+R0
+R3
+R4
+R5
+L0 4
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vweights
+R11
+R12
+!i10b 1
+!s100 f::R>?el_l@@TCj><a^dg0
+I4J99DmAk3l04hCzWCL9l^3
+R2
+!s105 weights_sv_unit
+S1
+R13
+w1748193238
+8../weights.sv
+F../weights.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../weights.sv|
+!s90 -reportprogress|300|-sv|../weights.sv|
+!i113 1
+o-sv
+R10

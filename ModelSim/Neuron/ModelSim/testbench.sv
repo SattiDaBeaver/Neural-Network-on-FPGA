@@ -20,7 +20,7 @@ module testbench ( );
     logic [7:0]       weightMem [0:255];
 
     initial begin
-        $readmemb("w_l0_n0.mif", weightMem);
+        $readmemb("weight_L0_N0.mif", weightMem);
         $display("Loaded weights:");
         for (int i = 0; i < 16; i++)
             $display("weightMem[%0d] = %b", i, weightMem[i]);
@@ -51,8 +51,8 @@ module testbench ( );
         .numWeights(16),
         .dataWidth(8),
         .weightIntWidth(4),
-        .biasFile("b_l0_n0.mif"),
-        .weightFile("w_l0_n0.mif")
+        .biasFile("bias_L0_N0.mif"),
+        .weightFile("weight_L0_N0.mif")
     ) U1 (
         .clk(CLOCK_50),
         .reset(reset),
