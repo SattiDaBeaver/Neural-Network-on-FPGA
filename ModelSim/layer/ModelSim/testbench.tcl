@@ -21,4 +21,4 @@ vsim work.testbench -Lf 220model -Lf altera_mf_ver -Lf verilog
 do wave.do
 
 # advance the simulation the desired amount of time
-run 5000 ns
+run 10000 ns
