@@ -120,15 +120,7 @@ module neuron #(
             adderOut <= 0;
         end
         else if (MACenable) begin
-            if ((weightOut[dataWidth-1] == 1) && (neuronIn[dataWidth-1] == 1) && multOut[2*dataWidth-1] == 0) begin
-                adderOut <= {1'b1,{(2*dataWidth-1){1'b0}}}; // Saturate to min value
-            end
-            else if ((weightOut[dataWidth-1] == 0) && (neuronIn[dataWidth-1] == 0) && multOut[2*dataWidth-1] == 1) begin
-                adderOut <= {1'b0,{(2*dataWidth-1){1'b1}}}; // Saturate to max value
-            end
-            else begin
-                adderOut <= $signed(multOut) + $signed(adderOut);
-            end
+            adderOut <= $signed(multOut) + $signed(adderOut);
         end
         else begin
             adderOut <= adderOut;
