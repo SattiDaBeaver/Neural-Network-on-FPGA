@@ -6,6 +6,7 @@ add wave -noupdate -label Reset -radix binary /testbench/reset
 add wave -noupdate -divider Inputs
 add wave -noupdate -label neuronIn -radix hexadecimal /testbench/neuronIn
 add wave -noupdate -label neuronValid -radix hexadecimal /testbench/neuronValid
+add wave -noupdate -label serializerIn -radix hexadecimal /testbench/serializerIn
 
 add wave -noupdate -divider "Internal Nets"
 add wave -noupdate -label "FSM State" -radix hexadecimal /testbench/U1/state
@@ -24,6 +25,7 @@ add wave -noupdate -label neuronOutValid -radix hexadecimal /testbench/neuronOut
 
 add wave -noupdate -label counterOut -radix hexadecimal /testbench/inputCounterOut
 add wave -noupdate -label counterValid -radix hexadecimal /testbench/inputCounterValid
+add wave -noupdate -label serializerOut -radix hexadecimal /testbench/serializerOut
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {10000 ps} 0}

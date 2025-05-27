@@ -8,7 +8,7 @@ vlib work;
 vlog -sv ../neuron.sv
 vlog -sv ../reLU.sv
 vlog -sv ../weights.sv
-vlog -sv ../inputCounter.sv
+vlog -sv ../inputSerializer.sv
 
 # compile the Verilog code of the testbench
 vlog -sv *.sv

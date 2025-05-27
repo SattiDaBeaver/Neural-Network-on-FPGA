@@ -22,6 +22,8 @@ module testbench ( );
     // Input Counter
     logic [3:0]       inputCounterOut;
     logic             inputCounterValid;
+    logic [127:0]     serializerIn; // Serialized input data
+    logic [7:0]       serializerOut; // Output data
 
     initial begin
         $readmemb("w_l0_n0.mif", weightMem);
@@ -40,6 +42,7 @@ module testbench ( );
 	
 	initial begin
         reset <= 1'b0;
+        serializerIn <= 128'h0F0E0D0C0B0A09080706050403020100; // Example input data
         #10
         reset <= 1'b1;
 		#10 
@@ -49,7 +52,7 @@ module testbench ( );
 		neuronValid <= 1'b1;
 	end // initial
 
-     inputCounter #(
+    inputSerializer #(
         .numInputs(16), 
         .counterWidth()
     ) U2 (
@@ -57,7 +60,9 @@ module testbench ( );
         .reset(reset),
         .enable(neuronValid),
         .counterOut(inputCounterOut),
-        .counterValid(inputCounterValid)
+        .counterValid(inputCounterValid),
+        .serializerIn(serializerIn),
+        .serializerOut(serializerOut)
     );
 	
 	neuron #(
@@ -71,7 +76,7 @@ module testbench ( );
     ) U1 (
         .clk(CLOCK_50),
         .reset(reset),
-        .neuronIn(neuronIn),
+        .neuronIn(serializerOut),
         .neuronValid(neuronValid),
         .weightValid(),
         .weightWriteEn(),
