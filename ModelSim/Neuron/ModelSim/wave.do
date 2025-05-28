@@ -14,8 +14,12 @@ add wave -noupdate -label activationEnable -radix hexadecimal /testbench/U1/acti
 add wave -noupdate -label readEnable -radix hexadecimal /testbench/U1/readEn
 add wave -noupdate -label weightAddress -radix hexadecimal /testbench/U1/weightAddress
 add wave -noupdate -label weightOut -radix hexadecimal /testbench/U1/weightOut
+add wave -noupdate -label multOut -radix hexadecimal /testbench/U1/multOut
+add wave -noupdate -label adderOutWire -radix hexadecimal /testbench/U1/adderOutWire
+add wave -noupdate -label adderOut -radix hexadecimal /testbench/U1/adderOut
 add wave -noupdate -label biasOut -radix hexadecimal /testbench/U1/biasOut
 add wave -noupdate -label sumOut -radix hexadecimal /testbench/U1/sumOut
+add wave -noupdate -label sumOutWire -radix hexadecimal /testbench/U1/sumOutWire
 add wave -noupdate -label reluOut -radix hexadecimal /testbench/U1/reluOut
 
 add wave -noupdate -divider Outputs

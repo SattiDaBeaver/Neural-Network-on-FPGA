@@ -20,6 +20,8 @@ module NeuralNetwork(
     logic           readEn;
     logic           writeEn;
 
+    layer layer1 ();
+
     // Neuron Test
     neuron #(
         .layerNumber(0),

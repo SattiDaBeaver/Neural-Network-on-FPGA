@@ -24,8 +24,10 @@ module neuron #(
     logic    [dataWidth-1:0]            weightOut;
     logic    [2*dataWidth-1:0]          multOut;    // Multiplier output: 2 * dataWidth
     logic    [2*dataWidth-1:0]          adderOut;
+    logic    [2*dataWidth-1:0]          adderOutWire;
     logic    [2*dataWidth-1:0]          biasOut [0:0];
     logic    [2*dataWidth-1:0]          sumOut;
+    logic    [2*dataWidth-1:0]          sumOutWire;
     logic    [dataWidth-1:0]            reluOut;
 
     logic    [addressWidth-1:0]         weightAddress;
@@ -115,15 +117,16 @@ module neuron #(
     end
 
     // Adder
+    assign adderOutWire = $signed(multOut) + $signed(adderOut);
     always_ff @ (posedge clk) begin
         if (reset) begin
             adderOut <= 0;
         end
         else if (MACenable) begin
-            if ((weightOut[dataWidth-1] == 1) && (neuronIn[dataWidth-1] == 1) && multOut[2*dataWidth-1] == 0) begin
+            if ((multOut[2*dataWidth-1] == 1) && (adderOut[2*dataWidth-1] == 1) && (adderOutWire[2*dataWidth-1] == 0)) begin
                 adderOut <= {1'b1,{(2*dataWidth-1){1'b0}}}; // Saturate to min value
             end
-            else if ((weightOut[dataWidth-1] == 0) && (neuronIn[dataWidth-1] == 0) && multOut[2*dataWidth-1] == 1) begin
+            else if ((multOut[2*dataWidth-1] == 0) && (adderOut[2*dataWidth-1] == 0) && (adderOutWire[2*dataWidth-1] == 1)) begin
                 adderOut <= {1'b0,{(2*dataWidth-1){1'b1}}}; // Saturate to max value
             end
             else begin
@@ -149,8 +152,18 @@ module neuron #(
         end
     end
 
+
+    assign sumOutWire = $signed(adderOut) + $signed(biasOut[0]);
     always_comb begin
-        sumOut = $signed(adderOut) + $signed(biasOut[0]);
+        if ((biasOut[0][2*dataWidth-1] == 1) && (adderOut[2*dataWidth-1] == 1) && (sumOutWire[2*dataWidth-1] == 0)) begin
+            sumOut = {1'b1,{(2*dataWidth-1){1'b0}}}; // Saturate to min value
+        end
+        else if ((biasOut[0][2*dataWidth-1] == 0) && (adderOut[2*dataWidth-1] == 0) && (sumOutWire[2*dataWidth-1] == 1)) begin
+            sumOut = {1'b0,{(2*dataWidth-1){1'b1}}}; // Saturate to max value
+        end
+        else begin
+            sumOut = $signed(adderOut) + $signed(biasOut[0]);
+        end
     end
     
     // Acitivation Function

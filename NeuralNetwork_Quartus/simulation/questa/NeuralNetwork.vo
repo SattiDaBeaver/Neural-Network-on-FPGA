@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
-// DATE "05/27/2025 01:05:13"
+// DATE "05/27/2025 18:23:16"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -304,7 +304,7 @@ wire \Neuron|state~9_combout ;
 wire \Neuron|state.DELAY_STATE~q ;
 wire \Neuron|Selector2~0_combout ;
 wire \Neuron|state.OUTPUT_STATE~q ;
-wire \Neuron|neuronOut[0]~1_combout ;
+wire \Neuron|neuronOut[5]~1_combout ;
 wire \Neuron|sumOut[9]~18_combout ;
 wire \Neuron|neuronOut~2_combout ;
 wire \Neuron|sumOut[10]~20_combout ;
@@ -2547,20 +2547,20 @@ defparam \Neuron|state.OUTPUT_STATE .power_up = "low";
 // synopsys translate_on
 
 // Location: LCCOMB_X51_Y51_N28
-fiftyfivenm_lcell_comb \Neuron|neuronOut[0]~1 (
+fiftyfivenm_lcell_comb \Neuron|neuronOut[5]~1 (
 // Equation(s):
-// \Neuron|neuronOut[0]~1_combout  = (\Neuron|state.OUTPUT_STATE~q ) # (!\KEY[0]~input_o )
+// \Neuron|neuronOut[5]~1_combout  = (\Neuron|state.OUTPUT_STATE~q ) # (!\KEY[0]~input_o )
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(\KEY[0]~input_o ),
 	.datad(\Neuron|state.OUTPUT_STATE~q ),
 	.cin(gnd),
-	.combout(\Neuron|neuronOut[0]~1_combout ),
+	.combout(\Neuron|neuronOut[5]~1_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut[0]~1 .lut_mask = 16'hFF0F;
-defparam \Neuron|neuronOut[0]~1 .sum_lutc_input = "datac";
+defparam \Neuron|neuronOut[5]~1 .lut_mask = 16'hFF0F;
+defparam \Neuron|neuronOut[5]~1 .sum_lutc_input = "datac";
 // synopsys translate_on
 
 // Location: FF_X51_Y51_N5
@@ -2572,7 +2572,7 @@ dffeas \Neuron|neuronOut[0] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [0]),
@@ -2608,7 +2608,7 @@ dffeas \Neuron|neuronOut[1] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [1]),
@@ -2644,7 +2644,7 @@ dffeas \Neuron|neuronOut[2] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [2]),
@@ -2680,7 +2680,7 @@ dffeas \Neuron|neuronOut[3] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [3]),
@@ -2716,7 +2716,7 @@ dffeas \Neuron|neuronOut[4] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [4]),
@@ -2752,7 +2752,7 @@ dffeas \Neuron|neuronOut[5] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [5]),
@@ -2788,7 +2788,7 @@ dffeas \Neuron|neuronOut[6] (
 	.aload(gnd),
 	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|neuronOut[0]~1_combout ),
+	.ena(\Neuron|neuronOut[5]~1_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|neuronOut [6]),
