@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
-// DATE "05/27/2025 18:23:16"
+// DATE "05/29/2025 10:39:08"
 
 // 
 // Device: Altera 10M50DAF484C7G Package FBGA484
@@ -195,24 +195,25 @@ wire \LEDR[8]~output_o ;
 wire \LEDR[9]~output_o ;
 wire \CLOCK_50~input_o ;
 wire \CLOCK_50~inputclkctrl_outclk ;
-wire \KEY[0]~input_o ;
 wire \SW[3]~input_o ;
 wire \SW[4]~input_o ;
 wire \SW[5]~input_o ;
 wire \SW[6]~input_o ;
 wire \SW[7]~input_o ;
+wire \KEY[1]~input_o ;
+wire \KEY[0]~input_o ;
+wire \Neuron|state~12_combout ;
+wire \Neuron|state.IDLE~q ;
 wire \Neuron|weightAddress~3_combout ;
-wire \Neuron|adderOut[0]~34_combout ;
+wire \Neuron|adderOut[0]~3_combout ;
+wire \Neuron|weightAddress~4_combout ;
+wire \Neuron|weightAddress~2_combout ;
 wire \Neuron|Add0~0_combout ;
 wire \Neuron|weightAddress~1_combout ;
-wire \Neuron|weightAddress~0_combout ;
-wire \Neuron|state~8_combout ;
-wire \KEY[1]~input_o ;
+wire \Neuron|state~9_combout ;
+wire \Neuron|weightAddress[3]~0_combout ;
 wire \Neuron|state~10_combout ;
-wire \Neuron|state.IDLE~q ;
-wire \Neuron|Selector1~0_combout ;
 wire \Neuron|state.MAC_STATE~q ;
-wire \Neuron|weightAddress~2_combout ;
 wire \Neuron|Weight|dataOut[0]~0_combout ;
 wire \Neuron|Weight|dataOut[1]~1_combout ;
 wire \Neuron|Weight|dataOut[2]~2_combout ;
@@ -241,86 +242,104 @@ wire \Neuron|Mult0|auto_generated|mac_mult1~4 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT8 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT7 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT6 ;
+wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ;
+wire \Neuron|adderOut~12_combout ;
+wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT11 ;
+wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT10 ;
+wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT9 ;
+wire \Neuron|Add1~17 ;
+wire \Neuron|Add1~18_combout ;
+wire \Neuron|adderOut[0]~1_combout ;
+wire \Neuron|adderOut~18_combout ;
+wire \Neuron|Add1~19 ;
+wire \Neuron|Add1~20_combout ;
+wire \Neuron|adderOut~17_combout ;
+wire \Neuron|Add1~21 ;
+wire \Neuron|Add1~22_combout ;
+wire \Neuron|adderOut~16_combout ;
+wire \Neuron|Add1~23 ;
+wire \Neuron|Add1~24_combout ;
+wire \Neuron|adderOut~15_combout ;
+wire \Neuron|Add1~25 ;
+wire \Neuron|Add1~26_combout ;
+wire \Neuron|adderOut~14_combout ;
+wire \Neuron|Add1~27 ;
+wire \Neuron|Add1~28_combout ;
+wire \Neuron|adderOut~13_combout ;
+wire \Neuron|Add1~29 ;
+wire \Neuron|adderOutWire[15]~0_combout ;
+wire \Neuron|adderOut~0_combout ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT5 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT4 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT3 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT2 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT1 ;
 wire \Neuron|Mult0|auto_generated|mac_out2~dataout ;
-wire \Neuron|adderOut[0]~16_combout ;
-wire \Neuron|adderOut[0]~17 ;
-wire \Neuron|adderOut[1]~18_combout ;
-wire \Neuron|adderOut[1]~19 ;
-wire \Neuron|adderOut[2]~20_combout ;
-wire \Neuron|adderOut[2]~21 ;
-wire \Neuron|adderOut[3]~22_combout ;
-wire \Neuron|adderOut[3]~23 ;
-wire \Neuron|adderOut[4]~24_combout ;
-wire \Neuron|adderOut[4]~25 ;
-wire \Neuron|adderOut[5]~26_combout ;
-wire \Neuron|adderOut[5]~27 ;
-wire \Neuron|adderOut[6]~28_combout ;
-wire \Neuron|adderOut[6]~29 ;
-wire \Neuron|adderOut[7]~30_combout ;
-wire \Neuron|adderOut[7]~31 ;
-wire \Neuron|adderOut[8]~32_combout ;
-wire \Neuron|sumOut[0]~1_cout ;
-wire \Neuron|sumOut[1]~3_cout ;
-wire \Neuron|sumOut[2]~5_cout ;
-wire \Neuron|sumOut[3]~7_cout ;
-wire \Neuron|sumOut[4]~9_cout ;
-wire \Neuron|sumOut[5]~11_cout ;
-wire \Neuron|sumOut[6]~13_cout ;
-wire \Neuron|sumOut[7]~15_cout ;
-wire \Neuron|sumOut[8]~16_combout ;
-wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ;
-wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT11 ;
-wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT10 ;
-wire \Neuron|Mult0|auto_generated|mac_out2~DATAOUT9 ;
-wire \Neuron|adderOut[8]~33 ;
-wire \Neuron|adderOut[9]~35_combout ;
-wire \Neuron|adderOut[9]~36 ;
-wire \Neuron|adderOut[10]~37_combout ;
-wire \Neuron|adderOut[10]~38 ;
-wire \Neuron|adderOut[11]~39_combout ;
-wire \Neuron|adderOut[11]~40 ;
-wire \Neuron|adderOut[12]~41_combout ;
-wire \Neuron|adderOut[12]~42 ;
-wire \Neuron|adderOut[13]~43_combout ;
-wire \Neuron|adderOut[13]~44 ;
-wire \Neuron|adderOut[14]~45_combout ;
-wire \Neuron|adderOut[14]~46 ;
-wire \Neuron|adderOut[15]~47_combout ;
-wire \Neuron|sumOut[8]~17 ;
-wire \Neuron|sumOut[9]~19 ;
-wire \Neuron|sumOut[10]~21 ;
-wire \Neuron|sumOut[11]~23 ;
-wire \Neuron|sumOut[12]~25 ;
-wire \Neuron|sumOut[13]~27 ;
-wire \Neuron|sumOut[14]~29 ;
-wire \Neuron|sumOut[15]~30_combout ;
+wire \Neuron|Add1~0_combout ;
+wire \Neuron|adderOut~11_combout ;
+wire \Neuron|Add1~1 ;
+wire \Neuron|Add1~2_combout ;
+wire \Neuron|adderOut~10_combout ;
+wire \Neuron|Add1~3 ;
+wire \Neuron|Add1~4_combout ;
+wire \Neuron|adderOut~9_combout ;
+wire \Neuron|Add1~5 ;
+wire \Neuron|Add1~6_combout ;
+wire \Neuron|adderOut~8_combout ;
+wire \Neuron|Add1~7 ;
+wire \Neuron|Add1~8_combout ;
+wire \Neuron|adderOut~7_combout ;
+wire \Neuron|Add1~9 ;
+wire \Neuron|Add1~10_combout ;
+wire \Neuron|adderOut~6_combout ;
+wire \Neuron|Add1~11 ;
+wire \Neuron|Add1~12_combout ;
+wire \Neuron|adderOut~5_combout ;
+wire \Neuron|Add1~13 ;
+wire \Neuron|Add1~14_combout ;
+wire \Neuron|adderOut~4_combout ;
+wire \Neuron|Add1~15 ;
+wire \Neuron|Add1~16_combout ;
+wire \Neuron|adderOut~2_combout ;
+wire \Neuron|Add3~1_cout ;
+wire \Neuron|Add3~3_cout ;
+wire \Neuron|Add3~5_cout ;
+wire \Neuron|Add3~7_cout ;
+wire \Neuron|Add3~9_cout ;
+wire \Neuron|Add3~11_cout ;
+wire \Neuron|Add3~13_cout ;
+wire \Neuron|Add3~15_cout ;
+wire \Neuron|Add3~16_combout ;
+wire \Neuron|Add3~17 ;
+wire \Neuron|Add3~19 ;
+wire \Neuron|Add3~21 ;
+wire \Neuron|Add3~23 ;
+wire \Neuron|Add3~25 ;
+wire \Neuron|Add3~27 ;
+wire \Neuron|Add3~29 ;
+wire \Neuron|Add3~30_combout ;
 wire \Neuron|neuronOut~0_combout ;
-wire \Neuron|state~9_combout ;
+wire \Neuron|state~11_combout ;
 wire \Neuron|state.DELAY_STATE~q ;
-wire \Neuron|Selector2~0_combout ;
+wire \Neuron|state~8_combout ;
 wire \Neuron|state.OUTPUT_STATE~q ;
 wire \Neuron|neuronOut[5]~1_combout ;
-wire \Neuron|sumOut[9]~18_combout ;
+wire \Neuron|Add3~18_combout ;
 wire \Neuron|neuronOut~2_combout ;
-wire \Neuron|sumOut[10]~20_combout ;
+wire \Neuron|Add3~20_combout ;
 wire \Neuron|neuronOut~3_combout ;
-wire \Neuron|sumOut[11]~22_combout ;
+wire \Neuron|Add3~22_combout ;
 wire \Neuron|neuronOut~4_combout ;
-wire \Neuron|sumOut[12]~24_combout ;
+wire \Neuron|Add3~24_combout ;
 wire \Neuron|neuronOut~5_combout ;
-wire \Neuron|sumOut[13]~26_combout ;
+wire \Neuron|Add3~26_combout ;
 wire \Neuron|neuronOut~6_combout ;
-wire \Neuron|sumOut[14]~28_combout ;
+wire \Neuron|Add3~28_combout ;
 wire \Neuron|neuronOut~7_combout ;
 wire \Neuron|neuronOutValid~0_combout ;
 wire \Neuron|neuronOutValid~q ;
-wire [15:0] \Neuron|adderOut ;
 wire [7:0] \Neuron|neuronOut ;
+wire [15:0] \Neuron|adderOut ;
 wire [3:0] \Neuron|weightAddress ;
 
 wire [17:0] \Neuron|Mult0|auto_generated|mac_out2_DATAOUT_bus ;
@@ -369,7 +388,7 @@ hard_block auto_generated_inst(
 	.devclrn(devclrn),
 	.devoe(devoe));
 
-// Location: LCCOMB_X44_Y42_N12
+// Location: LCCOMB_X44_Y41_N24
 fiftyfivenm_lcell_comb \~QUARTUS_CREATED_GND~I (
 // Equation(s):
 // \~QUARTUS_CREATED_GND~I_combout  = GND
@@ -1087,18 +1106,6 @@ defparam \CLOCK_50~inputclkctrl .clock_type = "global clock";
 defparam \CLOCK_50~inputclkctrl .ena_register_mode = "none";
 // synopsys translate_on
 
-// Location: IOIBUF_X46_Y54_N29
-fiftyfivenm_io_ibuf \KEY[0]~input (
-	.i(KEY[0]),
-	.ibar(gnd),
-	.nsleep(vcc),
-	.o(\KEY[0]~input_o ));
-// synopsys translate_off
-defparam \KEY[0]~input .bus_hold = "false";
-defparam \KEY[0]~input .listen_to_nsleep_signal = "false";
-defparam \KEY[0]~input .simulate_z_as = "z";
-// synopsys translate_on
-
 // Location: IOIBUF_X54_Y54_N29
 fiftyfivenm_io_ibuf \SW[3]~input (
 	.i(SW[3]),
@@ -1159,165 +1166,6 @@ defparam \SW[7]~input .listen_to_nsleep_signal = "false";
 defparam \SW[7]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N8
-fiftyfivenm_lcell_comb \Neuron|weightAddress~3 (
-// Equation(s):
-// \Neuron|weightAddress~3_combout  = (!\Neuron|state~8_combout  & (\Neuron|state.MAC_STATE~q  & (\Neuron|weightAddress [0] $ (\Neuron|weightAddress [1]))))
-
-	.dataa(\Neuron|state~8_combout ),
-	.datab(\Neuron|weightAddress [0]),
-	.datac(\Neuron|weightAddress [1]),
-	.datad(\Neuron|state.MAC_STATE~q ),
-	.cin(gnd),
-	.combout(\Neuron|weightAddress~3_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|weightAddress~3 .lut_mask = 16'h1400;
-defparam \Neuron|weightAddress~3 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N24
-fiftyfivenm_lcell_comb \Neuron|adderOut[0]~34 (
-// Equation(s):
-// \Neuron|adderOut[0]~34_combout  = (\Neuron|state.MAC_STATE~q ) # (!\KEY[0]~input_o )
-
-	.dataa(gnd),
-	.datab(gnd),
-	.datac(\Neuron|state.MAC_STATE~q ),
-	.datad(\KEY[0]~input_o ),
-	.cin(gnd),
-	.combout(\Neuron|adderOut[0]~34_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|adderOut[0]~34 .lut_mask = 16'hF0FF;
-defparam \Neuron|adderOut[0]~34 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: FF_X47_Y51_N9
-dffeas \Neuron|weightAddress[1] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|weightAddress~3_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|weightAddress [1]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|weightAddress[1] .is_wysiwyg = "true";
-defparam \Neuron|weightAddress[1] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N28
-fiftyfivenm_lcell_comb \Neuron|Add0~0 (
-// Equation(s):
-// \Neuron|Add0~0_combout  = (\Neuron|weightAddress [0] & \Neuron|weightAddress [1])
-
-	.dataa(gnd),
-	.datab(gnd),
-	.datac(\Neuron|weightAddress [0]),
-	.datad(\Neuron|weightAddress [1]),
-	.cin(gnd),
-	.combout(\Neuron|Add0~0_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|Add0~0 .lut_mask = 16'hF000;
-defparam \Neuron|Add0~0 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N4
-fiftyfivenm_lcell_comb \Neuron|weightAddress~1 (
-// Equation(s):
-// \Neuron|weightAddress~1_combout  = (!\Neuron|state~8_combout  & (\Neuron|state.MAC_STATE~q  & (\Neuron|Add0~0_combout  $ (\Neuron|weightAddress [2]))))
-
-	.dataa(\Neuron|state~8_combout ),
-	.datab(\Neuron|Add0~0_combout ),
-	.datac(\Neuron|weightAddress [2]),
-	.datad(\Neuron|state.MAC_STATE~q ),
-	.cin(gnd),
-	.combout(\Neuron|weightAddress~1_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|weightAddress~1 .lut_mask = 16'h1400;
-defparam \Neuron|weightAddress~1 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: FF_X47_Y51_N5
-dffeas \Neuron|weightAddress[2] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|weightAddress~1_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|weightAddress [2]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|weightAddress[2] .is_wysiwyg = "true";
-defparam \Neuron|weightAddress[2] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N26
-fiftyfivenm_lcell_comb \Neuron|weightAddress~0 (
-// Equation(s):
-// \Neuron|weightAddress~0_combout  = (\Neuron|state.MAC_STATE~q  & (\Neuron|weightAddress [3] $ (((\Neuron|Add0~0_combout  & \Neuron|weightAddress [2])))))
-
-	.dataa(\Neuron|state.MAC_STATE~q ),
-	.datab(\Neuron|Add0~0_combout ),
-	.datac(\Neuron|weightAddress [3]),
-	.datad(\Neuron|weightAddress [2]),
-	.cin(gnd),
-	.combout(\Neuron|weightAddress~0_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|weightAddress~0 .lut_mask = 16'h28A0;
-defparam \Neuron|weightAddress~0 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: FF_X47_Y51_N27
-dffeas \Neuron|weightAddress[3] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|weightAddress~0_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|weightAddress [3]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|weightAddress[3] .is_wysiwyg = "true";
-defparam \Neuron|weightAddress[3] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N22
-fiftyfivenm_lcell_comb \Neuron|state~8 (
-// Equation(s):
-// \Neuron|state~8_combout  = (\Neuron|weightAddress [1] & (\Neuron|weightAddress [2] & (\Neuron|weightAddress [0] & \Neuron|weightAddress [3])))
-
-	.dataa(\Neuron|weightAddress [1]),
-	.datab(\Neuron|weightAddress [2]),
-	.datac(\Neuron|weightAddress [0]),
-	.datad(\Neuron|weightAddress [3]),
-	.cin(gnd),
-	.combout(\Neuron|state~8_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|state~8 .lut_mask = 16'h8000;
-defparam \Neuron|state~8 .sum_lutc_input = "datac";
-// synopsys translate_on
-
 // Location: IOIBUF_X49_Y54_N29
 fiftyfivenm_io_ibuf \KEY[1]~input (
 	.i(KEY[1]),
@@ -1330,27 +1178,39 @@ defparam \KEY[1]~input .listen_to_nsleep_signal = "false";
 defparam \KEY[1]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N12
-fiftyfivenm_lcell_comb \Neuron|state~10 (
-// Equation(s):
-// \Neuron|state~10_combout  = (\KEY[0]~input_o  & ((\Neuron|state.IDLE~q ) # (!\KEY[1]~input_o )))
-
-	.dataa(gnd),
-	.datab(\KEY[0]~input_o ),
-	.datac(\Neuron|state.IDLE~q ),
-	.datad(\KEY[1]~input_o ),
-	.cin(gnd),
-	.combout(\Neuron|state~10_combout ),
-	.cout());
+// Location: IOIBUF_X46_Y54_N29
+fiftyfivenm_io_ibuf \KEY[0]~input (
+	.i(KEY[0]),
+	.ibar(gnd),
+	.nsleep(vcc),
+	.o(\KEY[0]~input_o ));
 // synopsys translate_off
-defparam \Neuron|state~10 .lut_mask = 16'hC0CC;
-defparam \Neuron|state~10 .sum_lutc_input = "datac";
+defparam \KEY[0]~input .bus_hold = "false";
+defparam \KEY[0]~input .listen_to_nsleep_signal = "false";
+defparam \KEY[0]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: FF_X47_Y51_N13
+// Location: LCCOMB_X49_Y52_N8
+fiftyfivenm_lcell_comb \Neuron|state~12 (
+// Equation(s):
+// \Neuron|state~12_combout  = (\KEY[0]~input_o  & ((\Neuron|state.IDLE~q ) # (!\KEY[1]~input_o )))
+
+	.dataa(\KEY[1]~input_o ),
+	.datab(gnd),
+	.datac(\Neuron|state.IDLE~q ),
+	.datad(\KEY[0]~input_o ),
+	.cin(gnd),
+	.combout(\Neuron|state~12_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~12 .lut_mask = 16'hF500;
+defparam \Neuron|state~12 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N9
 dffeas \Neuron|state.IDLE (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|state~10_combout ),
+	.d(\Neuron|state~12_combout ),
 	.asdata(vcc),
 	.clrn(vcc),
 	.aload(gnd),
@@ -1366,31 +1226,243 @@ defparam \Neuron|state.IDLE .is_wysiwyg = "true";
 defparam \Neuron|state.IDLE .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N10
-fiftyfivenm_lcell_comb \Neuron|Selector1~0 (
+// Location: LCCOMB_X49_Y52_N20
+fiftyfivenm_lcell_comb \Neuron|weightAddress~3 (
 // Equation(s):
-// \Neuron|Selector1~0_combout  = (\Neuron|state~8_combout  & (!\Neuron|state.IDLE~q  & ((!\KEY[1]~input_o )))) # (!\Neuron|state~8_combout  & ((\Neuron|state.MAC_STATE~q ) # ((!\Neuron|state.IDLE~q  & !\KEY[1]~input_o ))))
+// \Neuron|weightAddress~3_combout  = (!\Neuron|weightAddress [0] & \Neuron|state.MAC_STATE~q )
 
-	.dataa(\Neuron|state~8_combout ),
-	.datab(\Neuron|state.IDLE~q ),
-	.datac(\Neuron|state.MAC_STATE~q ),
-	.datad(\KEY[1]~input_o ),
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\Neuron|weightAddress [0]),
+	.datad(\Neuron|state.MAC_STATE~q ),
 	.cin(gnd),
-	.combout(\Neuron|Selector1~0_combout ),
+	.combout(\Neuron|weightAddress~3_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|Selector1~0 .lut_mask = 16'h5073;
-defparam \Neuron|Selector1~0 .sum_lutc_input = "datac";
+defparam \Neuron|weightAddress~3 .lut_mask = 16'h0F00;
+defparam \Neuron|weightAddress~3 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X47_Y51_N11
-dffeas \Neuron|state.MAC_STATE (
+// Location: LCCOMB_X49_Y52_N28
+fiftyfivenm_lcell_comb \Neuron|adderOut[0]~3 (
+// Equation(s):
+// \Neuron|adderOut[0]~3_combout  = (\Neuron|state.MAC_STATE~q ) # (!\KEY[0]~input_o )
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\Neuron|state.MAC_STATE~q ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut[0]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut[0]~3 .lut_mask = 16'hFF55;
+defparam \Neuron|adderOut[0]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N21
+dffeas \Neuron|weightAddress[0] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|Selector1~0_combout ),
+	.d(\Neuron|weightAddress~3_combout ),
 	.asdata(vcc),
 	.clrn(vcc),
 	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[0] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N18
+fiftyfivenm_lcell_comb \Neuron|weightAddress~4 (
+// Equation(s):
+// \Neuron|weightAddress~4_combout  = (\Neuron|state.MAC_STATE~q  & (!\Neuron|state~9_combout  & (\Neuron|weightAddress [0] $ (\Neuron|weightAddress [1]))))
+
+	.dataa(\Neuron|weightAddress [0]),
+	.datab(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|weightAddress [1]),
+	.datad(\Neuron|state~9_combout ),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|weightAddress~4 .lut_mask = 16'h0048;
+defparam \Neuron|weightAddress~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N19
+dffeas \Neuron|weightAddress[1] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress~4_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[1] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N6
+fiftyfivenm_lcell_comb \Neuron|weightAddress~2 (
+// Equation(s):
+// \Neuron|weightAddress~2_combout  = (\Neuron|weightAddress[3]~0_combout  & (\Neuron|weightAddress [2] $ (((\Neuron|weightAddress [0] & \Neuron|weightAddress [1])))))
+
+	.dataa(\Neuron|weightAddress [0]),
+	.datab(\Neuron|weightAddress [1]),
+	.datac(\Neuron|weightAddress [2]),
+	.datad(\Neuron|weightAddress[3]~0_combout ),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|weightAddress~2 .lut_mask = 16'h7800;
+defparam \Neuron|weightAddress~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N7
+dffeas \Neuron|weightAddress[2] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[2] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N26
+fiftyfivenm_lcell_comb \Neuron|Add0~0 (
+// Equation(s):
+// \Neuron|Add0~0_combout  = \Neuron|weightAddress [3] $ (((\Neuron|weightAddress [0] & (\Neuron|weightAddress [1] & \Neuron|weightAddress [2]))))
+
+	.dataa(\Neuron|weightAddress [0]),
+	.datab(\Neuron|weightAddress [1]),
+	.datac(\Neuron|weightAddress [3]),
+	.datad(\Neuron|weightAddress [2]),
+	.cin(gnd),
+	.combout(\Neuron|Add0~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|Add0~0 .lut_mask = 16'h78F0;
+defparam \Neuron|Add0~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N12
+fiftyfivenm_lcell_comb \Neuron|weightAddress~1 (
+// Equation(s):
+// \Neuron|weightAddress~1_combout  = (\Neuron|state.MAC_STATE~q  & (\Neuron|Add0~0_combout  & !\Neuron|state~9_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|Add0~0_combout ),
+	.datad(\Neuron|state~9_combout ),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|weightAddress~1 .lut_mask = 16'h00C0;
+defparam \Neuron|weightAddress~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N13
+dffeas \Neuron|weightAddress[3] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|weightAddress~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|weightAddress [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|weightAddress[3] .is_wysiwyg = "true";
+defparam \Neuron|weightAddress[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N0
+fiftyfivenm_lcell_comb \Neuron|state~9 (
+// Equation(s):
+// \Neuron|state~9_combout  = (\Neuron|weightAddress [0] & (\Neuron|weightAddress [1] & (\Neuron|weightAddress [3] & \Neuron|weightAddress [2])))
+
+	.dataa(\Neuron|weightAddress [0]),
+	.datab(\Neuron|weightAddress [1]),
+	.datac(\Neuron|weightAddress [3]),
+	.datad(\Neuron|weightAddress [2]),
+	.cin(gnd),
+	.combout(\Neuron|state~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~9 .lut_mask = 16'h8000;
+defparam \Neuron|state~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N22
+fiftyfivenm_lcell_comb \Neuron|weightAddress[3]~0 (
+// Equation(s):
+// \Neuron|weightAddress[3]~0_combout  = (\Neuron|state.MAC_STATE~q  & !\Neuron|state~9_combout )
+
+	.dataa(gnd),
+	.datab(\Neuron|state.MAC_STATE~q ),
+	.datac(gnd),
+	.datad(\Neuron|state~9_combout ),
+	.cin(gnd),
+	.combout(\Neuron|weightAddress[3]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|weightAddress[3]~0 .lut_mask = 16'h00CC;
+defparam \Neuron|weightAddress[3]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X49_Y52_N30
+fiftyfivenm_lcell_comb \Neuron|state~10 (
+// Equation(s):
+// \Neuron|state~10_combout  = (\KEY[0]~input_o  & ((\Neuron|weightAddress[3]~0_combout ) # ((!\KEY[1]~input_o  & !\Neuron|state.IDLE~q ))))
+
+	.dataa(\KEY[1]~input_o ),
+	.datab(\Neuron|state.IDLE~q ),
+	.datac(\Neuron|weightAddress[3]~0_combout ),
+	.datad(\KEY[0]~input_o ),
+	.cin(gnd),
+	.combout(\Neuron|state~10_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|state~10 .lut_mask = 16'hF100;
+defparam \Neuron|state~10 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X49_Y52_N31
+dffeas \Neuron|state.MAC_STATE (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|state~10_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
 	.sload(gnd),
 	.ena(vcc),
 	.devclrn(devclrn),
@@ -1402,51 +1474,15 @@ defparam \Neuron|state.MAC_STATE .is_wysiwyg = "true";
 defparam \Neuron|state.MAC_STATE .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N14
-fiftyfivenm_lcell_comb \Neuron|weightAddress~2 (
-// Equation(s):
-// \Neuron|weightAddress~2_combout  = (!\Neuron|weightAddress [0] & \Neuron|state.MAC_STATE~q )
-
-	.dataa(gnd),
-	.datab(gnd),
-	.datac(\Neuron|weightAddress [0]),
-	.datad(\Neuron|state.MAC_STATE~q ),
-	.cin(gnd),
-	.combout(\Neuron|weightAddress~2_combout ),
-	.cout());
-// synopsys translate_off
-defparam \Neuron|weightAddress~2 .lut_mask = 16'h0F00;
-defparam \Neuron|weightAddress~2 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: FF_X47_Y51_N15
-dffeas \Neuron|weightAddress[0] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|weightAddress~2_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(gnd),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|weightAddress [0]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|weightAddress[0] .is_wysiwyg = "true";
-defparam \Neuron|weightAddress[0] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X47_Y51_N16
+// Location: LCCOMB_X49_Y52_N2
 fiftyfivenm_lcell_comb \Neuron|Weight|dataOut[0]~0 (
 // Equation(s):
-// \Neuron|Weight|dataOut[0]~0_combout  = (\Neuron|weightAddress [0] & \Neuron|state.MAC_STATE~q )
+// \Neuron|Weight|dataOut[0]~0_combout  = (\Neuron|state.MAC_STATE~q  & \Neuron|weightAddress [0])
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\Neuron|weightAddress [0]),
-	.datad(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|state.MAC_STATE~q ),
+	.datad(\Neuron|weightAddress [0]),
 	.cin(gnd),
 	.combout(\Neuron|Weight|dataOut[0]~0_combout ),
 	.cout());
@@ -1455,15 +1491,15 @@ defparam \Neuron|Weight|dataOut[0]~0 .lut_mask = 16'hF000;
 defparam \Neuron|Weight|dataOut[0]~0 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N6
+// Location: LCCOMB_X49_Y52_N16
 fiftyfivenm_lcell_comb \Neuron|Weight|dataOut[1]~1 (
 // Equation(s):
-// \Neuron|Weight|dataOut[1]~1_combout  = (\Neuron|weightAddress [1] & \Neuron|state.MAC_STATE~q )
+// \Neuron|Weight|dataOut[1]~1_combout  = (\Neuron|state.MAC_STATE~q  & \Neuron|weightAddress [1])
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\Neuron|weightAddress [1]),
-	.datad(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|state.MAC_STATE~q ),
+	.datad(\Neuron|weightAddress [1]),
 	.cin(gnd),
 	.combout(\Neuron|Weight|dataOut[1]~1_combout ),
 	.cout());
@@ -1472,15 +1508,15 @@ defparam \Neuron|Weight|dataOut[1]~1 .lut_mask = 16'hF000;
 defparam \Neuron|Weight|dataOut[1]~1 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N0
+// Location: LCCOMB_X49_Y52_N14
 fiftyfivenm_lcell_comb \Neuron|Weight|dataOut[2]~2 (
 // Equation(s):
-// \Neuron|Weight|dataOut[2]~2_combout  = (\Neuron|weightAddress [2] & \Neuron|state.MAC_STATE~q )
+// \Neuron|Weight|dataOut[2]~2_combout  = (\Neuron|state.MAC_STATE~q  & \Neuron|weightAddress [2])
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\Neuron|weightAddress [2]),
-	.datad(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|state.MAC_STATE~q ),
+	.datad(\Neuron|weightAddress [2]),
 	.cin(gnd),
 	.combout(\Neuron|Weight|dataOut[2]~2_combout ),
 	.cout());
@@ -1489,15 +1525,15 @@ defparam \Neuron|Weight|dataOut[2]~2 .lut_mask = 16'hF000;
 defparam \Neuron|Weight|dataOut[2]~2 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N2
+// Location: LCCOMB_X49_Y52_N4
 fiftyfivenm_lcell_comb \Neuron|Weight|dataOut[3]~3 (
 // Equation(s):
-// \Neuron|Weight|dataOut[3]~3_combout  = (\Neuron|weightAddress [3] & \Neuron|state.MAC_STATE~q )
+// \Neuron|Weight|dataOut[3]~3_combout  = (\Neuron|state.MAC_STATE~q  & \Neuron|weightAddress [3])
 
 	.dataa(gnd),
 	.datab(gnd),
-	.datac(\Neuron|weightAddress [3]),
-	.datad(\Neuron|state.MAC_STATE~q ),
+	.datac(\Neuron|state.MAC_STATE~q ),
+	.datad(\Neuron|weightAddress [3]),
 	.cin(gnd),
 	.combout(\Neuron|Weight|dataOut[3]~3_combout ),
 	.cout());
@@ -1542,7 +1578,7 @@ defparam \SW[2]~input .listen_to_nsleep_signal = "false";
 defparam \SW[2]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: DSPMULT_X48_Y51_N0
+// Location: DSPMULT_X48_Y52_N0
 fiftyfivenm_mac_mult \Neuron|Mult0|auto_generated|mac_mult1 (
 	.signa(vcc),
 	.signb(vcc),
@@ -1563,7 +1599,7 @@ defparam \Neuron|Mult0|auto_generated|mac_mult1 .signa_clock = "none";
 defparam \Neuron|Mult0|auto_generated|mac_mult1 .signb_clock = "none";
 // synopsys translate_on
 
-// Location: DSPOUT_X48_Y51_N2
+// Location: DSPOUT_X48_Y52_N2
 fiftyfivenm_mac_out \Neuron|Mult0|auto_generated|mac_out2 (
 	.clk(gnd),
 	.aclr(gnd),
@@ -1580,749 +1616,34 @@ defparam \Neuron|Mult0|auto_generated|mac_out2 .dataa_width = 18;
 defparam \Neuron|Mult0|auto_generated|mac_out2 .output_clock = "none";
 // synopsys translate_on
 
-// Location: LCCOMB_X49_Y51_N0
-fiftyfivenm_lcell_comb \Neuron|adderOut[0]~16 (
+// Location: LCCOMB_X49_Y52_N24
+fiftyfivenm_lcell_comb \Neuron|adderOut~12 (
 // Equation(s):
-// \Neuron|adderOut[0]~16_combout  = (\Neuron|Mult0|auto_generated|mac_out2~dataout  & (\Neuron|adderOut [0] $ (VCC))) # (!\Neuron|Mult0|auto_generated|mac_out2~dataout  & (\Neuron|adderOut [0] & VCC))
-// \Neuron|adderOut[0]~17  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~dataout  & \Neuron|adderOut [0]))
+// \Neuron|adderOut~12_combout  = (\KEY[0]~input_o  & ((\Neuron|adderOutWire[15]~0_combout  & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ) # (\Neuron|adderOut [15]))) # (!\Neuron|adderOutWire[15]~0_combout  & 
+// (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & \Neuron|adderOut [15]))))
 
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~dataout ),
-	.datab(\Neuron|adderOut [0]),
-	.datac(gnd),
-	.datad(vcc),
+	.dataa(\Neuron|adderOutWire[15]~0_combout ),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(\Neuron|adderOut [15]),
+	.datad(\KEY[0]~input_o ),
 	.cin(gnd),
-	.combout(\Neuron|adderOut[0]~16_combout ),
-	.cout(\Neuron|adderOut[0]~17 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[0]~16 .lut_mask = 16'h6688;
-defparam \Neuron|adderOut[0]~16 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N1
-dffeas \Neuron|adderOut[0] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[0]~16_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [0]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[0] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[0] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N2
-fiftyfivenm_lcell_comb \Neuron|adderOut[1]~18 (
-// Equation(s):
-// \Neuron|adderOut[1]~18_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & ((\Neuron|adderOut [1] & (\Neuron|adderOut[0]~17  & VCC)) # (!\Neuron|adderOut [1] & (!\Neuron|adderOut[0]~17 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & 
-// ((\Neuron|adderOut [1] & (!\Neuron|adderOut[0]~17 )) # (!\Neuron|adderOut [1] & ((\Neuron|adderOut[0]~17 ) # (GND)))))
-// \Neuron|adderOut[1]~19  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & (!\Neuron|adderOut [1] & !\Neuron|adderOut[0]~17 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & ((!\Neuron|adderOut[0]~17 ) # (!\Neuron|adderOut [1]))))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1 ),
-	.datab(\Neuron|adderOut [1]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[0]~17 ),
-	.combout(\Neuron|adderOut[1]~18_combout ),
-	.cout(\Neuron|adderOut[1]~19 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[1]~18 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[1]~18 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N3
-dffeas \Neuron|adderOut[1] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[1]~18_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [1]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[1] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[1] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N4
-fiftyfivenm_lcell_comb \Neuron|adderOut[2]~20 (
-// Equation(s):
-// \Neuron|adderOut[2]~20_combout  = ((\Neuron|adderOut [2] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2  $ (!\Neuron|adderOut[1]~19 )))) # (GND)
-// \Neuron|adderOut[2]~21  = CARRY((\Neuron|adderOut [2] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2 ) # (!\Neuron|adderOut[1]~19 ))) # (!\Neuron|adderOut [2] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2  & !\Neuron|adderOut[1]~19 )))
-
-	.dataa(\Neuron|adderOut [2]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[1]~19 ),
-	.combout(\Neuron|adderOut[2]~20_combout ),
-	.cout(\Neuron|adderOut[2]~21 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[2]~20 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[2]~20 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N5
-dffeas \Neuron|adderOut[2] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[2]~20_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [2]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[2] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[2] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N6
-fiftyfivenm_lcell_comb \Neuron|adderOut[3]~22 (
-// Equation(s):
-// \Neuron|adderOut[3]~22_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & ((\Neuron|adderOut [3] & (\Neuron|adderOut[2]~21  & VCC)) # (!\Neuron|adderOut [3] & (!\Neuron|adderOut[2]~21 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & 
-// ((\Neuron|adderOut [3] & (!\Neuron|adderOut[2]~21 )) # (!\Neuron|adderOut [3] & ((\Neuron|adderOut[2]~21 ) # (GND)))))
-// \Neuron|adderOut[3]~23  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & (!\Neuron|adderOut [3] & !\Neuron|adderOut[2]~21 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & ((!\Neuron|adderOut[2]~21 ) # (!\Neuron|adderOut [3]))))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3 ),
-	.datab(\Neuron|adderOut [3]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[2]~21 ),
-	.combout(\Neuron|adderOut[3]~22_combout ),
-	.cout(\Neuron|adderOut[3]~23 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[3]~22 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[3]~22 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N7
-dffeas \Neuron|adderOut[3] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[3]~22_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [3]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[3] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[3] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N8
-fiftyfivenm_lcell_comb \Neuron|adderOut[4]~24 (
-// Equation(s):
-// \Neuron|adderOut[4]~24_combout  = ((\Neuron|adderOut [4] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4  $ (!\Neuron|adderOut[3]~23 )))) # (GND)
-// \Neuron|adderOut[4]~25  = CARRY((\Neuron|adderOut [4] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4 ) # (!\Neuron|adderOut[3]~23 ))) # (!\Neuron|adderOut [4] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4  & !\Neuron|adderOut[3]~23 )))
-
-	.dataa(\Neuron|adderOut [4]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[3]~23 ),
-	.combout(\Neuron|adderOut[4]~24_combout ),
-	.cout(\Neuron|adderOut[4]~25 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[4]~24 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[4]~24 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N9
-dffeas \Neuron|adderOut[4] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[4]~24_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [4]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[4] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[4] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N10
-fiftyfivenm_lcell_comb \Neuron|adderOut[5]~26 (
-// Equation(s):
-// \Neuron|adderOut[5]~26_combout  = (\Neuron|adderOut [5] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (\Neuron|adderOut[4]~25  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (!\Neuron|adderOut[4]~25 )))) # (!\Neuron|adderOut [5] & 
-// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (!\Neuron|adderOut[4]~25 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & ((\Neuron|adderOut[4]~25 ) # (GND)))))
-// \Neuron|adderOut[5]~27  = CARRY((\Neuron|adderOut [5] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & !\Neuron|adderOut[4]~25 )) # (!\Neuron|adderOut [5] & ((!\Neuron|adderOut[4]~25 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5 ))))
-
-	.dataa(\Neuron|adderOut [5]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[4]~25 ),
-	.combout(\Neuron|adderOut[5]~26_combout ),
-	.cout(\Neuron|adderOut[5]~27 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[5]~26 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[5]~26 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N11
-dffeas \Neuron|adderOut[5] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[5]~26_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [5]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[5] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[5] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N12
-fiftyfivenm_lcell_comb \Neuron|adderOut[6]~28 (
-// Equation(s):
-// \Neuron|adderOut[6]~28_combout  = ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  $ (\Neuron|adderOut [6] $ (!\Neuron|adderOut[5]~27 )))) # (GND)
-// \Neuron|adderOut[6]~29  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  & ((\Neuron|adderOut [6]) # (!\Neuron|adderOut[5]~27 ))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  & (\Neuron|adderOut [6] & !\Neuron|adderOut[5]~27 )))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6 ),
-	.datab(\Neuron|adderOut [6]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[5]~27 ),
-	.combout(\Neuron|adderOut[6]~28_combout ),
-	.cout(\Neuron|adderOut[6]~29 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[6]~28 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[6]~28 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N13
-dffeas \Neuron|adderOut[6] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[6]~28_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [6]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[6] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[6] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N14
-fiftyfivenm_lcell_comb \Neuron|adderOut[7]~30 (
-// Equation(s):
-// \Neuron|adderOut[7]~30_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & ((\Neuron|adderOut [7] & (\Neuron|adderOut[6]~29  & VCC)) # (!\Neuron|adderOut [7] & (!\Neuron|adderOut[6]~29 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & 
-// ((\Neuron|adderOut [7] & (!\Neuron|adderOut[6]~29 )) # (!\Neuron|adderOut [7] & ((\Neuron|adderOut[6]~29 ) # (GND)))))
-// \Neuron|adderOut[7]~31  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & (!\Neuron|adderOut [7] & !\Neuron|adderOut[6]~29 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & ((!\Neuron|adderOut[6]~29 ) # (!\Neuron|adderOut [7]))))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7 ),
-	.datab(\Neuron|adderOut [7]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[6]~29 ),
-	.combout(\Neuron|adderOut[7]~30_combout ),
-	.cout(\Neuron|adderOut[7]~31 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[7]~30 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[7]~30 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N15
-dffeas \Neuron|adderOut[7] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[7]~30_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [7]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[7] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[7] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N16
-fiftyfivenm_lcell_comb \Neuron|adderOut[8]~32 (
-// Equation(s):
-// \Neuron|adderOut[8]~32_combout  = ((\Neuron|adderOut [8] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8  $ (!\Neuron|adderOut[7]~31 )))) # (GND)
-// \Neuron|adderOut[8]~33  = CARRY((\Neuron|adderOut [8] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8 ) # (!\Neuron|adderOut[7]~31 ))) # (!\Neuron|adderOut [8] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8  & !\Neuron|adderOut[7]~31 )))
-
-	.dataa(\Neuron|adderOut [8]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[7]~31 ),
-	.combout(\Neuron|adderOut[8]~32_combout ),
-	.cout(\Neuron|adderOut[8]~33 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[8]~32 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[8]~32 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N17
-dffeas \Neuron|adderOut[8] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[8]~32_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [8]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[8] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[8] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N0
-fiftyfivenm_lcell_comb \Neuron|sumOut[0]~1 (
-// Equation(s):
-// \Neuron|sumOut[0]~1_cout  = CARRY(\Neuron|adderOut [0])
-
-	.dataa(\Neuron|adderOut [0]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(gnd),
-	.combout(),
-	.cout(\Neuron|sumOut[0]~1_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[0]~1 .lut_mask = 16'h00AA;
-defparam \Neuron|sumOut[0]~1 .sum_lutc_input = "datac";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N2
-fiftyfivenm_lcell_comb \Neuron|sumOut[1]~3 (
-// Equation(s):
-// \Neuron|sumOut[1]~3_cout  = CARRY((!\Neuron|adderOut [1] & !\Neuron|sumOut[0]~1_cout ))
-
-	.dataa(\Neuron|adderOut [1]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[0]~1_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[1]~3_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[1]~3 .lut_mask = 16'h0005;
-defparam \Neuron|sumOut[1]~3 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N4
-fiftyfivenm_lcell_comb \Neuron|sumOut[2]~5 (
-// Equation(s):
-// \Neuron|sumOut[2]~5_cout  = CARRY((\Neuron|adderOut [2] & !\Neuron|sumOut[1]~3_cout ))
-
-	.dataa(gnd),
-	.datab(\Neuron|adderOut [2]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[1]~3_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[2]~5_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[2]~5 .lut_mask = 16'h000C;
-defparam \Neuron|sumOut[2]~5 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N6
-fiftyfivenm_lcell_comb \Neuron|sumOut[3]~7 (
-// Equation(s):
-// \Neuron|sumOut[3]~7_cout  = CARRY((!\Neuron|adderOut [3] & !\Neuron|sumOut[2]~5_cout ))
-
-	.dataa(gnd),
-	.datab(\Neuron|adderOut [3]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[2]~5_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[3]~7_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[3]~7 .lut_mask = 16'h0003;
-defparam \Neuron|sumOut[3]~7 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N8
-fiftyfivenm_lcell_comb \Neuron|sumOut[4]~9 (
-// Equation(s):
-// \Neuron|sumOut[4]~9_cout  = CARRY((\Neuron|adderOut [4] & !\Neuron|sumOut[3]~7_cout ))
-
-	.dataa(\Neuron|adderOut [4]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[3]~7_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[4]~9_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[4]~9 .lut_mask = 16'h000A;
-defparam \Neuron|sumOut[4]~9 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N10
-fiftyfivenm_lcell_comb \Neuron|sumOut[5]~11 (
-// Equation(s):
-// \Neuron|sumOut[5]~11_cout  = CARRY((!\Neuron|sumOut[4]~9_cout ) # (!\Neuron|adderOut [5]))
-
-	.dataa(\Neuron|adderOut [5]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[4]~9_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[5]~11_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[5]~11 .lut_mask = 16'h005F;
-defparam \Neuron|sumOut[5]~11 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N12
-fiftyfivenm_lcell_comb \Neuron|sumOut[6]~13 (
-// Equation(s):
-// \Neuron|sumOut[6]~13_cout  = CARRY((\Neuron|adderOut [6] & !\Neuron|sumOut[5]~11_cout ))
-
-	.dataa(\Neuron|adderOut [6]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[5]~11_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[6]~13_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[6]~13 .lut_mask = 16'h000A;
-defparam \Neuron|sumOut[6]~13 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N14
-fiftyfivenm_lcell_comb \Neuron|sumOut[7]~15 (
-// Equation(s):
-// \Neuron|sumOut[7]~15_cout  = CARRY((!\Neuron|sumOut[6]~13_cout ) # (!\Neuron|adderOut [7]))
-
-	.dataa(\Neuron|adderOut [7]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[6]~13_cout ),
-	.combout(),
-	.cout(\Neuron|sumOut[7]~15_cout ));
-// synopsys translate_off
-defparam \Neuron|sumOut[7]~15 .lut_mask = 16'h005F;
-defparam \Neuron|sumOut[7]~15 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X50_Y51_N16
-fiftyfivenm_lcell_comb \Neuron|sumOut[8]~16 (
-// Equation(s):
-// \Neuron|sumOut[8]~16_combout  = (\Neuron|adderOut [8] & (\Neuron|sumOut[7]~15_cout  $ (GND))) # (!\Neuron|adderOut [8] & (!\Neuron|sumOut[7]~15_cout  & VCC))
-// \Neuron|sumOut[8]~17  = CARRY((\Neuron|adderOut [8] & !\Neuron|sumOut[7]~15_cout ))
-
-	.dataa(\Neuron|adderOut [8]),
-	.datab(gnd),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|sumOut[7]~15_cout ),
-	.combout(\Neuron|sumOut[8]~16_combout ),
-	.cout(\Neuron|sumOut[8]~17 ));
-// synopsys translate_off
-defparam \Neuron|sumOut[8]~16 .lut_mask = 16'hA50A;
-defparam \Neuron|sumOut[8]~16 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N18
-fiftyfivenm_lcell_comb \Neuron|adderOut[9]~35 (
-// Equation(s):
-// \Neuron|adderOut[9]~35_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & ((\Neuron|adderOut [9] & (\Neuron|adderOut[8]~33  & VCC)) # (!\Neuron|adderOut [9] & (!\Neuron|adderOut[8]~33 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & 
-// ((\Neuron|adderOut [9] & (!\Neuron|adderOut[8]~33 )) # (!\Neuron|adderOut [9] & ((\Neuron|adderOut[8]~33 ) # (GND)))))
-// \Neuron|adderOut[9]~36  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & (!\Neuron|adderOut [9] & !\Neuron|adderOut[8]~33 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & ((!\Neuron|adderOut[8]~33 ) # (!\Neuron|adderOut [9]))))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9 ),
-	.datab(\Neuron|adderOut [9]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[8]~33 ),
-	.combout(\Neuron|adderOut[9]~35_combout ),
-	.cout(\Neuron|adderOut[9]~36 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[9]~35 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[9]~35 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N19
-dffeas \Neuron|adderOut[9] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[9]~35_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [9]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[9] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[9] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N20
-fiftyfivenm_lcell_comb \Neuron|adderOut[10]~37 (
-// Equation(s):
-// \Neuron|adderOut[10]~37_combout  = ((\Neuron|adderOut [10] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10  $ (!\Neuron|adderOut[9]~36 )))) # (GND)
-// \Neuron|adderOut[10]~38  = CARRY((\Neuron|adderOut [10] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10 ) # (!\Neuron|adderOut[9]~36 ))) # (!\Neuron|adderOut [10] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10  & !\Neuron|adderOut[9]~36 )))
-
-	.dataa(\Neuron|adderOut [10]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[9]~36 ),
-	.combout(\Neuron|adderOut[10]~37_combout ),
-	.cout(\Neuron|adderOut[10]~38 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[10]~37 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[10]~37 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N21
-dffeas \Neuron|adderOut[10] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[10]~37_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [10]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[10] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[10] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N22
-fiftyfivenm_lcell_comb \Neuron|adderOut[11]~39 (
-// Equation(s):
-// \Neuron|adderOut[11]~39_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((\Neuron|adderOut [11] & (\Neuron|adderOut[10]~38  & VCC)) # (!\Neuron|adderOut [11] & (!\Neuron|adderOut[10]~38 )))) # 
-// (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((\Neuron|adderOut [11] & (!\Neuron|adderOut[10]~38 )) # (!\Neuron|adderOut [11] & ((\Neuron|adderOut[10]~38 ) # (GND)))))
-// \Neuron|adderOut[11]~40  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & (!\Neuron|adderOut [11] & !\Neuron|adderOut[10]~38 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((!\Neuron|adderOut[10]~38 ) # (!\Neuron|adderOut [11]))))
-
-	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11 ),
-	.datab(\Neuron|adderOut [11]),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[10]~38 ),
-	.combout(\Neuron|adderOut[11]~39_combout ),
-	.cout(\Neuron|adderOut[11]~40 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[11]~39 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[11]~39 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N23
-dffeas \Neuron|adderOut[11] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[11]~39_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [11]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[11] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[11] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N24
-fiftyfivenm_lcell_comb \Neuron|adderOut[12]~41 (
-// Equation(s):
-// \Neuron|adderOut[12]~41_combout  = ((\Neuron|adderOut [12] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (!\Neuron|adderOut[11]~40 )))) # (GND)
-// \Neuron|adderOut[12]~42  = CARRY((\Neuron|adderOut [12] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ) # (!\Neuron|adderOut[11]~40 ))) # (!\Neuron|adderOut [12] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|adderOut[11]~40 )))
-
-	.dataa(\Neuron|adderOut [12]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[11]~40 ),
-	.combout(\Neuron|adderOut[12]~41_combout ),
-	.cout(\Neuron|adderOut[12]~42 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[12]~41 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[12]~41 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N25
-dffeas \Neuron|adderOut[12] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[12]~41_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [12]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[12] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[12] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N26
-fiftyfivenm_lcell_comb \Neuron|adderOut[13]~43 (
-// Equation(s):
-// \Neuron|adderOut[13]~43_combout  = (\Neuron|adderOut [13] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (\Neuron|adderOut[12]~42  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (!\Neuron|adderOut[12]~42 )))) # (!\Neuron|adderOut 
-// [13] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (!\Neuron|adderOut[12]~42 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & ((\Neuron|adderOut[12]~42 ) # (GND)))))
-// \Neuron|adderOut[13]~44  = CARRY((\Neuron|adderOut [13] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|adderOut[12]~42 )) # (!\Neuron|adderOut [13] & ((!\Neuron|adderOut[12]~42 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ))))
-
-	.dataa(\Neuron|adderOut [13]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[12]~42 ),
-	.combout(\Neuron|adderOut[13]~43_combout ),
-	.cout(\Neuron|adderOut[13]~44 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[13]~43 .lut_mask = 16'h9617;
-defparam \Neuron|adderOut[13]~43 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N27
-dffeas \Neuron|adderOut[13] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[13]~43_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [13]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[13] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[13] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N28
-fiftyfivenm_lcell_comb \Neuron|adderOut[14]~45 (
-// Equation(s):
-// \Neuron|adderOut[14]~45_combout  = ((\Neuron|adderOut [14] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (!\Neuron|adderOut[13]~44 )))) # (GND)
-// \Neuron|adderOut[14]~46  = CARRY((\Neuron|adderOut [14] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ) # (!\Neuron|adderOut[13]~44 ))) # (!\Neuron|adderOut [14] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|adderOut[13]~44 )))
-
-	.dataa(\Neuron|adderOut [14]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
-	.datac(gnd),
-	.datad(vcc),
-	.cin(\Neuron|adderOut[13]~44 ),
-	.combout(\Neuron|adderOut[14]~45_combout ),
-	.cout(\Neuron|adderOut[14]~46 ));
-// synopsys translate_off
-defparam \Neuron|adderOut[14]~45 .lut_mask = 16'h698E;
-defparam \Neuron|adderOut[14]~45 .sum_lutc_input = "cin";
-// synopsys translate_on
-
-// Location: FF_X49_Y51_N29
-dffeas \Neuron|adderOut[14] (
-	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[14]~45_combout ),
-	.asdata(vcc),
-	.clrn(vcc),
-	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
-	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
-	.devclrn(devclrn),
-	.devpor(devpor),
-	.q(\Neuron|adderOut [14]),
-	.prn(vcc));
-// synopsys translate_off
-defparam \Neuron|adderOut[14] .is_wysiwyg = "true";
-defparam \Neuron|adderOut[14] .power_up = "low";
-// synopsys translate_on
-
-// Location: LCCOMB_X49_Y51_N30
-fiftyfivenm_lcell_comb \Neuron|adderOut[15]~47 (
-// Equation(s):
-// \Neuron|adderOut[15]~47_combout  = \Neuron|adderOut [15] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (\Neuron|adderOut[14]~46 ))
-
-	.dataa(\Neuron|adderOut [15]),
-	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
-	.datac(gnd),
-	.datad(gnd),
-	.cin(\Neuron|adderOut[14]~46 ),
-	.combout(\Neuron|adderOut[15]~47_combout ),
+	.combout(\Neuron|adderOut~12_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|adderOut[15]~47 .lut_mask = 16'h9696;
-defparam \Neuron|adderOut[15]~47 .sum_lutc_input = "cin";
+defparam \Neuron|adderOut~12 .lut_mask = 16'hE800;
+defparam \Neuron|adderOut~12 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X49_Y51_N31
+// Location: FF_X49_Y52_N25
 dffeas \Neuron|adderOut[15] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|adderOut[15]~47_combout ),
+	.d(\Neuron|adderOut~12_combout ),
 	.asdata(vcc),
 	.clrn(vcc),
 	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
+	.sclr(gnd),
 	.sload(gnd),
-	.ena(\Neuron|adderOut[0]~34_combout ),
+	.ena(\Neuron|adderOut[0]~3_combout ),
 	.devclrn(devclrn),
 	.devpor(devpor),
 	.q(\Neuron|adderOut [15]),
@@ -2332,169 +1653,1192 @@ defparam \Neuron|adderOut[15] .is_wysiwyg = "true";
 defparam \Neuron|adderOut[15] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N18
-fiftyfivenm_lcell_comb \Neuron|sumOut[9]~18 (
+// Location: LCCOMB_X47_Y52_N16
+fiftyfivenm_lcell_comb \Neuron|Add1~16 (
 // Equation(s):
-// \Neuron|sumOut[9]~18_combout  = (\Neuron|adderOut [9] & (!\Neuron|sumOut[8]~17 )) # (!\Neuron|adderOut [9] & ((\Neuron|sumOut[8]~17 ) # (GND)))
-// \Neuron|sumOut[9]~19  = CARRY((!\Neuron|sumOut[8]~17 ) # (!\Neuron|adderOut [9]))
+// \Neuron|Add1~16_combout  = ((\Neuron|adderOut [8] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8  $ (!\Neuron|Add1~15 )))) # (GND)
+// \Neuron|Add1~17  = CARRY((\Neuron|adderOut [8] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8 ) # (!\Neuron|Add1~15 ))) # (!\Neuron|adderOut [8] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8  & !\Neuron|Add1~15 )))
+
+	.dataa(\Neuron|adderOut [8]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT8 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~15 ),
+	.combout(\Neuron|Add1~16_combout ),
+	.cout(\Neuron|Add1~17 ));
+// synopsys translate_off
+defparam \Neuron|Add1~16 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~16 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N18
+fiftyfivenm_lcell_comb \Neuron|Add1~18 (
+// Equation(s):
+// \Neuron|Add1~18_combout  = (\Neuron|adderOut [9] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & (\Neuron|Add1~17  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & (!\Neuron|Add1~17 )))) # (!\Neuron|adderOut [9] & 
+// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & (!\Neuron|Add1~17 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & ((\Neuron|Add1~17 ) # (GND)))))
+// \Neuron|Add1~19  = CARRY((\Neuron|adderOut [9] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9  & !\Neuron|Add1~17 )) # (!\Neuron|adderOut [9] & ((!\Neuron|Add1~17 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9 ))))
+
+	.dataa(\Neuron|adderOut [9]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT9 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~17 ),
+	.combout(\Neuron|Add1~18_combout ),
+	.cout(\Neuron|Add1~19 ));
+// synopsys translate_off
+defparam \Neuron|Add1~18 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~18 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N22
+fiftyfivenm_lcell_comb \Neuron|adderOut[0]~1 (
+// Equation(s):
+// \Neuron|adderOut[0]~1_combout  = ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (!\Neuron|adderOutWire[15]~0_combout  & \Neuron|adderOut [15])) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (\Neuron|adderOutWire[15]~0_combout  & 
+// !\Neuron|adderOut [15]))) # (!\KEY[0]~input_o )
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(\Neuron|adderOutWire[15]~0_combout ),
+	.datad(\Neuron|adderOut [15]),
+	.cin(gnd),
+	.combout(\Neuron|adderOut[0]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut[0]~1 .lut_mask = 16'h5D75;
+defparam \Neuron|adderOut[0]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N14
+fiftyfivenm_lcell_comb \Neuron|adderOut~18 (
+// Equation(s):
+// \Neuron|adderOut~18_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~18_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|Add1~18_combout ),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~18_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~18 .lut_mask = 16'hF0FC;
+defparam \Neuron|adderOut~18 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N15
+dffeas \Neuron|adderOut[9] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~18_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [9]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[9] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[9] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N20
+fiftyfivenm_lcell_comb \Neuron|Add1~20 (
+// Equation(s):
+// \Neuron|Add1~20_combout  = ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10  $ (\Neuron|adderOut [10] $ (!\Neuron|Add1~19 )))) # (GND)
+// \Neuron|Add1~21  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10  & ((\Neuron|adderOut [10]) # (!\Neuron|Add1~19 ))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10  & (\Neuron|adderOut [10] & !\Neuron|Add1~19 )))
+
+	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT10 ),
+	.datab(\Neuron|adderOut [10]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~19 ),
+	.combout(\Neuron|Add1~20_combout ),
+	.cout(\Neuron|Add1~21 ));
+// synopsys translate_off
+defparam \Neuron|Add1~20 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~20 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N28
+fiftyfivenm_lcell_comb \Neuron|adderOut~17 (
+// Equation(s):
+// \Neuron|adderOut~17_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~20_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|Add1~20_combout ),
+	.datab(gnd),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~17_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~17 .lut_mask = 16'hF0FA;
+defparam \Neuron|adderOut~17 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N29
+dffeas \Neuron|adderOut[10] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~17_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [10]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[10] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[10] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N22
+fiftyfivenm_lcell_comb \Neuron|Add1~22 (
+// Equation(s):
+// \Neuron|Add1~22_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((\Neuron|adderOut [11] & (\Neuron|Add1~21  & VCC)) # (!\Neuron|adderOut [11] & (!\Neuron|Add1~21 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((\Neuron|adderOut 
+// [11] & (!\Neuron|Add1~21 )) # (!\Neuron|adderOut [11] & ((\Neuron|Add1~21 ) # (GND)))))
+// \Neuron|Add1~23  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & (!\Neuron|adderOut [11] & !\Neuron|Add1~21 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11  & ((!\Neuron|Add1~21 ) # (!\Neuron|adderOut [11]))))
+
+	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT11 ),
+	.datab(\Neuron|adderOut [11]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~21 ),
+	.combout(\Neuron|Add1~22_combout ),
+	.cout(\Neuron|Add1~23 ));
+// synopsys translate_off
+defparam \Neuron|Add1~22 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~22 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X45_Y52_N24
+fiftyfivenm_lcell_comb \Neuron|adderOut~16 (
+// Equation(s):
+// \Neuron|adderOut~16_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~22_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|Add1~22_combout ),
+	.datab(gnd),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~16_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~16 .lut_mask = 16'hF0FA;
+defparam \Neuron|adderOut~16 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X45_Y52_N25
+dffeas \Neuron|adderOut[11] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~16_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [11]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[11] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[11] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N24
+fiftyfivenm_lcell_comb \Neuron|Add1~24 (
+// Equation(s):
+// \Neuron|Add1~24_combout  = ((\Neuron|adderOut [12] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (!\Neuron|Add1~23 )))) # (GND)
+// \Neuron|Add1~25  = CARRY((\Neuron|adderOut [12] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ) # (!\Neuron|Add1~23 ))) # (!\Neuron|adderOut [12] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|Add1~23 )))
+
+	.dataa(\Neuron|adderOut [12]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~23 ),
+	.combout(\Neuron|Add1~24_combout ),
+	.cout(\Neuron|Add1~25 ));
+// synopsys translate_off
+defparam \Neuron|Add1~24 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~24 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N6
+fiftyfivenm_lcell_comb \Neuron|adderOut~15 (
+// Equation(s):
+// \Neuron|adderOut~15_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~24_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|Add1~24_combout ),
+	.datab(gnd),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~15_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~15 .lut_mask = 16'hF0FA;
+defparam \Neuron|adderOut~15 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N7
+dffeas \Neuron|adderOut[12] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~15_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [12]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[12] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[12] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N26
+fiftyfivenm_lcell_comb \Neuron|Add1~26 (
+// Equation(s):
+// \Neuron|Add1~26_combout  = (\Neuron|adderOut [13] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (\Neuron|Add1~25  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (!\Neuron|Add1~25 )))) # (!\Neuron|adderOut [13] & 
+// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (!\Neuron|Add1~25 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & ((\Neuron|Add1~25 ) # (GND)))))
+// \Neuron|Add1~27  = CARRY((\Neuron|adderOut [13] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|Add1~25 )) # (!\Neuron|adderOut [13] & ((!\Neuron|Add1~25 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ))))
+
+	.dataa(\Neuron|adderOut [13]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~25 ),
+	.combout(\Neuron|Add1~26_combout ),
+	.cout(\Neuron|Add1~27 ));
+// synopsys translate_off
+defparam \Neuron|Add1~26 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~26 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N16
+fiftyfivenm_lcell_comb \Neuron|adderOut~14 (
+// Equation(s):
+// \Neuron|adderOut~14_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~26_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(\Neuron|Add1~26_combout ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~14_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~14 .lut_mask = 16'hAAEE;
+defparam \Neuron|adderOut~14 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N17
+dffeas \Neuron|adderOut[13] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~14_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [13]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[13] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[13] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N28
+fiftyfivenm_lcell_comb \Neuron|Add1~28 (
+// Equation(s):
+// \Neuron|Add1~28_combout  = ((\Neuron|adderOut [14] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (!\Neuron|Add1~27 )))) # (GND)
+// \Neuron|Add1~29  = CARRY((\Neuron|adderOut [14] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ) # (!\Neuron|Add1~27 ))) # (!\Neuron|adderOut [14] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & !\Neuron|Add1~27 )))
+
+	.dataa(\Neuron|adderOut [14]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~27 ),
+	.combout(\Neuron|Add1~28_combout ),
+	.cout(\Neuron|Add1~29 ));
+// synopsys translate_off
+defparam \Neuron|Add1~28 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~28 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N10
+fiftyfivenm_lcell_comb \Neuron|adderOut~13 (
+// Equation(s):
+// \Neuron|adderOut~13_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~28_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(\Neuron|Add1~28_combout ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~13_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~13 .lut_mask = 16'hAAEE;
+defparam \Neuron|adderOut~13 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N11
+dffeas \Neuron|adderOut[14] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~13_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [14]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[14] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[14] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N30
+fiftyfivenm_lcell_comb \Neuron|adderOutWire[15]~0 (
+// Equation(s):
+// \Neuron|adderOutWire[15]~0_combout  = \Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  $ (\Neuron|Add1~29  $ (\Neuron|adderOut [15]))
+
+	.dataa(gnd),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut [15]),
+	.cin(\Neuron|Add1~29 ),
+	.combout(\Neuron|adderOutWire[15]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOutWire[15]~0 .lut_mask = 16'hC33C;
+defparam \Neuron|adderOutWire[15]~0 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N12
+fiftyfivenm_lcell_comb \Neuron|adderOut~0 (
+// Equation(s):
+// \Neuron|adderOut~0_combout  = (\KEY[0]~input_o  & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12  & (\Neuron|adderOutWire[15]~0_combout  & !\Neuron|adderOut [15])))
+
+	.dataa(\KEY[0]~input_o ),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT12 ),
+	.datac(\Neuron|adderOutWire[15]~0_combout ),
+	.datad(\Neuron|adderOut [15]),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~0 .lut_mask = 16'h0020;
+defparam \Neuron|adderOut~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N0
+fiftyfivenm_lcell_comb \Neuron|Add1~0 (
+// Equation(s):
+// \Neuron|Add1~0_combout  = (\Neuron|adderOut [0] & (\Neuron|Mult0|auto_generated|mac_out2~dataout  $ (VCC))) # (!\Neuron|adderOut [0] & (\Neuron|Mult0|auto_generated|mac_out2~dataout  & VCC))
+// \Neuron|Add1~1  = CARRY((\Neuron|adderOut [0] & \Neuron|Mult0|auto_generated|mac_out2~dataout ))
+
+	.dataa(\Neuron|adderOut [0]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~dataout ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(\Neuron|Add1~0_combout ),
+	.cout(\Neuron|Add1~1 ));
+// synopsys translate_off
+defparam \Neuron|Add1~0 .lut_mask = 16'h6688;
+defparam \Neuron|Add1~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N24
+fiftyfivenm_lcell_comb \Neuron|adderOut~11 (
+// Equation(s):
+// \Neuron|adderOut~11_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~0_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|Add1~0_combout ),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~11_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~11 .lut_mask = 16'hF0FC;
+defparam \Neuron|adderOut~11 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N25
+dffeas \Neuron|adderOut[0] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~11_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [0]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[0] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[0] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N2
+fiftyfivenm_lcell_comb \Neuron|Add1~2 (
+// Equation(s):
+// \Neuron|Add1~2_combout  = (\Neuron|adderOut [1] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & (\Neuron|Add1~1  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & (!\Neuron|Add1~1 )))) # (!\Neuron|adderOut [1] & 
+// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & (!\Neuron|Add1~1 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & ((\Neuron|Add1~1 ) # (GND)))))
+// \Neuron|Add1~3  = CARRY((\Neuron|adderOut [1] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1  & !\Neuron|Add1~1 )) # (!\Neuron|adderOut [1] & ((!\Neuron|Add1~1 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1 ))))
+
+	.dataa(\Neuron|adderOut [1]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT1 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~1 ),
+	.combout(\Neuron|Add1~2_combout ),
+	.cout(\Neuron|Add1~3 ));
+// synopsys translate_off
+defparam \Neuron|Add1~2 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~2 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N26
+fiftyfivenm_lcell_comb \Neuron|adderOut~10 (
+// Equation(s):
+// \Neuron|adderOut~10_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~2_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|Add1~2_combout ),
+	.datab(gnd),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~10_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~10 .lut_mask = 16'hF0FA;
+defparam \Neuron|adderOut~10 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N27
+dffeas \Neuron|adderOut[1] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~10_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [1]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[1] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[1] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N4
+fiftyfivenm_lcell_comb \Neuron|Add1~4 (
+// Equation(s):
+// \Neuron|Add1~4_combout  = ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2  $ (\Neuron|adderOut [2] $ (!\Neuron|Add1~3 )))) # (GND)
+// \Neuron|Add1~5  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2  & ((\Neuron|adderOut [2]) # (!\Neuron|Add1~3 ))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2  & (\Neuron|adderOut [2] & !\Neuron|Add1~3 )))
+
+	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT2 ),
+	.datab(\Neuron|adderOut [2]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~3 ),
+	.combout(\Neuron|Add1~4_combout ),
+	.cout(\Neuron|Add1~5 ));
+// synopsys translate_off
+defparam \Neuron|Add1~4 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~4 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N8
+fiftyfivenm_lcell_comb \Neuron|adderOut~9 (
+// Equation(s):
+// \Neuron|adderOut~9_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~4_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(gnd),
+	.datac(\Neuron|Add1~4_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~9_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~9 .lut_mask = 16'hAAFA;
+defparam \Neuron|adderOut~9 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N9
+dffeas \Neuron|adderOut[2] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~9_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [2]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[2] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[2] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N6
+fiftyfivenm_lcell_comb \Neuron|Add1~6 (
+// Equation(s):
+// \Neuron|Add1~6_combout  = (\Neuron|adderOut [3] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & (\Neuron|Add1~5  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & (!\Neuron|Add1~5 )))) # (!\Neuron|adderOut [3] & 
+// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & (!\Neuron|Add1~5 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & ((\Neuron|Add1~5 ) # (GND)))))
+// \Neuron|Add1~7  = CARRY((\Neuron|adderOut [3] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3  & !\Neuron|Add1~5 )) # (!\Neuron|adderOut [3] & ((!\Neuron|Add1~5 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3 ))))
+
+	.dataa(\Neuron|adderOut [3]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT3 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~5 ),
+	.combout(\Neuron|Add1~6_combout ),
+	.cout(\Neuron|Add1~7 ));
+// synopsys translate_off
+defparam \Neuron|Add1~6 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~6 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N18
+fiftyfivenm_lcell_comb \Neuron|adderOut~8 (
+// Equation(s):
+// \Neuron|adderOut~8_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~6_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(\Neuron|Add1~6_combout ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~8_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~8 .lut_mask = 16'hAAEE;
+defparam \Neuron|adderOut~8 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N19
+dffeas \Neuron|adderOut[3] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~8_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [3]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[3] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[3] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N8
+fiftyfivenm_lcell_comb \Neuron|Add1~8 (
+// Equation(s):
+// \Neuron|Add1~8_combout  = ((\Neuron|adderOut [4] $ (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4  $ (!\Neuron|Add1~7 )))) # (GND)
+// \Neuron|Add1~9  = CARRY((\Neuron|adderOut [4] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4 ) # (!\Neuron|Add1~7 ))) # (!\Neuron|adderOut [4] & (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4  & !\Neuron|Add1~7 )))
+
+	.dataa(\Neuron|adderOut [4]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT4 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~7 ),
+	.combout(\Neuron|Add1~8_combout ),
+	.cout(\Neuron|Add1~9 ));
+// synopsys translate_off
+defparam \Neuron|Add1~8 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~8 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N0
+fiftyfivenm_lcell_comb \Neuron|adderOut~7 (
+// Equation(s):
+// \Neuron|adderOut~7_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~8_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(\Neuron|Add1~8_combout ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~7 .lut_mask = 16'hAAEE;
+defparam \Neuron|adderOut~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N1
+dffeas \Neuron|adderOut[4] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~7_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [4]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[4] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[4] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N10
+fiftyfivenm_lcell_comb \Neuron|Add1~10 (
+// Equation(s):
+// \Neuron|Add1~10_combout  = (\Neuron|adderOut [5] & ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (\Neuron|Add1~9  & VCC)) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (!\Neuron|Add1~9 )))) # (!\Neuron|adderOut [5] & 
+// ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & (!\Neuron|Add1~9 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & ((\Neuron|Add1~9 ) # (GND)))))
+// \Neuron|Add1~11  = CARRY((\Neuron|adderOut [5] & (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5  & !\Neuron|Add1~9 )) # (!\Neuron|adderOut [5] & ((!\Neuron|Add1~9 ) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5 ))))
+
+	.dataa(\Neuron|adderOut [5]),
+	.datab(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT5 ),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~9 ),
+	.combout(\Neuron|Add1~10_combout ),
+	.cout(\Neuron|Add1~11 ));
+// synopsys translate_off
+defparam \Neuron|Add1~10 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~10 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N2
+fiftyfivenm_lcell_comb \Neuron|adderOut~6 (
+// Equation(s):
+// \Neuron|adderOut~6_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~10_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|Add1~10_combout ),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~6 .lut_mask = 16'hF0FC;
+defparam \Neuron|adderOut~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N3
+dffeas \Neuron|adderOut[5] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~6_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [5]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[5] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[5] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N12
+fiftyfivenm_lcell_comb \Neuron|Add1~12 (
+// Equation(s):
+// \Neuron|Add1~12_combout  = ((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  $ (\Neuron|adderOut [6] $ (!\Neuron|Add1~11 )))) # (GND)
+// \Neuron|Add1~13  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  & ((\Neuron|adderOut [6]) # (!\Neuron|Add1~11 ))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6  & (\Neuron|adderOut [6] & !\Neuron|Add1~11 )))
+
+	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT6 ),
+	.datab(\Neuron|adderOut [6]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~11 ),
+	.combout(\Neuron|Add1~12_combout ),
+	.cout(\Neuron|Add1~13 ));
+// synopsys translate_off
+defparam \Neuron|Add1~12 .lut_mask = 16'h698E;
+defparam \Neuron|Add1~12 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N20
+fiftyfivenm_lcell_comb \Neuron|adderOut~5 (
+// Equation(s):
+// \Neuron|adderOut~5_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~12_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(\Neuron|adderOut~0_combout ),
+	.datab(\Neuron|Add1~12_combout ),
+	.datac(gnd),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~5 .lut_mask = 16'hAAEE;
+defparam \Neuron|adderOut~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N21
+dffeas \Neuron|adderOut[6] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~5_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [6]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[6] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[6] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X47_Y52_N14
+fiftyfivenm_lcell_comb \Neuron|Add1~14 (
+// Equation(s):
+// \Neuron|Add1~14_combout  = (\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & ((\Neuron|adderOut [7] & (\Neuron|Add1~13  & VCC)) # (!\Neuron|adderOut [7] & (!\Neuron|Add1~13 )))) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & ((\Neuron|adderOut [7] 
+// & (!\Neuron|Add1~13 )) # (!\Neuron|adderOut [7] & ((\Neuron|Add1~13 ) # (GND)))))
+// \Neuron|Add1~15  = CARRY((\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & (!\Neuron|adderOut [7] & !\Neuron|Add1~13 )) # (!\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7  & ((!\Neuron|Add1~13 ) # (!\Neuron|adderOut [7]))))
+
+	.dataa(\Neuron|Mult0|auto_generated|mac_out2~DATAOUT7 ),
+	.datab(\Neuron|adderOut [7]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add1~13 ),
+	.combout(\Neuron|Add1~14_combout ),
+	.cout(\Neuron|Add1~15 ));
+// synopsys translate_off
+defparam \Neuron|Add1~14 .lut_mask = 16'h9617;
+defparam \Neuron|Add1~14 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N30
+fiftyfivenm_lcell_comb \Neuron|adderOut~4 (
+// Equation(s):
+// \Neuron|adderOut~4_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~14_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|Add1~14_combout ),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~4 .lut_mask = 16'hF0FC;
+defparam \Neuron|adderOut~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N31
+dffeas \Neuron|adderOut[7] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~4_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [7]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[7] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[7] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X46_Y52_N4
+fiftyfivenm_lcell_comb \Neuron|adderOut~2 (
+// Equation(s):
+// \Neuron|adderOut~2_combout  = (\Neuron|adderOut~0_combout ) # ((\Neuron|Add1~16_combout  & !\Neuron|adderOut[0]~1_combout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|Add1~16_combout ),
+	.datac(\Neuron|adderOut~0_combout ),
+	.datad(\Neuron|adderOut[0]~1_combout ),
+	.cin(gnd),
+	.combout(\Neuron|adderOut~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \Neuron|adderOut~2 .lut_mask = 16'hF0FC;
+defparam \Neuron|adderOut~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X46_Y52_N5
+dffeas \Neuron|adderOut[8] (
+	.clk(\CLOCK_50~inputclkctrl_outclk ),
+	.d(\Neuron|adderOut~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\Neuron|adderOut[0]~3_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\Neuron|adderOut [8]),
+	.prn(vcc));
+// synopsys translate_off
+defparam \Neuron|adderOut[8] .is_wysiwyg = "true";
+defparam \Neuron|adderOut[8] .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N0
+fiftyfivenm_lcell_comb \Neuron|Add3~1 (
+// Equation(s):
+// \Neuron|Add3~1_cout  = CARRY(\Neuron|adderOut [0])
+
+	.dataa(\Neuron|adderOut [0]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(gnd),
+	.combout(),
+	.cout(\Neuron|Add3~1_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~1 .lut_mask = 16'h00AA;
+defparam \Neuron|Add3~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N2
+fiftyfivenm_lcell_comb \Neuron|Add3~3 (
+// Equation(s):
+// \Neuron|Add3~3_cout  = CARRY((!\Neuron|adderOut [1] & !\Neuron|Add3~1_cout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|adderOut [1]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~1_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~3_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~3 .lut_mask = 16'h0003;
+defparam \Neuron|Add3~3 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N4
+fiftyfivenm_lcell_comb \Neuron|Add3~5 (
+// Equation(s):
+// \Neuron|Add3~5_cout  = CARRY((\Neuron|adderOut [2] & !\Neuron|Add3~3_cout ))
+
+	.dataa(\Neuron|adderOut [2]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~3_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~5_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~5 .lut_mask = 16'h000A;
+defparam \Neuron|Add3~5 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N6
+fiftyfivenm_lcell_comb \Neuron|Add3~7 (
+// Equation(s):
+// \Neuron|Add3~7_cout  = CARRY((!\Neuron|adderOut [3] & !\Neuron|Add3~5_cout ))
+
+	.dataa(gnd),
+	.datab(\Neuron|adderOut [3]),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~5_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~7_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~7 .lut_mask = 16'h0003;
+defparam \Neuron|Add3~7 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N8
+fiftyfivenm_lcell_comb \Neuron|Add3~9 (
+// Equation(s):
+// \Neuron|Add3~9_cout  = CARRY((\Neuron|adderOut [4] & !\Neuron|Add3~7_cout ))
+
+	.dataa(\Neuron|adderOut [4]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~7_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~9_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~9 .lut_mask = 16'h000A;
+defparam \Neuron|Add3~9 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N10
+fiftyfivenm_lcell_comb \Neuron|Add3~11 (
+// Equation(s):
+// \Neuron|Add3~11_cout  = CARRY((!\Neuron|Add3~9_cout ) # (!\Neuron|adderOut [5]))
+
+	.dataa(\Neuron|adderOut [5]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~9_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~11_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~11 .lut_mask = 16'h005F;
+defparam \Neuron|Add3~11 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N12
+fiftyfivenm_lcell_comb \Neuron|Add3~13 (
+// Equation(s):
+// \Neuron|Add3~13_cout  = CARRY((\Neuron|adderOut [6] & !\Neuron|Add3~11_cout ))
+
+	.dataa(\Neuron|adderOut [6]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~11_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~13_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~13 .lut_mask = 16'h000A;
+defparam \Neuron|Add3~13 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N14
+fiftyfivenm_lcell_comb \Neuron|Add3~15 (
+// Equation(s):
+// \Neuron|Add3~15_cout  = CARRY((!\Neuron|Add3~13_cout ) # (!\Neuron|adderOut [7]))
+
+	.dataa(\Neuron|adderOut [7]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~13_cout ),
+	.combout(),
+	.cout(\Neuron|Add3~15_cout ));
+// synopsys translate_off
+defparam \Neuron|Add3~15 .lut_mask = 16'h005F;
+defparam \Neuron|Add3~15 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N16
+fiftyfivenm_lcell_comb \Neuron|Add3~16 (
+// Equation(s):
+// \Neuron|Add3~16_combout  = (\Neuron|adderOut [8] & (\Neuron|Add3~15_cout  $ (GND))) # (!\Neuron|adderOut [8] & (!\Neuron|Add3~15_cout  & VCC))
+// \Neuron|Add3~17  = CARRY((\Neuron|adderOut [8] & !\Neuron|Add3~15_cout ))
+
+	.dataa(\Neuron|adderOut [8]),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(vcc),
+	.cin(\Neuron|Add3~15_cout ),
+	.combout(\Neuron|Add3~16_combout ),
+	.cout(\Neuron|Add3~17 ));
+// synopsys translate_off
+defparam \Neuron|Add3~16 .lut_mask = 16'hA50A;
+defparam \Neuron|Add3~16 .sum_lutc_input = "cin";
+// synopsys translate_on
+
+// Location: LCCOMB_X50_Y52_N18
+fiftyfivenm_lcell_comb \Neuron|Add3~18 (
+// Equation(s):
+// \Neuron|Add3~18_combout  = (\Neuron|adderOut [9] & (!\Neuron|Add3~17 )) # (!\Neuron|adderOut [9] & ((\Neuron|Add3~17 ) # (GND)))
+// \Neuron|Add3~19  = CARRY((!\Neuron|Add3~17 ) # (!\Neuron|adderOut [9]))
 
 	.dataa(gnd),
 	.datab(\Neuron|adderOut [9]),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[8]~17 ),
-	.combout(\Neuron|sumOut[9]~18_combout ),
-	.cout(\Neuron|sumOut[9]~19 ));
+	.cin(\Neuron|Add3~17 ),
+	.combout(\Neuron|Add3~18_combout ),
+	.cout(\Neuron|Add3~19 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[9]~18 .lut_mask = 16'h3C3F;
-defparam \Neuron|sumOut[9]~18 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~18 .lut_mask = 16'h3C3F;
+defparam \Neuron|Add3~18 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N20
-fiftyfivenm_lcell_comb \Neuron|sumOut[10]~20 (
+// Location: LCCOMB_X50_Y52_N20
+fiftyfivenm_lcell_comb \Neuron|Add3~20 (
 // Equation(s):
-// \Neuron|sumOut[10]~20_combout  = (\Neuron|adderOut [10] & (\Neuron|sumOut[9]~19  $ (GND))) # (!\Neuron|adderOut [10] & (!\Neuron|sumOut[9]~19  & VCC))
-// \Neuron|sumOut[10]~21  = CARRY((\Neuron|adderOut [10] & !\Neuron|sumOut[9]~19 ))
+// \Neuron|Add3~20_combout  = (\Neuron|adderOut [10] & (\Neuron|Add3~19  $ (GND))) # (!\Neuron|adderOut [10] & (!\Neuron|Add3~19  & VCC))
+// \Neuron|Add3~21  = CARRY((\Neuron|adderOut [10] & !\Neuron|Add3~19 ))
 
-	.dataa(gnd),
-	.datab(\Neuron|adderOut [10]),
+	.dataa(\Neuron|adderOut [10]),
+	.datab(gnd),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[9]~19 ),
-	.combout(\Neuron|sumOut[10]~20_combout ),
-	.cout(\Neuron|sumOut[10]~21 ));
+	.cin(\Neuron|Add3~19 ),
+	.combout(\Neuron|Add3~20_combout ),
+	.cout(\Neuron|Add3~21 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[10]~20 .lut_mask = 16'hC30C;
-defparam \Neuron|sumOut[10]~20 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~20 .lut_mask = 16'hA50A;
+defparam \Neuron|Add3~20 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N22
-fiftyfivenm_lcell_comb \Neuron|sumOut[11]~22 (
+// Location: LCCOMB_X50_Y52_N22
+fiftyfivenm_lcell_comb \Neuron|Add3~22 (
 // Equation(s):
-// \Neuron|sumOut[11]~22_combout  = (\Neuron|adderOut [11] & (!\Neuron|sumOut[10]~21 )) # (!\Neuron|adderOut [11] & ((\Neuron|sumOut[10]~21 ) # (GND)))
-// \Neuron|sumOut[11]~23  = CARRY((!\Neuron|sumOut[10]~21 ) # (!\Neuron|adderOut [11]))
+// \Neuron|Add3~22_combout  = (\Neuron|adderOut [11] & (!\Neuron|Add3~21 )) # (!\Neuron|adderOut [11] & ((\Neuron|Add3~21 ) # (GND)))
+// \Neuron|Add3~23  = CARRY((!\Neuron|Add3~21 ) # (!\Neuron|adderOut [11]))
 
 	.dataa(gnd),
 	.datab(\Neuron|adderOut [11]),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[10]~21 ),
-	.combout(\Neuron|sumOut[11]~22_combout ),
-	.cout(\Neuron|sumOut[11]~23 ));
+	.cin(\Neuron|Add3~21 ),
+	.combout(\Neuron|Add3~22_combout ),
+	.cout(\Neuron|Add3~23 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[11]~22 .lut_mask = 16'h3C3F;
-defparam \Neuron|sumOut[11]~22 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~22 .lut_mask = 16'h3C3F;
+defparam \Neuron|Add3~22 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N24
-fiftyfivenm_lcell_comb \Neuron|sumOut[12]~24 (
+// Location: LCCOMB_X50_Y52_N24
+fiftyfivenm_lcell_comb \Neuron|Add3~24 (
 // Equation(s):
-// \Neuron|sumOut[12]~24_combout  = (\Neuron|adderOut [12] & (\Neuron|sumOut[11]~23  $ (GND))) # (!\Neuron|adderOut [12] & (!\Neuron|sumOut[11]~23  & VCC))
-// \Neuron|sumOut[12]~25  = CARRY((\Neuron|adderOut [12] & !\Neuron|sumOut[11]~23 ))
+// \Neuron|Add3~24_combout  = (\Neuron|adderOut [12] & (\Neuron|Add3~23  $ (GND))) # (!\Neuron|adderOut [12] & (!\Neuron|Add3~23  & VCC))
+// \Neuron|Add3~25  = CARRY((\Neuron|adderOut [12] & !\Neuron|Add3~23 ))
 
-	.dataa(gnd),
-	.datab(\Neuron|adderOut [12]),
+	.dataa(\Neuron|adderOut [12]),
+	.datab(gnd),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[11]~23 ),
-	.combout(\Neuron|sumOut[12]~24_combout ),
-	.cout(\Neuron|sumOut[12]~25 ));
+	.cin(\Neuron|Add3~23 ),
+	.combout(\Neuron|Add3~24_combout ),
+	.cout(\Neuron|Add3~25 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[12]~24 .lut_mask = 16'hC30C;
-defparam \Neuron|sumOut[12]~24 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~24 .lut_mask = 16'hA50A;
+defparam \Neuron|Add3~24 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N26
-fiftyfivenm_lcell_comb \Neuron|sumOut[13]~26 (
+// Location: LCCOMB_X50_Y52_N26
+fiftyfivenm_lcell_comb \Neuron|Add3~26 (
 // Equation(s):
-// \Neuron|sumOut[13]~26_combout  = (\Neuron|adderOut [13] & (!\Neuron|sumOut[12]~25 )) # (!\Neuron|adderOut [13] & ((\Neuron|sumOut[12]~25 ) # (GND)))
-// \Neuron|sumOut[13]~27  = CARRY((!\Neuron|sumOut[12]~25 ) # (!\Neuron|adderOut [13]))
+// \Neuron|Add3~26_combout  = (\Neuron|adderOut [13] & (!\Neuron|Add3~25 )) # (!\Neuron|adderOut [13] & ((\Neuron|Add3~25 ) # (GND)))
+// \Neuron|Add3~27  = CARRY((!\Neuron|Add3~25 ) # (!\Neuron|adderOut [13]))
 
 	.dataa(\Neuron|adderOut [13]),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[12]~25 ),
-	.combout(\Neuron|sumOut[13]~26_combout ),
-	.cout(\Neuron|sumOut[13]~27 ));
+	.cin(\Neuron|Add3~25 ),
+	.combout(\Neuron|Add3~26_combout ),
+	.cout(\Neuron|Add3~27 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[13]~26 .lut_mask = 16'h5A5F;
-defparam \Neuron|sumOut[13]~26 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~26 .lut_mask = 16'h5A5F;
+defparam \Neuron|Add3~26 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N28
-fiftyfivenm_lcell_comb \Neuron|sumOut[14]~28 (
+// Location: LCCOMB_X50_Y52_N28
+fiftyfivenm_lcell_comb \Neuron|Add3~28 (
 // Equation(s):
-// \Neuron|sumOut[14]~28_combout  = (\Neuron|adderOut [14] & (\Neuron|sumOut[13]~27  $ (GND))) # (!\Neuron|adderOut [14] & (!\Neuron|sumOut[13]~27  & VCC))
-// \Neuron|sumOut[14]~29  = CARRY((\Neuron|adderOut [14] & !\Neuron|sumOut[13]~27 ))
+// \Neuron|Add3~28_combout  = (\Neuron|adderOut [14] & (\Neuron|Add3~27  $ (GND))) # (!\Neuron|adderOut [14] & (!\Neuron|Add3~27  & VCC))
+// \Neuron|Add3~29  = CARRY((\Neuron|adderOut [14] & !\Neuron|Add3~27 ))
 
-	.dataa(gnd),
-	.datab(\Neuron|adderOut [14]),
+	.dataa(\Neuron|adderOut [14]),
+	.datab(gnd),
 	.datac(gnd),
 	.datad(vcc),
-	.cin(\Neuron|sumOut[13]~27 ),
-	.combout(\Neuron|sumOut[14]~28_combout ),
-	.cout(\Neuron|sumOut[14]~29 ));
+	.cin(\Neuron|Add3~27 ),
+	.combout(\Neuron|Add3~28_combout ),
+	.cout(\Neuron|Add3~29 ));
 // synopsys translate_off
-defparam \Neuron|sumOut[14]~28 .lut_mask = 16'hC30C;
-defparam \Neuron|sumOut[14]~28 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~28 .lut_mask = 16'hA50A;
+defparam \Neuron|Add3~28 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X50_Y51_N30
-fiftyfivenm_lcell_comb \Neuron|sumOut[15]~30 (
+// Location: LCCOMB_X50_Y52_N30
+fiftyfivenm_lcell_comb \Neuron|Add3~30 (
 // Equation(s):
-// \Neuron|sumOut[15]~30_combout  = \Neuron|sumOut[14]~29  $ (!\Neuron|adderOut [15])
+// \Neuron|Add3~30_combout  = \Neuron|Add3~29  $ (\Neuron|adderOut [15])
 
 	.dataa(gnd),
 	.datab(gnd),
 	.datac(gnd),
 	.datad(\Neuron|adderOut [15]),
-	.cin(\Neuron|sumOut[14]~29 ),
-	.combout(\Neuron|sumOut[15]~30_combout ),
+	.cin(\Neuron|Add3~29 ),
+	.combout(\Neuron|Add3~30_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|sumOut[15]~30 .lut_mask = 16'hF00F;
-defparam \Neuron|sumOut[15]~30 .sum_lutc_input = "cin";
+defparam \Neuron|Add3~30 .lut_mask = 16'h0FF0;
+defparam \Neuron|Add3~30 .sum_lutc_input = "cin";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N4
+// Location: LCCOMB_X51_Y52_N24
 fiftyfivenm_lcell_comb \Neuron|neuronOut~0 (
 // Equation(s):
-// \Neuron|neuronOut~0_combout  = (\KEY[0]~input_o  & (\Neuron|sumOut[8]~16_combout  & \Neuron|sumOut[15]~30_combout ))
+// \Neuron|neuronOut~0_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & ((!\Neuron|adderOut [15]))) # (!\Neuron|Add3~30_combout  & (\Neuron|Add3~16_combout ))))
 
-	.dataa(\KEY[0]~input_o ),
-	.datab(gnd),
-	.datac(\Neuron|sumOut[8]~16_combout ),
-	.datad(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|Add3~16_combout ),
+	.datab(\Neuron|Add3~30_combout ),
+	.datac(\KEY[0]~input_o ),
+	.datad(\Neuron|adderOut [15]),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~0_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~0 .lut_mask = 16'hA000;
+defparam \Neuron|neuronOut~0 .lut_mask = 16'h20E0;
 defparam \Neuron|neuronOut~0 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N30
-fiftyfivenm_lcell_comb \Neuron|state~9 (
+// Location: LCCOMB_X49_Y52_N10
+fiftyfivenm_lcell_comb \Neuron|state~11 (
 // Equation(s):
-// \Neuron|state~9_combout  = (\KEY[0]~input_o  & (\Neuron|state~8_combout  & \Neuron|state.MAC_STATE~q ))
+// \Neuron|state~11_combout  = (\KEY[0]~input_o  & (\Neuron|state.MAC_STATE~q  & \Neuron|state~9_combout ))
 
-	.dataa(gnd),
-	.datab(\KEY[0]~input_o ),
-	.datac(\Neuron|state~8_combout ),
-	.datad(\Neuron|state.MAC_STATE~q ),
+	.dataa(\KEY[0]~input_o ),
+	.datab(\Neuron|state.MAC_STATE~q ),
+	.datac(gnd),
+	.datad(\Neuron|state~9_combout ),
 	.cin(gnd),
-	.combout(\Neuron|state~9_combout ),
+	.combout(\Neuron|state~11_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|state~9 .lut_mask = 16'hC000;
-defparam \Neuron|state~9 .sum_lutc_input = "datac";
+defparam \Neuron|state~11 .lut_mask = 16'h8800;
+defparam \Neuron|state~11 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X47_Y51_N31
+// Location: FF_X49_Y52_N11
 dffeas \Neuron|state.DELAY_STATE (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|state~9_combout ),
+	.d(\Neuron|state~11_combout ),
 	.asdata(vcc),
 	.clrn(vcc),
 	.aload(gnd),
@@ -2510,31 +2854,31 @@ defparam \Neuron|state.DELAY_STATE .is_wysiwyg = "true";
 defparam \Neuron|state.DELAY_STATE .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X47_Y51_N20
-fiftyfivenm_lcell_comb \Neuron|Selector2~0 (
+// Location: LCCOMB_X51_Y52_N12
+fiftyfivenm_lcell_comb \Neuron|state~8 (
 // Equation(s):
-// \Neuron|Selector2~0_combout  = (\Neuron|state.OUTPUT_STATE~q ) # (\Neuron|state.DELAY_STATE~q )
+// \Neuron|state~8_combout  = (\KEY[0]~input_o  & ((\Neuron|state.OUTPUT_STATE~q ) # (\Neuron|state.DELAY_STATE~q )))
 
-	.dataa(gnd),
+	.dataa(\KEY[0]~input_o ),
 	.datab(gnd),
 	.datac(\Neuron|state.OUTPUT_STATE~q ),
 	.datad(\Neuron|state.DELAY_STATE~q ),
 	.cin(gnd),
-	.combout(\Neuron|Selector2~0_combout ),
+	.combout(\Neuron|state~8_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|Selector2~0 .lut_mask = 16'hFFF0;
-defparam \Neuron|Selector2~0 .sum_lutc_input = "datac";
+defparam \Neuron|state~8 .lut_mask = 16'hAAA0;
+defparam \Neuron|state~8 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X47_Y51_N21
+// Location: FF_X51_Y52_N13
 dffeas \Neuron|state.OUTPUT_STATE (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
-	.d(\Neuron|Selector2~0_combout ),
+	.d(\Neuron|state~8_combout ),
 	.asdata(vcc),
 	.clrn(vcc),
 	.aload(gnd),
-	.sclr(!\KEY[0]~input_o ),
+	.sclr(gnd),
 	.sload(gnd),
 	.ena(vcc),
 	.devclrn(devclrn),
@@ -2546,7 +2890,7 @@ defparam \Neuron|state.OUTPUT_STATE .is_wysiwyg = "true";
 defparam \Neuron|state.OUTPUT_STATE .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N28
+// Location: LCCOMB_X51_Y52_N26
 fiftyfivenm_lcell_comb \Neuron|neuronOut[5]~1 (
 // Equation(s):
 // \Neuron|neuronOut[5]~1_combout  = (\Neuron|state.OUTPUT_STATE~q ) # (!\KEY[0]~input_o )
@@ -2563,7 +2907,7 @@ defparam \Neuron|neuronOut[5]~1 .lut_mask = 16'hFF0F;
 defparam \Neuron|neuronOut[5]~1 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N5
+// Location: FF_X51_Y52_N25
 dffeas \Neuron|neuronOut[0] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~0_combout ),
@@ -2582,24 +2926,24 @@ defparam \Neuron|neuronOut[0] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[0] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N30
+// Location: LCCOMB_X51_Y52_N30
 fiftyfivenm_lcell_comb \Neuron|neuronOut~2 (
 // Equation(s):
-// \Neuron|neuronOut~2_combout  = (\Neuron|sumOut[15]~30_combout  & (\KEY[0]~input_o  & \Neuron|sumOut[9]~18_combout ))
+// \Neuron|neuronOut~2_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~18_combout )))))
 
-	.dataa(gnd),
-	.datab(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|adderOut [15]),
+	.datab(\Neuron|Add3~30_combout ),
 	.datac(\KEY[0]~input_o ),
-	.datad(\Neuron|sumOut[9]~18_combout ),
+	.datad(\Neuron|Add3~18_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~2_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~2 .lut_mask = 16'hC000;
+defparam \Neuron|neuronOut~2 .lut_mask = 16'h7040;
 defparam \Neuron|neuronOut~2 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N31
+// Location: FF_X51_Y52_N31
 dffeas \Neuron|neuronOut[1] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~2_combout ),
@@ -2618,24 +2962,24 @@ defparam \Neuron|neuronOut[1] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[1] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N16
+// Location: LCCOMB_X51_Y52_N28
 fiftyfivenm_lcell_comb \Neuron|neuronOut~3 (
 // Equation(s):
-// \Neuron|neuronOut~3_combout  = (\Neuron|sumOut[15]~30_combout  & (\KEY[0]~input_o  & \Neuron|sumOut[10]~20_combout ))
+// \Neuron|neuronOut~3_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~20_combout )))))
 
-	.dataa(gnd),
-	.datab(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|adderOut [15]),
+	.datab(\Neuron|Add3~30_combout ),
 	.datac(\KEY[0]~input_o ),
-	.datad(\Neuron|sumOut[10]~20_combout ),
+	.datad(\Neuron|Add3~20_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~3_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~3 .lut_mask = 16'hC000;
+defparam \Neuron|neuronOut~3 .lut_mask = 16'h7040;
 defparam \Neuron|neuronOut~3 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N17
+// Location: FF_X51_Y52_N29
 dffeas \Neuron|neuronOut[2] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~3_combout ),
@@ -2654,24 +2998,24 @@ defparam \Neuron|neuronOut[2] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[2] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N22
+// Location: LCCOMB_X51_Y52_N22
 fiftyfivenm_lcell_comb \Neuron|neuronOut~4 (
 // Equation(s):
-// \Neuron|neuronOut~4_combout  = (\Neuron|sumOut[15]~30_combout  & (\KEY[0]~input_o  & \Neuron|sumOut[11]~22_combout ))
+// \Neuron|neuronOut~4_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~22_combout )))))
 
-	.dataa(gnd),
-	.datab(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|adderOut [15]),
+	.datab(\Neuron|Add3~30_combout ),
 	.datac(\KEY[0]~input_o ),
-	.datad(\Neuron|sumOut[11]~22_combout ),
+	.datad(\Neuron|Add3~22_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~4_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~4 .lut_mask = 16'hC000;
+defparam \Neuron|neuronOut~4 .lut_mask = 16'h7040;
 defparam \Neuron|neuronOut~4 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N23
+// Location: FF_X51_Y52_N23
 dffeas \Neuron|neuronOut[3] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~4_combout ),
@@ -2690,24 +3034,24 @@ defparam \Neuron|neuronOut[3] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[3] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N0
+// Location: LCCOMB_X51_Y52_N8
 fiftyfivenm_lcell_comb \Neuron|neuronOut~5 (
 // Equation(s):
-// \Neuron|neuronOut~5_combout  = (\Neuron|sumOut[15]~30_combout  & (\KEY[0]~input_o  & \Neuron|sumOut[12]~24_combout ))
+// \Neuron|neuronOut~5_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~24_combout )))))
 
-	.dataa(gnd),
-	.datab(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|adderOut [15]),
+	.datab(\Neuron|Add3~24_combout ),
 	.datac(\KEY[0]~input_o ),
-	.datad(\Neuron|sumOut[12]~24_combout ),
+	.datad(\Neuron|Add3~30_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~5_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~5 .lut_mask = 16'hC000;
+defparam \Neuron|neuronOut~5 .lut_mask = 16'h50C0;
 defparam \Neuron|neuronOut~5 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N1
+// Location: FF_X51_Y52_N9
 dffeas \Neuron|neuronOut[4] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~5_combout ),
@@ -2726,24 +3070,24 @@ defparam \Neuron|neuronOut[4] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[4] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N6
+// Location: LCCOMB_X51_Y52_N10
 fiftyfivenm_lcell_comb \Neuron|neuronOut~6 (
 // Equation(s):
-// \Neuron|neuronOut~6_combout  = (\KEY[0]~input_o  & (\Neuron|sumOut[13]~26_combout  & \Neuron|sumOut[15]~30_combout ))
+// \Neuron|neuronOut~6_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~26_combout )))))
 
 	.dataa(\KEY[0]~input_o ),
-	.datab(gnd),
-	.datac(\Neuron|sumOut[13]~26_combout ),
-	.datad(\Neuron|sumOut[15]~30_combout ),
+	.datab(\Neuron|adderOut [15]),
+	.datac(\Neuron|Add3~26_combout ),
+	.datad(\Neuron|Add3~30_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~6_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~6 .lut_mask = 16'hA000;
+defparam \Neuron|neuronOut~6 .lut_mask = 16'h22A0;
 defparam \Neuron|neuronOut~6 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N7
+// Location: FF_X51_Y52_N11
 dffeas \Neuron|neuronOut[5] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~6_combout ),
@@ -2762,24 +3106,24 @@ defparam \Neuron|neuronOut[5] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[5] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N20
+// Location: LCCOMB_X51_Y52_N20
 fiftyfivenm_lcell_comb \Neuron|neuronOut~7 (
 // Equation(s):
-// \Neuron|neuronOut~7_combout  = (\Neuron|sumOut[15]~30_combout  & (\KEY[0]~input_o  & \Neuron|sumOut[14]~28_combout ))
+// \Neuron|neuronOut~7_combout  = (\KEY[0]~input_o  & ((\Neuron|Add3~30_combout  & (!\Neuron|adderOut [15])) # (!\Neuron|Add3~30_combout  & ((\Neuron|Add3~28_combout )))))
 
-	.dataa(gnd),
-	.datab(\Neuron|sumOut[15]~30_combout ),
+	.dataa(\Neuron|adderOut [15]),
+	.datab(\Neuron|Add3~30_combout ),
 	.datac(\KEY[0]~input_o ),
-	.datad(\Neuron|sumOut[14]~28_combout ),
+	.datad(\Neuron|Add3~28_combout ),
 	.cin(gnd),
 	.combout(\Neuron|neuronOut~7_combout ),
 	.cout());
 // synopsys translate_off
-defparam \Neuron|neuronOut~7 .lut_mask = 16'hC000;
+defparam \Neuron|neuronOut~7 .lut_mask = 16'h7040;
 defparam \Neuron|neuronOut~7 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N21
+// Location: FF_X51_Y52_N21
 dffeas \Neuron|neuronOut[6] (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOut~7_combout ),
@@ -2798,7 +3142,7 @@ defparam \Neuron|neuronOut[6] .is_wysiwyg = "true";
 defparam \Neuron|neuronOut[6] .power_up = "low";
 // synopsys translate_on
 
-// Location: LCCOMB_X51_Y51_N10
+// Location: LCCOMB_X51_Y52_N2
 fiftyfivenm_lcell_comb \Neuron|neuronOutValid~0 (
 // Equation(s):
 // \Neuron|neuronOutValid~0_combout  = (\KEY[0]~input_o  & \Neuron|state.OUTPUT_STATE~q )
@@ -2815,7 +3159,7 @@ defparam \Neuron|neuronOutValid~0 .lut_mask = 16'hF000;
 defparam \Neuron|neuronOutValid~0 .sum_lutc_input = "datac";
 // synopsys translate_on
 
-// Location: FF_X51_Y51_N11
+// Location: FF_X51_Y52_N3
 dffeas \Neuron|neuronOutValid (
 	.clk(\CLOCK_50~inputclkctrl_outclk ),
 	.d(\Neuron|neuronOutValid~0_combout ),
