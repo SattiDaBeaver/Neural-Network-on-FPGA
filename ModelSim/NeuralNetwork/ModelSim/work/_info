@@ -1,0 +1,379 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ECE241/ModelSim/lab4/part3/ModelSim
+vclockDown
+Z1 !s110 1729625227
+!i10b 1
+!s100 mI>8PHgoh5EBZVo<PX<2M0
+IgMKedHE8^O0hi`Pz[9o[h1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1729449413
+Z4 8../part3.v
+Z5 F../part3.v
+L0 54
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1729625227.000000
+Z8 !s107 ../part3.v|
+Z9 !s90 -reportprogress|300|../part3.v|
+!i113 1
+Z10 tCvgOpt 0
+nclock@down
+vdigit_flipper
+R1
+!i10b 1
+!s100 zg8e180PeS^TZ@CmEL<eB0
+I3JA3hOlA>oDOQV91H<zLd3
+R2
+R0
+R3
+R4
+R5
+L0 36
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vhardmax
+Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z12 !s110 1748720013
+!i10b 1
+!s100 =T1<V?I^2?bK029;1O66f0
+Ie54l?2`WRmTfcEdLQfgzC1
+R2
+!s105 hardmax_sv_unit
+S1
+Z13 dC:/Projects/Neural Network on FPGA/ModelSim/NeuralNetwork/ModelSim
+w1748717046
+8../hardmax.sv
+F../hardmax.sv
+L0 1
+R6
+r1
+!s85 0
+31
+Z14 !s108 1748720013.000000
+!s107 ../hardmax.sv|
+!s90 -reportprogress|300|-sv|../hardmax.sv|
+!i113 1
+o-sv
+R10
+vinputCounter
+R11
+!s110 1748319753
+!i10b 1
+!s100 fo2G>K3OeP24idmBFOoFM1
+I8:WcSWE:l16XLZhAHB48m2
+R2
+!s105 inputCounter_sv_unit
+S1
+dC:/Projects/Neural Network on FPGA/ModelSim/preLayerTest/ModelSim
+w1748319750
+8../inputCounter.sv
+F../inputCounter.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1748319753.000000
+!s107 ../inputCounter.sv|
+!s90 -reportprogress|300|-sv|../inputCounter.sv|
+!i113 1
+o-sv
+R10
+ninput@counter
+vinputSerializer
+R11
+R12
+!i10b 1
+!s100 =^n;MCEIT_3dk;h2V5Fn:3
+I9LALV:A]K[AzkQA3l2gL`2
+R2
+!s105 inputSerializer_sv_unit
+S1
+R13
+w1748319948
+8../inputSerializer.sv
+F../inputSerializer.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../inputSerializer.sv|
+!s90 -reportprogress|300|-sv|../inputSerializer.sv|
+!i113 1
+o-sv
+R10
+ninput@serializer
+vlayer
+R11
+!s110 1748381830
+!i10b 1
+!s100 3_U=jF3j^O=3E<9X7cU<73
+IV^?1UI@Q@c=Eg[GJdeA=_2
+R2
+!s105 layer_sv_unit
+S1
+dC:/Projects/Neural Network on FPGA/ModelSim/layer/ModelSim
+w1748377880
+8../layer.sv
+F../layer.sv
+L0 1
+R6
+r1
+!s85 0
+31
+!s108 1748381830.000000
+!s107 ../layer.sv|
+!s90 -reportprogress|300|-sv|../layer.sv|
+!i113 1
+o-sv
+R10
+vlayer0
+R11
+R12
+!i10b 1
+!s100 =AL=7OS1Oh_QNb4EWU<Zd2
+IUL61?kgN7=FL9ZLV^UMS;3
+R2
+!s105 layer0_sv_unit
+S1
+R13
+w1748710344
+8../layer0.sv
+F../layer0.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../layer0.sv|
+!s90 -reportprogress|300|-sv|../layer0.sv|
+!i113 1
+o-sv
+R10
+vlayer1
+R11
+R12
+!i10b 1
+!s100 dlNJMm;4gZda`9_BKd0^n0
+I0HkOWKS[S<EaRlT9<Th370
+R2
+!s105 layer1_sv_unit
+S1
+R13
+w1748712298
+8../layer1.sv
+F../layer1.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../layer1.sv|
+!s90 -reportprogress|300|-sv|../layer1.sv|
+!i113 1
+o-sv
+R10
+vNeuralNetwork
+R11
+R12
+!i10b 1
+!s100 KD2Pi3Xl;3o`H;zAJ59lj1
+IYfdHW3C=QEmlOhLIb=[L=0
+R2
+!s105 NeuralNetwork_sv_unit
+S1
+R13
+w1748716875
+8../NeuralNetwork.sv
+F../NeuralNetwork.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../NeuralNetwork.sv|
+!s90 -reportprogress|300|-sv|../NeuralNetwork.sv|
+!i113 1
+o-sv
+R10
+n@neural@network
+vneuron
+R11
+R12
+!i10b 1
+!s100 HRJ3?oeA0?2a5Vd2iE]G[0
+IDmnn9okVYI4dN`_GNmdMW1
+R2
+!s105 neuron_sv_unit
+S1
+R13
+w1748717990
+8../neuron.sv
+F../neuron.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../neuron.sv|
+!s90 -reportprogress|300|-sv|../neuron.sv|
+!i113 1
+o-sv
+R10
+vpart3
+R1
+!i10b 1
+!s100 jGM47Hz8BNIhndgIGUT4S2
+Ic?QBeLPL5mU2AGSebM?DD0
+R2
+R0
+R3
+R4
+R5
+L0 23
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vreLU
+R11
+R12
+!i10b 1
+!s100 KoUU7Vf_YjiKA<SIhbNhb2
+IbLJkRj``9mhH@N_PZ<bPM0
+R2
+!s105 reLU_sv_unit
+S1
+R13
+w1748718419
+8../reLU.sv
+F../reLU.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../reLU.sv|
+!s90 -reportprogress|300|-sv|../reLU.sv|
+!i113 1
+o-sv
+R10
+nre@l@u
+vseg7
+R1
+!i10b 1
+!s100 5AhNd3d@ol=7clo9QeUEH1
+I1A=C3O9l:bR_B7SCO>QZA1
+R2
+R0
+R3
+R4
+R5
+L0 70
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vtestbench
+R11
+R12
+!i10b 1
+!s100 BecV>=[Q7W20z13Sae=X62
+IV4EJZY]F=Aa8Jm?AKO0<;3
+R2
+!s105 testbench_sv_unit
+S1
+R13
+w1748720011
+8testbench.sv
+Ftestbench.sv
+L0 4
+R6
+r1
+!s85 0
+31
+R14
+!s107 testbench.sv|
+!s90 -reportprogress|300|-sv|testbench.sv|
+!i113 1
+o-sv
+R10
+vtop
+R1
+!i10b 1
+!s100 6nP=[lVBQB3GZ0nU`HW8Y2
+IZkR>7zLCWN7_`m:MidA<U3
+R2
+R0
+R3
+R4
+R5
+L0 4
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vweights
+R11
+R12
+!i10b 1
+!s100 f::R>?el_l@@TCj><a^dg0
+I4J99DmAk3l04hCzWCL9l^3
+R2
+!s105 weights_sv_unit
+S1
+R13
+w1748193238
+8../weights.sv
+F../weights.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R14
+!s107 ../weights.sv|
+!s90 -reportprogress|300|-sv|../weights.sv|
+!i113 1
+o-sv
+R10

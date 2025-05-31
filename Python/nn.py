@@ -91,33 +91,6 @@ print(mod)
 results = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss, Test accuracy:', results)
 
-# Visualize the training 
-plt.figure(figsize=(12, 5))
-
-plt.subplot(1, 2, 1)
-plt.plot(mod.history['accuracy'], label='Training Accuracy', color='blue')
-plt.plot(mod.history['val_accuracy'], label='Validation Accuracy', color='orange')
-plt.title('Training and Validation Accuracy', fontsize=14)
-plt.xlabel('Epochs', fontsize=12)
-plt.ylabel('Accuracy', fontsize=12)
-plt.legend()
-plt.grid(True)
-
-plt.subplot(1, 2, 2)
-plt.plot(mod.history['loss'], label='Training Loss', color='blue')
-plt.plot(mod.history['val_loss'], label='Validation Loss', color='orange')
-plt.title('Training and Validation Loss', fontsize=14)
-plt.xlabel('Epochs', fontsize=12)
-plt.ylabel('Loss', fontsize=12)
-plt.legend()
-plt.grid(True)
-
-plt.suptitle("Model Training Performance", fontsize=16)
-plt.tight_layout()
-plt.show()
-
-
-
 # Get the custom FPGA layer
 def float_to_q17_bin(x):
     """
@@ -148,14 +121,43 @@ for layer_num, model_layer_idx in enumerate([1, 2]):  # Layer0=custom, Layer1=ou
     
     for neuron_idx in range(num_neurons):
         # Save weights for this neuron
-        weight_filename = os.path.join(layer_dir, f"weight_L{layer_num}_N{neuron_idx}")
+        weight_filename = os.path.join(layer_dir, f"weight_L{layer_num}_N{neuron_idx}.mif")
         with open(weight_filename, "w") as wf:
             for input_idx in range(num_inputs):
                 q17_bin = float_to_q17_bin(weights[input_idx][neuron_idx])
                 wf.write(q17_bin + "\n")
 
         # Save bias for this neuron
-        bias_filename = os.path.join(layer_dir, f"bias_L{layer_num}_N{neuron_idx}")
+        bias_filename = os.path.join(layer_dir, f"bias_L{layer_num}_N{neuron_idx}.mif")
         with open(bias_filename, "w") as bf:
             q17_bin = float_to_q17_bin(biases[neuron_idx])
             bf.write(q17_bin + "\n")
+
+
+# Visualize the training 
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(mod.history['accuracy'], label='Training Accuracy', color='blue')
+plt.plot(mod.history['val_accuracy'], label='Validation Accuracy', color='orange')
+plt.title('Training and Validation Accuracy', fontsize=14)
+plt.xlabel('Epochs', fontsize=12)
+plt.ylabel('Accuracy', fontsize=12)
+plt.legend()
+plt.grid(True)
+
+plt.subplot(1, 2, 2)
+plt.plot(mod.history['loss'], label='Training Loss', color='blue')
+plt.plot(mod.history['val_loss'], label='Validation Loss', color='orange')
+plt.title('Training and Validation Loss', fontsize=14)
+plt.xlabel('Epochs', fontsize=12)
+plt.ylabel('Loss', fontsize=12)
+plt.legend()
+plt.grid(True)
+
+plt.suptitle("Model Training Performance", fontsize=16)
+plt.tight_layout()
+plt.show()
+
+
+
