@@ -17,40 +17,47 @@ def fake_quantize(x, scale):
 
 #Function for custom layer
 class FPGADenseReLU(Layer):
-    def __init__(self, units, scale_factor=128, **kwargs):
+    def __init__(self, units, **kwargs):
         super(FPGADenseReLU, self).__init__(**kwargs)
         self.units = units
-        self.scale = scale_factor  # Q1.7 → scale = 2^7 = 128
 
     def build(self, input_shape):
-        # Store weights and biases as float32 for training
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
-            initializer='he_normal',
+            initializer='random_uniform',
+            dtype='int8',
             trainable=True
         )
         self.b = self.add_weight(
             shape=(self.units,),
             initializer='zeros',
+            dtype='int16',
             trainable=True
         )
 
     def call(self, inputs):
-        inputs = tf.cast(inputs, tf.float32)
+        # Ensure inputs are int8
+        inputs = tf.cast(tf.round(inputs), tf.int8)
 
-        # Fake quantize inputs, weights, and biases
-        inputs_q = fake_quantize(inputs, self.scale)
-        weights_q = fake_quantize(self.w, self.scale)
-        biases_q = fake_quantize(self.b, self.scale)
+        # Cast weights and biases
+        weights = tf.cast(self.w, tf.int8)
+        biases = tf.cast(self.b, tf.int32)  # Will be added to int32 MACs
 
-        # Perform pseudo-fixed-point multiply and accumulate
-        x = tf.matmul(inputs_q, weights_q) + biases_q
+        # Multiply and accumulate
+        mac = tf.matmul(tf.cast(inputs, tf.int32), tf.cast(weights, tf.int32))  # shape: [batch, units]
+        mac = mac + biases  # still int32
 
-        # ReLU + saturation
-        x = tf.maximum(x, 0.0)
-        x = tf.clip_by_value(x, 0.0, (self.scale - 1) / self.scale)  # max is 127/128
+        # Clamp output using ReLU-like behavior: pass only bits 15:8
+        mac_shifted = tf.bitwise.right_shift(mac, 8)  # get bits [15:8]
+        mac_clamped = tf.clip_by_value(mac_shifted, -128, 127)
 
-        return x
+        return tf.cast(mac_clamped, tf.int8)
+
+    def get_config(self):
+        config = super().get_config()
+        config.update({"units": self.units})
+        return config
+
 
 # Custom argmax layer to replace softmax (mimics your FPGA's "largest value" function)
 class ArgMaxOutput(Layer):
@@ -160,8 +167,8 @@ def float_to_q17_bin(x):
 output_root = "Weight_Biases"
 
 # Create separate directories for weights and biases
-weights_dir = os.path.join(output_root, "Weights")
-biases_dir = os.path.join(output_root, "Biases")
+weights_dir = os.path.join(output_root, "weights")
+biases_dir = os.path.join(output_root, "bias")
 os.makedirs(weights_dir, exist_ok=True)
 os.makedirs(biases_dir, exist_ok=True)
 

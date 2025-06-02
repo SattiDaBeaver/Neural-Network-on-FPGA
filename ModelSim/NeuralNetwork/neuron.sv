@@ -26,7 +26,7 @@ module neuron #(
     logic    [safetyBits*dataWidth-1:0]          multOut;    // Multiplier output: 2 * dataWidth
     logic    [safetyBits*dataWidth-1:0]          adderOut;
     logic    [safetyBits*dataWidth-1:0]          adderOutWire;
-    logic    [safetyBits*dataWidth-1:0]          biasOut [0:0];
+    logic    [2*dataWidth-1:0]                   biasOut [0:0];
     logic    [safetyBits*dataWidth-1:0]          sumOut;
     logic    [safetyBits*dataWidth-1:0]          sumOutWire;
     logic    [dataWidth-1:0]            reluOut;
@@ -154,7 +154,7 @@ module neuron #(
     end
 
 
-    assign sumOutWire = $signed(adderOut) + $signed(biasOut[0]);
+    assign sumOutWire = $signed(adderOut) + $signed({biasOut[0][dataWidth-1],biasOut[0],{(dataWidth - 1){1'b0}}});
     always_comb begin
         if ((biasOut[0][safetyBits*dataWidth-1] == 1) && (adderOut[safetyBits*dataWidth-1] == 1) && (sumOutWire[safetyBits*dataWidth-1] == 0)) begin
             sumOut = {1'b1,{(safetyBits*dataWidth-1){1'b0}}}; // Saturate to min value
@@ -163,7 +163,7 @@ module neuron #(
             sumOut = {1'b0,{(safetyBits*dataWidth-1){1'b1}}}; // Saturate to max value
         end
         else begin
-            sumOut = $signed(adderOut) + $signed(biasOut[0]);
+            sumOut = $signed(adderOut) + $signed({biasOut[0][dataWidth-1],biasOut[0],{(dataWidth - 1){1'b0}}});
         end
     end
     

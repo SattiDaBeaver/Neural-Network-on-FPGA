@@ -40,7 +40,7 @@ module testbench ( );
         reset <= 1'b1;
 		#10 
 		reset <= 1'b0;
-		neuronIn <= 8'h7f; // Test with a positive input
+		neuronIn <= 8'h70; // Test with a positive input
 		#10
 		neuronValid <= 1'b1;
         #300
@@ -50,7 +50,7 @@ module testbench ( );
         reset <= 1'b1;
 		#10 
         reset <= 1'b0;
-		neuronIn <= 8'h80; // Test with a negative input
+		neuronIn <= 8'h8f; // Test with a negative input
 		#10
 		neuronValid <= 1'b1;
         

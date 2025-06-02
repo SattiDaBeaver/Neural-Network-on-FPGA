@@ -19,15 +19,16 @@ module neuron #(
 
     // Parameters
     parameter addressWidth = $clog2(numWeights);
+    parameter safetyBits = 3;
 
     // Internal Nets
     logic    [dataWidth-1:0]            weightOut;
-    logic    [2*dataWidth-1:0]          multOut;    // Multiplier output: 2 * dataWidth
-    logic    [2*dataWidth-1:0]          adderOut;
-    logic    [2*dataWidth-1:0]          adderOutWire;
-    logic    [2*dataWidth-1:0]          biasOut [0:0];
-    logic    [2*dataWidth-1:0]          sumOut;
-    logic    [2*dataWidth-1:0]          sumOutWire;
+    logic    [safetyBits*dataWidth-1:0]          multOut;    // Multiplier output: 2 * dataWidth
+    logic    [safetyBits*dataWidth-1:0]          adderOut;
+    logic    [safetyBits*dataWidth-1:0]          adderOutWire;
+    logic    [safetyBits*dataWidth-1:0]          biasOut [0:0];
+    logic    [safetyBits*dataWidth-1:0]          sumOut;
+    logic    [safetyBits*dataWidth-1:0]          sumOutWire;
     logic    [dataWidth-1:0]            reluOut;
 
     logic    [addressWidth-1:0]         weightAddress;
@@ -123,11 +124,11 @@ module neuron #(
             adderOut <= 0;
         end
         else if (MACenable) begin
-            if ((multOut[2*dataWidth-1] == 1) && (adderOut[2*dataWidth-1] == 1) && (adderOutWire[2*dataWidth-1] == 0)) begin
-                adderOut <= {1'b1,{(2*dataWidth-1){1'b0}}}; // Saturate to min value
+            if ((multOut[safetyBits*dataWidth-1] == 1) && (adderOut[safetyBits*dataWidth-1] == 1) && (adderOutWire[safetyBits*dataWidth-1] == 0)) begin
+                adderOut <= {1'b1,{(safetyBits*dataWidth-1){1'b0}}}; // Saturate to min value
             end
-            else if ((multOut[2*dataWidth-1] == 0) && (adderOut[2*dataWidth-1] == 0) && (adderOutWire[2*dataWidth-1] == 1)) begin
-                adderOut <= {1'b0,{(2*dataWidth-1){1'b1}}}; // Saturate to max value
+            else if ((multOut[safetyBits*dataWidth-1] == 0) && (adderOut[safetyBits*dataWidth-1] == 0) && (adderOutWire[safetyBits*dataWidth-1] == 1)) begin
+                adderOut <= {1'b0,{(safetyBits*dataWidth-1){1'b1}}}; // Saturate to max value
             end
             else begin
                 adderOut <= $signed(multOut) + $signed(adderOut);
@@ -155,11 +156,11 @@ module neuron #(
 
     assign sumOutWire = $signed(adderOut) + $signed(biasOut[0]);
     always_comb begin
-        if ((biasOut[0][2*dataWidth-1] == 1) && (adderOut[2*dataWidth-1] == 1) && (sumOutWire[2*dataWidth-1] == 0)) begin
-            sumOut = {1'b1,{(2*dataWidth-1){1'b0}}}; // Saturate to min value
+        if ((biasOut[0][safetyBits*dataWidth-1] == 1) && (adderOut[safetyBits*dataWidth-1] == 1) && (sumOutWire[safetyBits*dataWidth-1] == 0)) begin
+            sumOut = {1'b1,{(safetyBits*dataWidth-1){1'b0}}}; // Saturate to min value
         end
-        else if ((biasOut[0][2*dataWidth-1] == 0) && (adderOut[2*dataWidth-1] == 0) && (sumOutWire[2*dataWidth-1] == 1)) begin
-            sumOut = {1'b0,{(2*dataWidth-1){1'b1}}}; // Saturate to max value
+        else if ((biasOut[0][safetyBits*dataWidth-1] == 0) && (adderOut[safetyBits*dataWidth-1] == 0) && (sumOutWire[safetyBits*dataWidth-1] == 1)) begin
+            sumOut = {1'b0,{(safetyBits*dataWidth-1){1'b1}}}; // Saturate to max value
         end
         else begin
             sumOut = $signed(adderOut) + $signed(biasOut[0]);
@@ -168,7 +169,7 @@ module neuron #(
     
     // Acitivation Function
     reLU #(
-        .sumWidth(2*dataWidth),
+        .sumWidth(safetyBits*dataWidth),
         .dataWidth(dataWidth)
     ) ReLU (
         .dataIn(sumOut),
