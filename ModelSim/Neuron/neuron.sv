@@ -182,7 +182,7 @@ module neuron #(
     
     // Acitivation Function
     reLU #(
-        .sumWidth(sumWidth),
+        .sumWidth(2*dataWidth),
         .sumIntWidth(sumIntWidth),
         .sumFracWidth(sumFracWidth),
         .dataWidth(dataWidth),

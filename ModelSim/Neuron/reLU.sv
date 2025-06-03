@@ -1,7 +1,7 @@
 module reLU #(
     parameter   sumWidth = 32, sumIntWidth = 15, sumFracWidth = 17,
                 dataWidth = 16, dataIntWidth = 6, dataFracWidth = 10,
-                weightWidth = 8, weightIntWidth = 1, weightFracWidth = 7
+                weightWidth = 16, weightIntWidth = 6, weightFracWidth = 10
 )(
     input   logic   [sumWidth-1:0]     dataIn,
     output  logic   [dataWidth-1:0]     dataOut

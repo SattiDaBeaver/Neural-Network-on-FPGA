@@ -17,7 +17,7 @@ module testbench ( );
 	logic 				neuronOutValid;
 
     // Weight Memory
-    logic [7:0]       weightMem [0:255];
+    logic [15:0]       weightMem [0:255];
 
     initial begin
         $readmemb("weight_L0_N0.mif", weightMem);
@@ -63,9 +63,9 @@ module testbench ( );
         .dataWidth(16),
         .dataIntWidth(6),
         .dataFracWidth(10),
-        .weightWidth(8),
-        .weightIntWidth(1),
-        .weightFracWidth(7),
+        .weightWidth(16),
+        .weightIntWidth(6),
+        .weightFracWidth(10),
         .biasFile("bias_L0_N0.mif"),
         .weightFile("weight_L0_N0.mif")
     ) U1 (

@@ -425,7 +425,7 @@ class NeuralNetworkAnalyzer:
 def main():
     # Configuration - modify these parameters
     LAYER_SIZES = [16, 10]  # Hidden layers + output layer
-    EPOCHS = 5
+    EPOCHS = 15
     
     print("Neural Network Resolution Analyzer for FPGA Implementation")
     print("="*60)
