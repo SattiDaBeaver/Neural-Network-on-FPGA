@@ -13,65 +13,57 @@ from tensorflow.keras.layers import Layer
 
 # Function to perform fake quantization
 def fake_quantize(x, scale):
-        return x + tf.stop_gradient(tf.round(x * scale) / scale - x)
+    x = tf.clip_by_value(x, -1.0, (scale - 1) / scale)
+    x_int = tf.round(x * scale)
+    return x_int / scale  # Still float32, but quantized
 
-#Function for custom layer
+# Function for custom layer
 class FPGADenseReLU(Layer):
     def __init__(self, units, **kwargs):
         super(FPGADenseReLU, self).__init__(**kwargs)
         self.units = units
 
     def build(self, input_shape):
+        input_dim = input_shape[-1]
+
+        # 8-bit signed integers for weights and biases
         self.w = self.add_weight(
-            shape=(input_shape[-1], self.units),
+            shape=(input_dim, self.units),
             initializer='random_uniform',
-            dtype='int8',
-            trainable=True
+            trainable=True,
+            dtype=tf.float32,
+            name="float_weights"
         )
         self.b = self.add_weight(
             shape=(self.units,),
             initializer='zeros',
-            dtype='int16',
-            trainable=True
+            trainable=True,
+            dtype=tf.float32,
+            name="float_biases"
         )
 
     def call(self, inputs):
-        # Ensure inputs are int8
-        inputs = tf.cast(tf.round(inputs), tf.int8)
+        inputs_q = fake_quantize(inputs, self.scale)
+        weights_q = fake_quantize(self.w, self.scale)
+        biases_q = fake_quantize(self.b, self.scale)
 
-        # Cast weights and biases
-        weights = tf.cast(self.w, tf.int8)
-        biases = tf.cast(self.b, tf.int32)  # Will be added to int32 MACs
+        x = tf.matmul(inputs_q, weights_q) + biases_q
+        x = tf.maximum(x, 0.0)
+        x = tf.clip_by_value(x, 0.0, (self.scale - 1) / self.scale)
 
-        # Multiply and accumulate
-        mac = tf.matmul(tf.cast(inputs, tf.int32), tf.cast(weights, tf.int32))  # shape: [batch, units]
-        mac = mac + biases  # still int32
-
-        # Clamp output using ReLU-like behavior: pass only bits 15:8
-        mac_shifted = tf.bitwise.right_shift(mac, 8)  # get bits [15:8]
-        mac_clamped = tf.clip_by_value(mac_shifted, -128, 127)
-
-        return tf.cast(mac_clamped, tf.int8)
-
-    def get_config(self):
-        config = super().get_config()
-        config.update({"units": self.units})
-        return config
+        return x
 
 
-# Custom argmax layer to replace softmax (mimics your FPGA's "largest value" function)
+# Custom argmax layer
 class ArgMaxOutput(Layer):
     def __init__(self, **kwargs):
         super(ArgMaxOutput, self).__init__(**kwargs)
     
     def call(self, inputs, training=None):
-        # During training, use softmax for gradient flow
         if training:
-            # Scale up the logits to make softmax more decisive
-            scaled_inputs = inputs * 10.0  # Increase temperature
+            scaled_inputs = inputs * 10.0
             return tf.nn.softmax(scaled_inputs)
         else:
-            # During inference, return one-hot of argmax (like your FPGA)
             argmax_indices = tf.argmax(inputs, axis=-1)
             return tf.one_hot(argmax_indices, depth=tf.shape(inputs)[-1], dtype=inputs.dtype)
     
@@ -79,44 +71,39 @@ class ArgMaxOutput(Layer):
         return input_shape
     
     def get_config(self):
-        config = super().get_config()
-        return config
+        return super().get_config()
 
 # Constants
-inputMax = 127  # Changed to match Q1.7 range better
+inputMax = 127
 
-# Load the MNIST dataset
+# Load and normalize MNIST
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-# Normalize the images to proper Q1.7 range [0, 127/128]
 x_train = x_train.astype('float32') / 255.0
-x_train = x_train * (127.0/128.0)  # Proper Q1.7 positive range
+x_train = x_train * (127.0/128.0)
 x_test = x_test.astype('float32') / 255.0
 x_test = x_test * (127.0/128.0)
 
-#Print Information about the dataset
 print("Feature matrix (x_train):", x_train.shape)
 print("Target matrix (y_train):", y_train.shape)
 print("Feature matrix (x_test):", x_test.shape)
 print("Target matrix (y_test):", y_test.shape)
 print("Input range:", np.min(x_train), "to", np.max(x_train))
 
-# Neural Network Model - Both layers are now quantized like your FPGA
+# Define model
 model = Sequential([
-    Flatten(input_shape = (28, 28)),  # Flatten the 28x28 images to a vector
-    FPGADenseReLU(16),   # Hidden layer with 16 neurons and ReLU activation
-    FPGADenseReLU(10),   # Output layer with 10 neurons and ReLU activation (like your FPGA)
-    ArgMaxOutput()       # Custom layer that mimics your "largest value" function
+    Flatten(input_shape = (28, 28)),
+    FPGADenseReLU(16),
+    FPGADenseReLU(10),
+    ArgMaxOutput()
 ])
 
-# Custom accuracy metric that works with our argmax output
+# Custom accuracy
 def fpga_accuracy(y_true, y_pred):
-    # Convert predictions to class indices
     pred_classes = tf.argmax(y_pred, axis=-1)
     true_classes = tf.cast(y_true, tf.int64)
     return tf.reduce_mean(tf.cast(tf.equal(pred_classes, true_classes), tf.float32))
 
-# Compile the model
 model.compile(
     optimizer=tf.keras.optimizers.Adam(learning_rate=0.01),
     loss='sparse_categorical_crossentropy', 
@@ -125,23 +112,23 @@ model.compile(
 
 model.summary()
 
-# Train the model
+# Train
 print("Training FPGA-accurate model...")
 mod = model.fit(
     x_train, y_train, 
-    epochs=25,  # More epochs since quantized training is harder
-    batch_size=64,  # Smaller batch size
+    epochs=25,
+    batch_size=64,
     validation_split=0.2,
     verbose=1
 )
 
 print(mod)
 
-# Evaluate the model
+# Evaluate
 results = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss, Test accuracy:', results)
 
-# Test individual predictions to see argmax behavior
+# Test individual predictions
 print("\nTesting argmax behavior on first 10 test samples:")
 test_samples = x_test[:10]
 predictions = model.predict(test_samples, verbose=0)
@@ -151,29 +138,20 @@ actual_classes = y_test[:10]
 for i in range(10):
     print(f"Sample {i}: Predicted={predicted_classes[i]}, Actual={actual_classes[i]}, Match={predicted_classes[i]==actual_classes[i]}")
 
-# Get the custom FPGA layer
+# Helper: Float to Q1.7
 def float_to_q17_bin(x):
-    """
-    Converts a float to 8-bit signed binary in Q1.7 format.
-    Clamps to [-1.0, 0.9921875] since 127/128 ≈ 0.9922.
-    """
-    # Clamp
     x = max(-1.0, min(0.9921875, x))
-    # Scale
-    val = int(round(x * 128))  # Q1.7 scale factor
-    # Convert to 8-bit two's complement
+    val = int(round(x * 128))
     return format(val & 0xFF, '08b')
 
+# Export weights/biases
 output_root = "Weight_Biases"
-
-# Create separate directories for weights and biases
 weights_dir = os.path.join(output_root, "weights")
 biases_dir = os.path.join(output_root, "bias")
 os.makedirs(weights_dir, exist_ok=True)
 os.makedirs(biases_dir, exist_ok=True)
 
-# Export weights and biases from both FPGA layers (indices 1 and 2)
-for layer_num, model_layer_idx in enumerate([1, 2]):  # Both are now FPGADenseReLU layers
+for layer_num, model_layer_idx in enumerate([1, 2]):
     fpga_layer = model.layers[model_layer_idx]
     weights, biases = fpga_layer.get_weights()
     
@@ -183,14 +161,12 @@ for layer_num, model_layer_idx in enumerate([1, 2]):  # Both are now FPGADenseRe
     print(f"Exporting Layer {layer_num}: {num_inputs} inputs -> {num_neurons} neurons")
     
     for neuron_idx in range(num_neurons):
-        # Save weights for this neuron with layer-specific naming
         weight_filename = os.path.join(weights_dir, f"weight_L{layer_num}_N{neuron_idx}.mif")
         with open(weight_filename, "w") as wf:
             for input_idx in range(num_inputs):
                 q17_bin = float_to_q17_bin(weights[input_idx][neuron_idx])
                 wf.write(q17_bin + "\n")
 
-        # Save bias for this neuron with layer-specific naming
         bias_filename = os.path.join(biases_dir, f"bias_L{layer_num}_N{neuron_idx}.mif")
         with open(bias_filename, "w") as bf:
             q17_bin = float_to_q17_bin(biases[neuron_idx])
@@ -200,7 +176,7 @@ print("Weight and bias export completed!")
 print(f"Weights saved to: {weights_dir}")
 print(f"Biases saved to: {biases_dir}")
 
-# Visualize the training 
+# Plot training results
 plt.figure(figsize=(12, 5))
 
 plt.subplot(1, 2, 1)

@@ -22,21 +22,21 @@ module neuron #(
     parameter safetyBits = 3;
 
     // Internal Nets
-    logic    [dataWidth-1:0]            weightOut;
-    logic    [safetyBits*dataWidth-1:0]          multOut;    // Multiplier output: 2 * dataWidth
-    logic    [safetyBits*dataWidth-1:0]          adderOut;
-    logic    [safetyBits*dataWidth-1:0]          adderOutWire;
-    logic    [2*dataWidth-1:0]                   biasOut [0:0];
-    logic    [safetyBits*dataWidth-1:0]          sumOut;
-    logic    [safetyBits*dataWidth-1:0]          sumOutWire;
-    logic    [dataWidth-1:0]            reluOut;
+    logic    [dataWidth-1:0]                    weightOut;
+    logic    [safetyBits*dataWidth-1:0]         multOut;    // Multiplier output: 2 * dataWidth
+    logic    [safetyBits*dataWidth-1:0]         adderOut;
+    logic    [safetyBits*dataWidth-1:0]         adderOutWire;
+    logic    [dataWidth-1:0]                    biasOut [0:0];
+    logic    [safetyBits*dataWidth-1:0]         sumOut;
+    logic    [safetyBits*dataWidth-1:0]         sumOutWire;
+    logic    [dataWidth-1:0]                    reluOut;
 
-    logic    [addressWidth-1:0]         weightAddress;
-    logic                               readEn;
+    logic    [addressWidth-1:0]                 weightAddress;
+    logic                                       readEn;
 
     // Control Signals
-    logic                               MACenable;
-    logic                               activationEnable;
+    logic                                       MACenable;
+    logic                                       activationEnable;
 
     typedef enum logic [1:0] {
         IDLE,
@@ -48,7 +48,7 @@ module neuron #(
     state_t state;
     state_t nextState;
 
-    // Control Logic (FSM Maybe)
+    // Control Logic FSM
     always_comb begin
         nextState         = state;
         MACenable         = 0;
@@ -154,25 +154,25 @@ module neuron #(
     end
 
 
-    assign sumOutWire = $signed(adderOut) + $signed({biasOut[0][dataWidth-1],biasOut[0],{(dataWidth - 1){1'b0}}});
+    assign sumOutWire = $signed(adderOut) + ($signed(biasOut[0]) <<< 7);
     always_comb begin
-        if ((biasOut[0][safetyBits*dataWidth-1] == 1) && (adderOut[safetyBits*dataWidth-1] == 1) && (sumOutWire[safetyBits*dataWidth-1] == 0)) begin
+        if ((biasOut[0][dataWidth-1] == 1) && (adderOut[safetyBits*dataWidth-1] == 1) && (sumOutWire[safetyBits*dataWidth-1] == 0)) begin
             sumOut = {1'b1,{(safetyBits*dataWidth-1){1'b0}}}; // Saturate to min value
         end
-        else if ((biasOut[0][safetyBits*dataWidth-1] == 0) && (adderOut[safetyBits*dataWidth-1] == 0) && (sumOutWire[safetyBits*dataWidth-1] == 1)) begin
+        else if ((biasOut[0][dataWidth-1] == 0) && (adderOut[safetyBits*dataWidth-1] == 0) && (sumOutWire[safetyBits*dataWidth-1] == 1)) begin
             sumOut = {1'b0,{(safetyBits*dataWidth-1){1'b1}}}; // Saturate to max value
         end
         else begin
-            sumOut = $signed(adderOut) + $signed({biasOut[0][dataWidth-1],biasOut[0],{(dataWidth - 1){1'b0}}});
+            sumOut = sumOutWire;
         end
     end
     
     // Acitivation Function
     reLU #(
-        .sumWidth(safetyBits*dataWidth),
+        .sumWidth(2*dataWidth),
         .dataWidth(dataWidth)
     ) ReLU (
-        .dataIn(sumOut),
+        .dataIn(sumOut >>> 7),
         .dataOut(reluOut)
     );
 

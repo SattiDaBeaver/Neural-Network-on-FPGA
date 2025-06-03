@@ -1,5 +1,5 @@
 module reLU #(
-    parameter sumWidth = 24, dataWidth = 8
+    parameter sumWidth = 16, dataWidth = 8
 )(
     input   logic   [sumWidth-1:0]     dataIn,
     output  logic   [dataWidth-1:0]     dataOut
@@ -7,11 +7,11 @@ module reLU #(
 
     always_comb begin
         if (dataIn[sumWidth-1] == 0) begin
-            if (dataIn[sumWidth-1:2*dataWidth] != 0) begin
+            if (dataOut >= 8'h7F) begin
                 dataOut = 8'h7F;
             end
             else begin
-                dataOut = dataIn[2*dataWidth-1-:dataWidth];
+                dataOut = dataIn[dataWidth-1:0];
             end
         end 
         else begin
