@@ -2,27 +2,33 @@ MNIST Neural Network Test Summary
 ========================================
 
 Network Architecture:
-- Input: 784 pixels (28x28 flattened)
-- Layer L0: 16 neurons (ReLU)
-- Layer L1: 10 neurons (Softmax)
+- Input: 784 pixels (28x28 flattened) - Q1.7 format
+- Layer L0: 16 neurons (ReLU) - Weights/Biases in Q6.10 format
+- Layer L1: 10 neurons (Softmax) - Weights/Biases in Q6.10 format
+- Outputs: Q1.7 format
+
+Fixed-Point Formats:
+- Q1.7: 8-bit, range -1.0 to +0.9921875 (inputs/outputs)
+- Q6.10: 16-bit, range -32.0 to +31.999023438 (weights/biases)
 
 Test Results:
 Accuracy on 10 samples: 90.0%
 
 Sample-by-Sample Results:
-Sample 0: True=7, Predicted=7, Confidence=0.9975
-Sample 1: True=2, Predicted=2, Confidence=0.9957
-Sample 2: True=1, Predicted=1, Confidence=0.9874
-Sample 3: True=0, Predicted=0, Confidence=0.9999
-Sample 4: True=4, Predicted=4, Confidence=0.9897
-Sample 5: True=1, Predicted=1, Confidence=0.9969
-Sample 6: True=4, Predicted=4, Confidence=0.9941
-Sample 7: True=9, Predicted=9, Confidence=0.9733
-Sample 8: True=5, Predicted=6, Confidence=0.9894
-Sample 9: True=9, Predicted=9, Confidence=0.9527
+Sample 0: True=7, Predicted=7, Confidence=0.9927
+Sample 1: True=2, Predicted=2, Confidence=0.9996
+Sample 2: True=1, Predicted=1, Confidence=0.9875
+Sample 3: True=0, Predicted=0, Confidence=0.9998
+Sample 4: True=4, Predicted=4, Confidence=0.9639
+Sample 5: True=1, Predicted=1, Confidence=0.9963
+Sample 6: True=4, Predicted=4, Confidence=0.9981
+Sample 7: True=9, Predicted=9, Confidence=0.9911
+Sample 8: True=5, Predicted=6, Confidence=0.9995
+Sample 9: True=9, Predicted=9, Confidence=0.9710
 
 File Structure:
-- inputs/: Test input images in hex, binary, and decimal
-- layer_outputs/: L0 hidden layer outputs
-- final_outputs/: L1 output layer (softmax) outputs
+- Weights_Biases/: Neural network parameters in Q6.10 format (16-bit)
+- inputs/: Test input images in Q1.7 format (8-bit)
+- layer_outputs/: L0 hidden layer outputs in Q1.7 format
+- final_outputs/: L1 output layer (softmax) outputs in Q1.7 format
 - Individual neuron files contain decimal, binary, and hex values

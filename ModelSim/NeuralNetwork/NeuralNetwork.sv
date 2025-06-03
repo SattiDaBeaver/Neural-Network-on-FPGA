@@ -1,5 +1,5 @@
 module NeuralNetwork #(
-    parameter dataWidth = 8, numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10
+    parameter dataWidth = 16, numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10
 ) (
     input   logic                               clk,
     input   logic                               reset, 
@@ -22,7 +22,7 @@ logic                           layer1OutValid;
 
 layer0 #(
     .layerNumber(0), 
-    .dataWidth(8), 
+    .dataWidth(16), 
     .numInputs(784), 
     .numNeurons(16)
 ) layer0_inst (
@@ -38,7 +38,7 @@ layer0 #(
 
 layer1 #(
     .layerNumber(1), 
-    .dataWidth(8), 
+    .dataWidth(16), 
     .numInputs(16), 
     .numNeurons(10)
 ) layer1_inst (
@@ -53,7 +53,7 @@ layer1 #(
 );
 
 hardmax #(
-    .dataWidth(8), 
+    .dataWidth(dataWidth), 
     .numOutputs(10)
 ) hardmax_inst (
     // Inputs

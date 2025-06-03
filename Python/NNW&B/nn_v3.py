@@ -28,32 +28,32 @@ model.summary()
 print("Training model...")
 model.fit(x_train, y_train, epochs=15, batch_size=80, validation_data=(x_test, y_test))
 
-# ========== Helper function to convert float to Q1.7 and save as binary ==========
-def save_q17_binary_file(data, filename):
+# ========== Helper function to convert float to Q6.10 and save as binary ==========
+def save_q610_binary_file(data, filename):
     """
-    Convert float data to Q1.7 format and save as binary string representation.
-    Q1.7: 1 sign bit + 7 fractional bits
-    Range: -1.0 to +0.9921875 (127/128)
+    Convert float data to Q6.10 format and save as binary string representation.
+    Q6.10: 6 bits for integer part (including sign) + 10 bits for fractional part = 16 bits total
+    Range: -32.0 to +31.999023438 (32767/1024)
     """
-    # Clip data to Q1.7 range
-    clipped_data = np.clip(data, -1.0, 127/128)
+    # Clip data to Q6.10 range
+    clipped_data = np.clip(data, -32.0, 32767/1024)
     
-    # Convert to Q1.7 fixed-point representation
-    # For Q1.7: multiply by 2^7 = 128 and round to nearest integer
-    q17_int = np.round(clipped_data * 128).astype(np.int16)  # Use int16 to avoid overflow
+    # Convert to Q6.10 fixed-point representation
+    # For Q6.10: multiply by 2^10 = 1024 and round to nearest integer
+    q610_int = np.round(clipped_data * 1024).astype(np.int32)  # Use int32 to avoid overflow
     
-    # Convert each value to 8-bit binary string
+    # Convert each value to 16-bit binary string
     binary_strings = []
-    for val in q17_int:
-        # Convert to 8-bit representation (handle two's complement)
+    for val in q610_int:
+        # Convert to 16-bit representation (handle two's complement)
         if val < 0:
-            # Two's complement for negative numbers
-            unsigned_val = val & 0xFF  # Mask to 8 bits
+            # Two's complement for negative numbers (16-bit)
+            unsigned_val = val & 0xFFFF  # Mask to 16 bits
         else:
             unsigned_val = val
         
-        # Convert to 8-bit binary string
-        binary_str = format(unsigned_val, '08b')
+        # Convert to 16-bit binary string
+        binary_str = format(unsigned_val, '016b')
         binary_strings.append(binary_str)
     
     # Save as .mif file with binary strings
@@ -64,14 +64,14 @@ def save_q17_binary_file(data, filename):
     print(f"Saved {len(binary_strings)} values to {filename}.mif")
     if len(binary_strings) <= 5:  # Print first few for verification
         print(f"Sample binary values: {binary_strings}")
-        print(f"Sample Q1.7 integers: {q17_int.tolist()}")
+        print(f"Sample Q6.10 integers: {q610_int.tolist()}")
         # Handle both numpy arrays and Python lists
         if hasattr(data, 'tolist'):
             print(f"Original float values: {data.tolist()}")
         else:
             print(f"Original float values: {data}")
 
-# ========== Export Weights and Biases in Q1.7 ==========
+# ========== Export Weights and Biases in Q6.10 ==========
 os.makedirs("Weights_Biases/weights", exist_ok=True)
 os.makedirs("Weights_Biases/bias", exist_ok=True)
 
@@ -87,16 +87,16 @@ for layer_idx, layer_name in enumerate(['L0', 'L1']):
         neuron_weights = weights[:, neuron_idx]
         filename = f"Weights_Biases/weights/weight_L{layer_idx}_N{neuron_idx}"
         print(f"\nSaving weights for Layer {layer_idx}, Neuron {neuron_idx}:")
-        save_q17_binary_file(neuron_weights, filename)
+        save_q610_binary_file(neuron_weights, filename)
     
     # Save biases per neuron
     for neuron_idx, bias in enumerate(biases):
         filename = f"Weights_Biases/bias/bias_L{layer_idx}_N{neuron_idx}"
         print(f"\nSaving bias for Layer {layer_idx}, Neuron {neuron_idx}:")
-        save_q17_binary_file([bias], filename)
+        save_q610_binary_file([bias], filename)
 
-print("\n✅ All weights and biases exported in Q1.7 format to 'Weights_Biases/' folders.")
-print("📁 Files saved with .mif extension containing binary strings (01010010 format)")
+print("\n✅ All weights and biases exported in Q6.10 format to 'Weights_Biases/' folders.")
+print("📁 Files saved with .mif extension containing binary strings (16-bit format)")
 
 
 # Testing
@@ -146,13 +146,21 @@ def save_decimal_file(data, filename):
                 f.write("\n")
     print(f"Saved decimal values to {filename}.txt")
 
-# Helper function to convert float to Q1.7 hex
+# Helper function to convert float to Q1.7 hex (keeping inputs in Q1.7 as in original)
 def float_to_q17_hex(val):
     val = np.clip(val, -1.0, 127/128)
     q_val = int(round(val * 128))
     if q_val < 0:
         q_val = 256 + q_val
     return format(q_val, '02x')
+
+# Helper function to convert float to Q6.10 hex
+def float_to_q610_hex(val):
+    val = np.clip(val, -32.0, 32767/1024)
+    q_val = int(round(val * 1024))
+    if q_val < 0:
+        q_val = 65536 + q_val  # 2^16 for 16-bit representation
+    return format(q_val, '04x')
 
 # Select 10 test samples
 num_test_samples = 10
@@ -164,10 +172,10 @@ y_test_labels = np.argmax(y_test_samples, axis=1)
 print(f"Selected {num_test_samples} test samples")
 print(f"True labels: {y_test_labels}")
 
-# ========== Export Test Inputs ==========
+# ========== Export Test Inputs (keeping Q1.7 as in original) ==========
 print("\n--- Exporting Test Inputs ---")
 for i in range(num_test_samples):
-    # Save input image in Q1.7 hex format (similar to your original code)
+    # Save input image in Q1.7 hex format (keeping original format for inputs)
     image = x_test_samples[i].flatten()
     hex_vals = [float_to_q17_hex(pix) for pix in image]
     hex_string = ''.join(hex_vals)
@@ -176,13 +184,48 @@ for i in range(num_test_samples):
     with open(f"Test_Outputs/inputs/input_sample_{i}_hex.txt", "w") as f:
         f.write(f"6272'h{hex_string}\n")
     
-    # Save as binary for verification
+    # Save as binary for verification (Q1.7)
     save_q17_binary_file(image, f"Test_Outputs/inputs/input_sample_{i}_binary")
     
     # Save as decimal for verification
     save_decimal_file(image, f"Test_Outputs/inputs/input_sample_{i}_decimal")
 
 print(f"✅ Exported {num_test_samples} test inputs")
+
+# Helper function to convert float to Q1.7 and save as binary (for inputs/outputs)
+def save_q17_binary_file(data, filename):
+    """
+    Convert float data to Q1.7 format and save as binary string representation.
+    Q1.7: 1 sign bit + 7 fractional bits
+    Range: -1.0 to +0.9921875 (127/128)
+    """
+    # Clip data to Q1.7 range
+    clipped_data = np.clip(data, -1.0, 127/128)
+    
+    # Convert to Q1.7 fixed-point representation
+    # For Q1.7: multiply by 2^7 = 128 and round to nearest integer
+    q17_int = np.round(clipped_data * 128).astype(np.int16)  # Use int16 to avoid overflow
+    
+    # Convert each value to 8-bit binary string
+    binary_strings = []
+    for val in q17_int:
+        # Convert to 8-bit representation (handle two's complement)
+        if val < 0:
+            # Two's complement for negative numbers
+            unsigned_val = val & 0xFF  # Mask to 8 bits
+        else:
+            unsigned_val = val
+        
+        # Convert to 8-bit binary string
+        binary_str = format(unsigned_val, '08b')
+        binary_strings.append(binary_str)
+    
+    # Save as .mif file with binary strings
+    with open(filename + '.mif', 'w') as f:
+        for binary_str in binary_strings:
+            f.write(binary_str + '\n')
+    
+    print(f"Saved {len(binary_strings)} values to {filename}.mif")
 
 # ========== Get Layer Outputs ==========
 print("\n--- Getting Layer Outputs ---")
@@ -201,16 +244,16 @@ for sample_idx in range(num_test_samples):
     # Save decimal
     save_decimal_file(sample_l0_output, f"Test_Outputs/layer_outputs/L0_sample_{sample_idx}_decimal")
     
-    # Save binary Q1.7
-    save_q17_binary_file(sample_l0_output, f"Test_Outputs/layer_outputs/L0_sample_{sample_idx}_binary")
+    # Save binary Q6.10 (now using Q6.10 for outputs)
+    save_q610_binary_file(sample_l0_output, f"Test_Outputs/layer_outputs/L0_sample_{sample_idx}_binary")
     
     # Save individual neuron outputs
     for neuron_idx in range(16):
         neuron_output = sample_l0_output[neuron_idx]
         with open(f"Test_Outputs/layer_outputs/L0_sample_{sample_idx}_neuron_{neuron_idx}.txt", "w") as f:
             f.write(f"Decimal: {neuron_output:.6f}\n")
-            f.write(f"Q1.7 binary: {format(int(round(np.clip(neuron_output, -1.0, 127/128) * 128)) & 0xFF, '08b')}\n")
-            f.write(f"Q1.7 hex: {float_to_q17_hex(neuron_output)}\n")
+            f.write(f"Q6.10 binary: {format(int(round(np.clip(neuron_output, -32.0, 32767/1024) * 1024)) & 0xFFFF, '016b')}\n")
+            f.write(f"Q6.10 hex: {float_to_q610_hex(neuron_output)}\n")
 
 # Export L1 outputs (final layer)
 l1_outputs = layer_outputs[1]  # Shape: (10, 10)
@@ -222,16 +265,16 @@ for sample_idx in range(num_test_samples):
     # Save decimal
     save_decimal_file(sample_l1_output, f"Test_Outputs/final_outputs/L1_sample_{sample_idx}_decimal")
     
-    # Save binary Q1.7
-    save_q17_binary_file(sample_l1_output, f"Test_Outputs/final_outputs/L1_sample_{sample_idx}_binary")
+    # Save binary Q6.10 (now using Q6.10 for outputs)
+    save_q610_binary_file(sample_l1_output, f"Test_Outputs/final_outputs/L1_sample_{sample_idx}_binary")
     
     # Save individual neuron outputs
     for neuron_idx in range(10):
         neuron_output = sample_l1_output[neuron_idx]
         with open(f"Test_Outputs/final_outputs/L1_sample_{sample_idx}_neuron_{neuron_idx}.txt", "w") as f:
             f.write(f"Decimal: {neuron_output:.6f}\n")
-            f.write(f"Q1.7 binary: {format(int(round(np.clip(neuron_output, -1.0, 127/128) * 128)) & 0xFF, '08b')}\n")
-            f.write(f"Q1.7 hex: {float_to_q17_hex(neuron_output)}\n")
+            f.write(f"Q6.10 binary: {format(int(round(np.clip(neuron_output, -32.0, 32767/1024) * 1024)) & 0xFFFF, '016b')}\n")
+            f.write(f"Q6.10 hex: {float_to_q610_hex(neuron_output)}\n")
 
 # ========== Create Summary File ==========
 print("\n--- Creating Summary File ---")
@@ -240,9 +283,14 @@ with open("Test_Outputs/test_summary.txt", "w") as f:
     f.write("="*40 + "\n\n")
     
     f.write("Network Architecture:\n")
-    f.write("- Input: 784 pixels (28x28 flattened)\n")
-    f.write("- Layer L0: 16 neurons (ReLU)\n")
-    f.write("- Layer L1: 10 neurons (Softmax)\n\n")
+    f.write("- Input: 784 pixels (28x28 flattened) - Q1.7 format\n")
+    f.write("- Layer L0: 16 neurons (ReLU) - Weights/Biases in Q6.10 format\n")
+    f.write("- Layer L1: 10 neurons (Softmax) - Weights/Biases in Q6.10 format\n")
+    f.write("- Outputs: Q1.7 format\n\n")
+    
+    f.write("Fixed-Point Formats:\n")
+    f.write("- Q1.7: 8-bit, range -1.0 to +0.9921875 (inputs/outputs)\n")
+    f.write("- Q6.10: 16-bit, range -32.0 to +31.999023438 (weights/biases)\n\n")
     
     f.write("Test Results:\n")
     predictions = np.argmax(l1_outputs, axis=1)
@@ -255,14 +303,16 @@ with open("Test_Outputs/test_summary.txt", "w") as f:
         f.write(f"Confidence={l1_outputs[i][predictions[i]]:.4f}\n")
     
     f.write("\nFile Structure:\n")
-    f.write("- inputs/: Test input images in hex, binary, and decimal\n")
-    f.write("- layer_outputs/: L0 hidden layer outputs\n")
-    f.write("- final_outputs/: L1 output layer (softmax) outputs\n")
+    f.write("- Weights_Biases/: Neural network parameters in Q6.10 format (16-bit)\n")
+    f.write("- inputs/: Test input images in Q1.7 format (8-bit)\n")
+    f.write("- layer_outputs/: L0 hidden layer outputs in Q1.7 format\n")
+    f.write("- final_outputs/: L1 output layer (softmax) outputs in Q1.7 format\n")
     f.write("- Individual neuron files contain decimal, binary, and hex values\n")
 
-print("✅ Test complete! Files saved in 'Test_Outputs/' folder")
+print("✅ Test complete! Files saved with Q6.10 weights and Q1.7 inputs/outputs")
 print("\nSummary:")
 print(f"- Tested {num_test_samples} samples")
 print(f"- Accuracy: {np.mean(np.argmax(l1_outputs, axis=1) == y_test_labels)*100:.1f}%")
-print(f"- All outputs saved in decimal, Q1.7 binary, and hex formats")
+print(f"- Weights and biases saved in Q6.10 format (16-bit)")
+print(f"- Inputs and outputs saved in Q1.7 format (8-bit)")
 print(f"- Individual neuron outputs saved for verification")

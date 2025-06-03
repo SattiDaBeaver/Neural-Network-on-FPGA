@@ -1,8 +1,8 @@
 module neuron #(
     parameter   layerNumber = 0, neuronNumber = 0, numWeights = 256, 
                 dataWidth = 16, dataIntWidth = 6, dataFracWidth = 10, 
-                weightWidth = 8, weightIntWidth = 1, weightFracWidth = 7, 
-                biasFile = "b_l0_n0.mif", weightFile = "w_l0_n0.mif"
+                weightWidth = 16, weightIntWidth = 6, weightFracWidth = 10, 
+                biasFile = "bias_L0_N0.mif", weightFile = "weight_L0_N0.mif"
 )   (
     input   logic                       clk,
     input   logic                       reset,
@@ -182,7 +182,7 @@ module neuron #(
     
     // Acitivation Function
     reLU #(
-        .sumWidth(2*dataWidth),
+        .sumWidth(sumWidth),
         .sumIntWidth(sumIntWidth),
         .sumFracWidth(sumFracWidth),
         .dataWidth(dataWidth),
@@ -218,7 +218,7 @@ module neuron #(
         .neuronNumber(neuronNumber),
         .layerNumber(layerNumber),
         .addressWidth(addressWidth),
-        .dataWidth(dataWidth),
+        .dataWidth(weightWidth),
         .weightFile(weightFile)
     ) Weight (
         .clk(clk),

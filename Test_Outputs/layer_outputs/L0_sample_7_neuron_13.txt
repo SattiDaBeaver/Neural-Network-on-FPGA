@@ -1,3 +1,3 @@
-Decimal: 3.848389
+Decimal: 2.304063
 Q1.7 binary: 01111111
 Q1.7 hex: 7f

@@ -1,5 +1,5 @@
 module hardmax #(
-    parameter dataWidth = 8, numOutputs = 10, addressWidth = $clog2(numOutputs)
+    parameter dataWidth = 16, numOutputs = 10, addressWidth = $clog2(numOutputs)
 ) (
     input   logic                               clk,
     input   logic                               reset,

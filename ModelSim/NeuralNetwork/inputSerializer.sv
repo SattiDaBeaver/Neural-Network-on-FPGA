@@ -1,5 +1,5 @@
 module inputSerializer #(
-    parameter numInputs = 16, dataWidth = 8, counterWidth = $clog2(numInputs+1)
+    parameter numInputs = 16, dataWidth = 16, counterWidth = $clog2(numInputs)
 ) (
     input    logic                              clk,
     input    logic                              reset,

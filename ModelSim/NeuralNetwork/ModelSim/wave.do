@@ -7,6 +7,9 @@ add wave -noupdate -divider Inputs
 add wave -noupdate -label NNin -radix hexadecimal /testbench/NNin
 add wave -noupdate -label NNvalid -radix hexadecimal /testbench/NNvalid
 
+add wave -noupdate -divider Internal
+add wave -noupdate -label Layer0out -radix hexadecimal /testbench/nn/layer0Out
+
 add wave -noupdate -divider Outputs
 add wave -noupdate -label NNout -radix hexadecimal /testbench/NNout
 add wave -noupdate -label NNoutValid -radix hexadecimal /testbench/NNoutValid

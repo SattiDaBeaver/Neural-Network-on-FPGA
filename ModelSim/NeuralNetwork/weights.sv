@@ -1,6 +1,6 @@
 `define PRETRAINED
 module weights #(
-    parameter numWeights = 16, neuronNumber = 0, layerNumber = 1, addressWidth = 4, dataWidth = 16, weightFile = "w_l0_n0.mif"
+    parameter numWeights = 16, neuronNumber = 0, layerNumber = 1, addressWidth = 4, dataWidth = 8, weightFile = "w_l0_n0.mif"
 ) (
     input   logic                       clk,
     input   logic                       readEn,
