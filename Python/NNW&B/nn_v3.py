@@ -6,29 +6,7 @@ from tensorflow.keras.layers import Flatten, Dense
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
 
-# ========== Load and preprocess MNIST ==========
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
-x_train = x_train.astype(np.float32) / 255.0
-x_test = x_test.astype(np.float32) / 255.0
-x_train = np.clip(x_train, 0, 1)
-x_test = np.clip(x_test, 0, 1)
-y_train = to_categorical(y_train, 10)
-y_test = to_categorical(y_test, 10)
-
-# ========== Define simple model ==========
-model = Sequential([
-    Flatten(input_shape=(28, 28)),
-    Dense(16, activation='relu', name='L0'),
-    Dense(10, activation='softmax', name='L1')
-])
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-model.summary()
-
-# ========== Train model ==========
-print("Training model...")
-model.fit(x_train, y_train, epochs=15, batch_size=80, validation_data=(x_test, y_test))
-
-# ========== Helper function to convert float to Q6.10 and save as binary ==========
+# ========== Helper Functions (moved to top) ==========
 def save_q610_binary_file(data, filename):
     """
     Convert float data to Q6.10 format and save as binary string representation.
@@ -71,128 +49,6 @@ def save_q610_binary_file(data, filename):
         else:
             print(f"Original float values: {data}")
 
-# ========== Export Weights and Biases in Q6.10 ==========
-os.makedirs("Weights_Biases/weights", exist_ok=True)
-os.makedirs("Weights_Biases/bias", exist_ok=True)
-
-for layer_idx, layer_name in enumerate(['L0', 'L1']):
-    layer = model.get_layer(name=layer_name)
-    weights, biases = layer.get_weights()
-    
-    print(f"\nProcessing Layer {layer_name}:")
-    print(f"Weight shape: {weights.shape}, Bias shape: {biases.shape}")
-    
-    # Save weights per neuron
-    for neuron_idx in range(weights.shape[1]):
-        neuron_weights = weights[:, neuron_idx]
-        filename = f"Weights_Biases/weights/weight_L{layer_idx}_N{neuron_idx}"
-        print(f"\nSaving weights for Layer {layer_idx}, Neuron {neuron_idx}:")
-        save_q610_binary_file(neuron_weights, filename)
-    
-    # Save biases per neuron
-    for neuron_idx, bias in enumerate(biases):
-        filename = f"Weights_Biases/bias/bias_L{layer_idx}_N{neuron_idx}"
-        print(f"\nSaving bias for Layer {layer_idx}, Neuron {neuron_idx}:")
-        save_q610_binary_file([bias], filename)
-
-print("\n✅ All weights and biases exported in Q6.10 format to 'Weights_Biases/' folders.")
-print("📁 Files saved with .mif extension containing binary strings (16-bit format)")
-
-
-# Testing
-# ========== Test 10 samples and export neuron outputs ==========
-print("\n" + "="*60)
-print("TESTING 10 SAMPLES AND EXPORTING NEURON OUTPUTS")
-print("="*60)
-
-# Create directories for test outputs
-os.makedirs("Test_Outputs/inputs", exist_ok=True)
-os.makedirs("Test_Outputs/layer_outputs", exist_ok=True)
-os.makedirs("Test_Outputs/final_outputs", exist_ok=True)
-
-# Helper function to get intermediate layer outputs
-def get_layer_outputs(model, x_input):
-    """Get outputs from each layer"""
-    layer_outputs = []
-    
-    # Method 1: Use a separate model to get L0 output
-    # Create input layer explicitly
-    input_layer = tf.keras.Input(shape=(28, 28))
-    flattened = tf.keras.layers.Flatten()(input_layer)
-    l0_output = model.get_layer('L0')(flattened)
-    l0_model = tf.keras.Model(inputs=input_layer, outputs=l0_output)
-    
-    l0_result = l0_model.predict(x_input, verbose=0)
-    layer_outputs.append(l0_result)
-    
-    # Method 2: Get final output from complete model
-    l1_result = model.predict(x_input, verbose=0)
-    layer_outputs.append(l1_result)
-    
-    return layer_outputs
-
-# Helper function to save decimal values
-def save_decimal_file(data, filename):
-    """Save decimal values to file"""
-    with open(filename + '.txt', 'w') as f:
-        if data.ndim == 1:
-            for val in data:
-                f.write(f"{val:.6f}\n")
-        else:
-            for sample_idx in range(data.shape[0]):
-                f.write(f"Sample {sample_idx}:\n")
-                for val in data[sample_idx]:
-                    f.write(f"{val:.6f}\n")
-                f.write("\n")
-    print(f"Saved decimal values to {filename}.txt")
-
-# Helper function to convert float to Q1.7 hex (keeping inputs in Q1.7 as in original)
-def float_to_q17_hex(val):
-    val = np.clip(val, -1.0, 127/128)
-    q_val = int(round(val * 128))
-    if q_val < 0:
-        q_val = 256 + q_val
-    return format(q_val, '02x')
-
-# Helper function to convert float to Q6.10 hex
-def float_to_q610_hex(val):
-    val = np.clip(val, -32.0, 32767/1024)
-    q_val = int(round(val * 1024))
-    if q_val < 0:
-        q_val = 65536 + q_val  # 2^16 for 16-bit representation
-    return format(q_val, '04x')
-
-# Select 10 test samples
-num_test_samples = 10
-test_indices = np.arange(num_test_samples)
-x_test_samples = x_test[test_indices]
-y_test_samples = y_test[test_indices]
-y_test_labels = np.argmax(y_test_samples, axis=1)
-
-print(f"Selected {num_test_samples} test samples")
-print(f"True labels: {y_test_labels}")
-
-# ========== Export Test Inputs (keeping Q1.7 as in original) ==========
-print("\n--- Exporting Test Inputs ---")
-for i in range(num_test_samples):
-    # Save input image in Q1.7 hex format (keeping original format for inputs)
-    image = x_test_samples[i].flatten()
-    hex_vals = [float_to_q17_hex(pix) for pix in image]
-    hex_string = ''.join(hex_vals)
-    
-    # Save as hex string
-    with open(f"Test_Outputs/inputs/input_sample_{i}_hex.txt", "w") as f:
-        f.write(f"6272'h{hex_string}\n")
-    
-    # Save as binary for verification (Q1.7)
-    save_q17_binary_file(image, f"Test_Outputs/inputs/input_sample_{i}_binary")
-    
-    # Save as decimal for verification
-    save_decimal_file(image, f"Test_Outputs/inputs/input_sample_{i}_decimal")
-
-print(f"✅ Exported {num_test_samples} test inputs")
-
-# Helper function to convert float to Q1.7 and save as binary (for inputs/outputs)
 def save_q17_binary_file(data, filename):
     """
     Convert float data to Q1.7 format and save as binary string representation.
@@ -226,6 +82,145 @@ def save_q17_binary_file(data, filename):
             f.write(binary_str + '\n')
     
     print(f"Saved {len(binary_strings)} values to {filename}.mif")
+
+def save_decimal_file(data, filename):
+    """Save decimal values to file"""
+    with open(filename + '.txt', 'w') as f:
+        if data.ndim == 1:
+            for val in data:
+                f.write(f"{val:.6f}\n")
+        else:
+            for sample_idx in range(data.shape[0]):
+                f.write(f"Sample {sample_idx}:\n")
+                for val in data[sample_idx]:
+                    f.write(f"{val:.6f}\n")
+                f.write("\n")
+    print(f"Saved decimal values to {filename}.txt")
+
+def float_to_q17_hex(val):
+    """Helper function to convert float to Q1.7 hex"""
+    val = np.clip(val, -1.0, 127/128)
+    q_val = int(round(val * 128))
+    if q_val < 0:
+        q_val = 256 + q_val
+    return format(q_val, '02x')
+
+def float_to_q610_hex(val):
+    """Helper function to convert float to Q6.10 hex"""
+    val = np.clip(val, -32.0, 32767/1024)
+    q_val = int(round(val * 1024))
+    if q_val < 0:
+        q_val = 65536 + q_val  # 2^16 for 16-bit representation
+    return format(q_val, '04x')
+
+def get_layer_outputs(model, x_input):
+    """Get outputs from each layer"""
+    layer_outputs = []
+    
+    # Method 1: Use a separate model to get L0 output
+    # Create input layer explicitly
+    input_layer = tf.keras.Input(shape=(28, 28))
+    flattened = tf.keras.layers.Flatten()(input_layer)
+    l0_output = model.get_layer('L0')(flattened)
+    l0_model = tf.keras.Model(inputs=input_layer, outputs=l0_output)
+    
+    l0_result = l0_model.predict(x_input, verbose=0)
+    layer_outputs.append(l0_result)
+    
+    # Method 2: Get final output from complete model
+    l1_result = model.predict(x_input, verbose=0)
+    layer_outputs.append(l1_result)
+    
+    return layer_outputs
+
+# ========== Load and preprocess MNIST ==========
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = x_train.astype(np.float32) / 255.0
+x_test = x_test.astype(np.float32) / 255.0
+x_train = np.clip(x_train, 0, 1)
+x_test = np.clip(x_test, 0, 1)
+y_train = to_categorical(y_train, 10)
+y_test = to_categorical(y_test, 10)
+
+# ========== Define simple model ==========
+model = Sequential([
+    Flatten(input_shape=(28, 28)),
+    Dense(16, activation='relu', name='L0'),
+    Dense(10, activation='softmax', name='L1')
+])
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()
+
+# ========== Train model ==========
+print("Training model...")
+model.fit(x_train, y_train, epochs=15, batch_size=80, validation_data=(x_test, y_test))
+
+# ========== Export Weights and Biases in Q6.10 ==========
+os.makedirs("Weights_Biases/weights", exist_ok=True)
+os.makedirs("Weights_Biases/bias", exist_ok=True)
+
+for layer_idx, layer_name in enumerate(['L0', 'L1']):
+    layer = model.get_layer(name=layer_name)
+    weights, biases = layer.get_weights()
+    
+    print(f"\nProcessing Layer {layer_name}:")
+    print(f"Weight shape: {weights.shape}, Bias shape: {biases.shape}")
+    
+    # Save weights per neuron
+    for neuron_idx in range(weights.shape[1]):
+        neuron_weights = weights[:, neuron_idx]
+        filename = f"Weights_Biases/weights/weight_L{layer_idx}_N{neuron_idx}"
+        print(f"\nSaving weights for Layer {layer_idx}, Neuron {neuron_idx}:")
+        save_q610_binary_file(neuron_weights, filename)
+    
+    # Save biases per neuron
+    for neuron_idx, bias in enumerate(biases):
+        filename = f"Weights_Biases/bias/bias_L{layer_idx}_N{neuron_idx}"
+        print(f"\nSaving bias for Layer {layer_idx}, Neuron {neuron_idx}:")
+        save_q610_binary_file([bias], filename)
+
+print("\n✅ All weights and biases exported in Q6.10 format to 'Weights_Biases/' folders.")
+print("📁 Files saved with .mif extension containing binary strings (16-bit format)")
+
+# ========== Test 10 samples and export neuron outputs ==========
+print("\n" + "="*60)
+print("TESTING 10 SAMPLES AND EXPORTING NEURON OUTPUTS")
+print("="*60)
+
+# Create directories for test outputs
+os.makedirs("Test_Outputs/inputs", exist_ok=True)
+os.makedirs("Test_Outputs/layer_outputs", exist_ok=True)
+os.makedirs("Test_Outputs/final_outputs", exist_ok=True)
+
+# Select 10 test samples
+num_test_samples = 10
+test_indices = np.arange(num_test_samples)
+x_test_samples = x_test[test_indices]
+y_test_samples = y_test[test_indices]
+y_test_labels = np.argmax(y_test_samples, axis=1)
+
+print(f"Selected {num_test_samples} test samples")
+print(f"True labels: {y_test_labels}")
+
+# ========== Export Test Inputs (keeping Q1.7 as in original) ==========
+print("\n--- Exporting Test Inputs ---")
+for i in range(num_test_samples):
+    # Save input image in Q1.7 hex format (keeping original format for inputs)
+    image = x_test_samples[i].flatten()
+    hex_vals = [float_to_q17_hex(pix) for pix in image]
+    hex_string = ''.join(hex_vals)
+    
+    # Save as hex string
+    with open(f"Test_Outputs/inputs/input_sample_{i}_hex.txt", "w") as f:
+        f.write(f"6272'h{hex_string}\n")
+    
+    # Save as binary for verification (Q1.7)
+    save_q17_binary_file(image, f"Test_Outputs/inputs/input_sample_{i}_binary")
+    
+    # Save as decimal for verification
+    save_decimal_file(image, f"Test_Outputs/inputs/input_sample_{i}_decimal")
+
+print(f"✅ Exported {num_test_samples} test inputs")
 
 # ========== Get Layer Outputs ==========
 print("\n--- Getting Layer Outputs ---")

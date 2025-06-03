@@ -1,5 +1,7 @@
 module layer1 #(
-    parameter layerNumber = 1, dataWidth = 16, numInputs = 16, numNeurons = 10
+    parameter   layerNumber = 1, numInputs = 16, numNeurons = 10,
+                dataWidth = 16, dataIntWidth = 6, dataFracWidth = 10, 
+                weightWidth = 16, weightIntWidth = 6, weightFracWidth = 10
 ) (
     input   logic                               clk,
     input   logic                               reset, 
@@ -68,11 +70,11 @@ module layer1 #(
                 .neuronNumber(i),
                 .numWeights(numInputs),
                 .dataWidth(dataWidth),
-                .dataIntWidth(6),
-                .dataFracWidth(10),
-                .weightWidth(8),
-                .weightIntWidth(1),
-                .weightFracWidth(7),
+                .dataIntWidth(dataIntWidth),
+                .dataFracWidth(dataFracWidth),
+                .weightWidth(weightWidth),
+                .weightIntWidth(weightIntWidth),
+                .weightFracWidth(weightFracWidth),
                 // File paths for weights and biases
                 .weightFile(weightFile),
                 .biasFile(biasFile)

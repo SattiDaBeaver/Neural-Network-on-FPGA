@@ -1,3 +1,3 @@
-Decimal: 0.996256
-Q1.7 binary: 01111111
-Q1.7 hex: 7f
+Decimal: 0.994856
+Q6.10 binary: 0000001111111011
+Q6.10 hex: 03fb

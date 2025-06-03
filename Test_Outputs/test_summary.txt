@@ -15,16 +15,16 @@ Test Results:
 Accuracy on 10 samples: 90.0%
 
 Sample-by-Sample Results:
-Sample 0: True=7, Predicted=7, Confidence=0.9927
+Sample 0: True=7, Predicted=7, Confidence=0.9912
 Sample 1: True=2, Predicted=2, Confidence=0.9996
-Sample 2: True=1, Predicted=1, Confidence=0.9875
-Sample 3: True=0, Predicted=0, Confidence=0.9998
-Sample 4: True=4, Predicted=4, Confidence=0.9639
-Sample 5: True=1, Predicted=1, Confidence=0.9963
-Sample 6: True=4, Predicted=4, Confidence=0.9981
-Sample 7: True=9, Predicted=9, Confidence=0.9911
-Sample 8: True=5, Predicted=6, Confidence=0.9995
-Sample 9: True=9, Predicted=9, Confidence=0.9710
+Sample 2: True=1, Predicted=1, Confidence=0.9765
+Sample 3: True=0, Predicted=0, Confidence=1.0000
+Sample 4: True=4, Predicted=4, Confidence=0.9831
+Sample 5: True=1, Predicted=1, Confidence=0.9949
+Sample 6: True=4, Predicted=4, Confidence=0.9916
+Sample 7: True=9, Predicted=9, Confidence=0.9939
+Sample 8: True=5, Predicted=6, Confidence=0.8397
+Sample 9: True=9, Predicted=9, Confidence=0.8884
 
 File Structure:
 - Weights_Biases/: Neural network parameters in Q6.10 format (16-bit)
