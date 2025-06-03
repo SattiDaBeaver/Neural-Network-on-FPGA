@@ -11,8 +11,8 @@ module testbench ( );
 
 	// Neuron Test
 	logic 				reset;
-	logic [7:0] 		neuronIn;
-	logic [7:0] 		neuronOut;
+	logic [15:0] 		neuronIn;
+	logic [15:0] 		neuronOut;
 	logic 				neuronValid;
 	logic 				neuronOutValid;
 
@@ -40,7 +40,7 @@ module testbench ( );
         reset <= 1'b1;
 		#10 
 		reset <= 1'b0;
-		neuronIn <= 8'h70; // Test with a positive input
+		neuronIn <= 16'h7000; // Test with a positive input
 		#10
 		neuronValid <= 1'b1;
         #300
@@ -50,7 +50,7 @@ module testbench ( );
         reset <= 1'b1;
 		#10 
         reset <= 1'b0;
-		neuronIn <= 8'h8f; // Test with a negative input
+		neuronIn <= 16'h8FFF; // Test with a negative input
 		#10
 		neuronValid <= 1'b1;
         
@@ -60,8 +60,12 @@ module testbench ( );
         .layerNumber(0),
         .neuronNumber(0),
         .numWeights(16),
-        .dataWidth(8),
-        .weightIntWidth(4),
+        .dataWidth(16),
+        .dataIntWidth(6),
+        .dataFracWidth(10),
+        .weightWidth(8),
+        .weightIntWidth(1),
+        .weightFracWidth(7),
         .biasFile("bias_L0_N0.mif"),
         .weightFile("weight_L0_N0.mif")
     ) U1 (
