@@ -25,7 +25,8 @@ module layer1 #(
     inputSerializer #(
         .numInputs(numInputs), 
         .dataWidth(dataWidth), 
-        .counterWidth(counterWidth)
+        .counterWidth(counterWidth),
+        .isFirstLayer(0) // This is not the first layer
     ) serializer (
         .clk(clk),
         .reset(reset),
@@ -84,7 +85,7 @@ module layer1 #(
                 .neuronIn(serializerOut),
                 .neuronValid(layerValid),
 
-                .neuronOut(layerOut[(i+1)*dataWidth-1 -: dataWidth]),
+                .neuronOut(layerOut[i*dataWidth +: dataWidth]),
                 .neuronOutValid(neuronOutValid[i])
             );
         end

@@ -51,7 +51,7 @@ R9
 R10
 vhardmax
 Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z12 !s110 1749058453
+Z12 !s110 1749062116
 !i10b 1
 !s100 ^GA;dJ^LIIl:en9aWQNEH1
 IcX0^fhUWE8;j6;RQS7m8:0
@@ -67,7 +67,7 @@ R6
 r1
 !s85 0
 31
-Z14 !s108 1749058453.000000
+Z14 !s108 1749062116.000000
 !s107 ../hardmax.sv|
 !s90 -reportprogress|300|-sv|../hardmax.sv|
 !i113 1
@@ -100,15 +100,15 @@ R10
 ninput@counter
 vinputSerializer
 R11
-R12
+Z15 !s110 1749062117
 !i10b 1
-!s100 ZLjAge<:1Ie1m:DgMGJG71
-IAIf0XQmdlS9D^[zch[=RJ0
+!s100 2]N0Am5U9NOK<ZE6ILLZX3
+I;imiK?Z8@Z_0dTMM4L=>10
 R2
 !s105 inputSerializer_sv_unit
 S1
 R13
-w1749058278
+w1749061907
 8../inputSerializer.sv
 F../inputSerializer.sv
 L0 1
@@ -116,7 +116,7 @@ R6
 r1
 !s85 0
 31
-R14
+Z16 !s108 1749062117.000000
 !s107 ../inputSerializer.sv|
 !s90 -reportprogress|300|-sv|../inputSerializer.sv|
 !i113 1
@@ -149,15 +149,15 @@ o-sv
 R10
 vlayer0
 R11
-R12
+R15
 !i10b 1
-!s100 =oQ@:Y;EXLTic>9?kf@4b2
-Ic7gNlNGA1fW1o?L8i0WE51
+!s100 d>Q=LOACYF1cCMe8Pgn9o2
+IBOKT`iNMJU5bKV08QI]?;0
 R2
 !s105 layer0_sv_unit
 S1
 R13
-w1748997471
+w1749061566
 8../layer0.sv
 F../layer0.sv
 L0 1
@@ -165,7 +165,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 ../layer0.sv|
 !s90 -reportprogress|300|-sv|../layer0.sv|
 !i113 1
@@ -173,15 +173,15 @@ o-sv
 R10
 vlayer1
 R11
-R12
+R15
 !i10b 1
-!s100 9<>jOE3l_;hMRz=1mW?m21
-Ik0Xa6loh9jBVFF_Poz7lm0
+!s100 ^eP3A=9Wo?;F>oRL@ROB>3
+In?n8GY>MknhlJ5:IV0Iae2
 R2
 !s105 layer1_sv_unit
 S1
 R13
-w1748997485
+w1749061577
 8../layer1.sv
 F../layer1.sv
 L0 1
@@ -189,7 +189,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 ../layer1.sv|
 !s90 -reportprogress|300|-sv|../layer1.sv|
 !i113 1
@@ -222,7 +222,7 @@ R10
 n@neural@network
 vneuron
 R11
-R12
+R15
 !i10b 1
 !s100 L[61C<1_?YgZCe2lz9=a02
 IoYQnZXc4oTV]?:KKinz_W1
@@ -238,7 +238,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 ../neuron.sv|
 !s90 -reportprogress|300|-sv|../neuron.sv|
 !i113 1
@@ -266,7 +266,7 @@ R9
 R10
 vreLU
 R11
-R12
+R15
 !i10b 1
 !s100 Y:5:zQ:h@CbJYJlCQiCN_3
 Ic[4>9fLL:hnC@EMmYKRiL2
@@ -282,7 +282,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 ../reLU.sv|
 !s90 -reportprogress|300|-sv|../reLU.sv|
 !i113 1
@@ -311,15 +311,15 @@ R9
 R10
 vtestbench
 R11
-R12
+R15
 !i10b 1
-!s100 OH7R;T^cI_lGKE3?7D]Cg0
-I7UAb60C_DhP^5iT_7BZ<S1
+!s100 RU35oKO2D3RChShN<LZBk0
+INz?QK:]W1OV329Rb79`Xm3
 R2
 !s105 testbench_sv_unit
 S1
 R13
-w1749058450
+w1749062109
 8testbench.sv
 Ftestbench.sv
 L0 4
@@ -327,7 +327,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 testbench.sv|
 !s90 -reportprogress|300|-sv|testbench.sv|
 !i113 1
@@ -355,7 +355,7 @@ R9
 R10
 vweights
 R11
-R12
+R15
 !i10b 1
 !s100 dmoJgm<aI]MNzj>68z1MT3
 I7h;9Tfb3CP=4d_c?M^8Of3
@@ -371,7 +371,7 @@ R6
 r1
 !s85 0
 31
-R14
+R16
 !s107 ../weights.sv|
 !s90 -reportprogress|300|-sv|../weights.sv|
 !i113 1

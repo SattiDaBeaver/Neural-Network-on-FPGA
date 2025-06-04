@@ -70,7 +70,7 @@ def emulate_neuron(input_file, weight_file, bias_file):
 # ====== Example usage ======
 if __name__ == "__main__":
     input_file = "C:/Projects/Neural Network on FPGA/Inputs/input_0_q8_8.txt"
-    weight_file = "C:/Projects/Neural Network on FPGA/Weights_Biases/weights/weight_L0_N0.mif"
-    bias_file   = "C:/Projects/Neural Network on FPGA/Weights_Biases/bias/bias_L0_N0.mif"
+    weight_file = "C:/Projects/Neural Network on FPGA/Weights_Biases/weights/weight_L0_N3.mif"
+    bias_file   = "C:/Projects/Neural Network on FPGA/Weights_Biases/bias/bias_L0_N3.mif"
 
     emulate_neuron(input_file, weight_file, bias_file)

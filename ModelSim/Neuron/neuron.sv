@@ -158,6 +158,9 @@ module neuron #(
         if (biasWriteEn) begin
             biasMem[0] <= biasData;
         end
+        else begin
+            biasMem[0] <= biasMem[0];
+        end
     end
 
     always_comb begin
