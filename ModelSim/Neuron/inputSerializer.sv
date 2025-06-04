@@ -43,7 +43,11 @@ module inputSerializer #(
     // Output Data Logic
     always_comb begin
         if (!counterValid && enable && delay) begin
-            serializerOut = serializerIn[(counterOut + 1) * dataWidth - 1 -: dataWidth]; // Extract the next input data
+            // LSB first: input 0 at bits [15:0], input 1 at bits [31:16], ...
+            //serializerOut = serializerIn[counterOut * dataWidth +: dataWidth];
+            // MSB first: input 0 at bits [(numInputs*dataWidth)-1 : (numInputs-1)*dataWidth]
+            serializerOut = serializerIn[(numInputs - 1 - counterOut) * dataWidth +: dataWidth];
+
         end else begin
             serializerOut = '0; // Default value when not valid
         end
