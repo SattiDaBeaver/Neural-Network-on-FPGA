@@ -1,0 +1,50 @@
+Overall Test Accuracy: 0.9363, Loss: 0.2319
+
+bel: 7
+  Correct:         True
+
+Sample 1:
+  True Label:      2
+  Predicted Label: 2
+  Correct:         True
+
+Sample 2:
+  True Label:      1
+  Predicted Label: 1
+  Correct:         True
+
+Sample 3:
+  True Label:      0
+  Predicted Label: 0
+  Correct:         True
+
+Sample 4:
+  True Label:      4
+  Predicted Label: 4
+  Correct:         True
+
+Sample 5:
+  True Label:      1
+  Predicted Label: 1
+  Correct:         True
+
+Sample 6:
+  True Label:      4
+  Predicted Label: 4
+  Correct:         True
+
+Sample 7:
+  True Label:      9
+  Predicted Label: 9
+  Correct:         True
+
+Sample 8:
+  True Label:      5
+  Predicted Label: 5
+  Correct:         True
+
+Sample 9:
+  True Label:      9
+  Predicted Label: 9
+  Correct:         True
+

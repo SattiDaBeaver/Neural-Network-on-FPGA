@@ -20,47 +20,74 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.fit(x_train, y_train, epochs=10, batch_size=128, verbose=1)
-model.evaluate(x_test, y_test)
+test_loss, test_accuracy = model.evaluate(x_test, y_test)
 
-# ========== 3. Convert float to Q6.10 ==========
+# ========== 3. Fixed-point Conversion ==========
 def float_to_q6_10(val):
-    return int(np.round(val * 1024.0))  # Signed 16-bit
+    return int(np.round(val * 1024.0))  # Signed 16-bit Q6.10
 
 def to_bin(val):
     return format(val & 0xFFFF, '016b')
 
-# ========== 4. Save to per-neuron files ==========
+# ========== 4. Save Weights & Biases ==========
 def save_layer_weights_biases(weights, biases, layer_id):
     os.makedirs(f'Weights_Biases/weights', exist_ok=True)
     os.makedirs(f'Weights_Biases/bias', exist_ok=True)
 
-    weights = weights.T  # So each row = weights for one neuron
+    weights = weights.T  # shape: (neurons, inputs)
 
     for neuron_idx in range(weights.shape[0]):
-        # Save weights
         with open(f'Weights_Biases/weights/weight_L{layer_id}_N{neuron_idx}.mif', 'w') as wf:
             for val in weights[neuron_idx]:
                 q = float_to_q6_10(val)
                 wf.write(f'{to_bin(q)}\n')
-
-        # Save bias
         with open(f'Weights_Biases/bias/bias_L{layer_id}_N{neuron_idx}.mif', 'w') as bf:
             q = float_to_q6_10(biases[neuron_idx])
             bf.write(f'{to_bin(q)}\n')
 
-# ========== 5. Export L0 and L1 ==========
 weights0, biases0 = model.layers[1].get_weights()
 weights1, biases1 = model.layers[2].get_weights()
 
 save_layer_weights_biases(weights0, biases0, layer_id=0)
 save_layer_weights_biases(weights1, biases1, layer_id=1)
 
-# ========== 6. Export input image ==========
-sample_idx = 0
-x_sample = x_test[sample_idx].flatten()
-
+# ========== 5. Test Sample Inputs & Log ==========
 os.makedirs("Inputs", exist_ok=True)
-with open("Inputs/input_image_q6_10.txt", "w") as f:
-    for val in x_sample:
-        q = float_to_q6_10(val)
-        f.write(f'{to_bin(q)}\n')
+os.makedirs("LayerOutputs", exist_ok=True)
+os.makedirs("Test_Results", exist_ok=True)
+
+with open("Test_Results/test_results.txt", "w") as log:
+    log.write(f"Overall Test Accuracy: {test_accuracy:.4f}, Loss: {test_loss:.4f}\n\n")
+
+    for sample_idx in range(10):
+        x_sample = x_test[sample_idx].flatten()
+        y_true = np.argmax(y_test[sample_idx])
+
+        # Save input
+        with open(f"Inputs/input_{sample_idx}_q6_10.txt", "w") as f:
+            for val in x_sample:
+                q = float_to_q6_10(val)
+                f.write(f'{to_bin(q)}\n')
+
+        # Forward pass manually
+        layer0_out = np.maximum(0, np.dot(x_sample, weights0) + biases0)
+        layer1_out = np.dot(layer0_out, weights1) + biases1
+        prediction = np.argmax(layer1_out)
+
+        # Save outputs with both decimal and binary values
+        with open(f"LayerOutputs/layer0_output_{sample_idx}.mif", "w") as f0:
+            for i, val in enumerate(layer0_out):
+                q = float_to_q6_10(val)
+                f0.write(f'N{i}: DEC={val:.6f}, BIN={to_bin(q)}\n')
+
+        with open(f"LayerOutputs/layer1_output_{sample_idx}.mif", "w") as f1:
+            for i, val in enumerate(layer1_out):
+                q = float_to_q6_10(val)
+                f1.write(f'N{i}: DEC={val:.6f}, BIN={to_bin(q)}\n')
+
+        # Log results
+        with open("Test_Results/test_results.txt", "a") as log:
+            log.write(f"Sample {sample_idx}:\n")
+            log.write(f"  True Label:      {y_true}\n")
+            log.write(f"  Predicted Label: {prediction}\n")
+            log.write(f"  Correct:         {prediction == y_true}\n\n")
