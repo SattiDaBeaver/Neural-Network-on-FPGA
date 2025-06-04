@@ -4,7 +4,7 @@ add wave -noupdate -label CLOCK_50 -radix binary /testbench/CLOCK_50
 add wave -noupdate -label Reset -radix binary /testbench/reset
 
 add wave -noupdate -divider Inputs
-add wave -noupdate -label neuronIn -radix hexadecimal /testbench/neuronIn
+add wave -noupdate -label neuronIn -radix hexadecimal /testbench/serializerOut
 add wave -noupdate -label neuronValid -radix hexadecimal /testbench/neuronValid
 
 add wave -noupdate -divider "Internal Nets"

@@ -8,6 +8,7 @@ vlib work;
 vlog -sv ../neuron.sv
 vlog -sv ../reLU.sv
 vlog -sv ../weights.sv
+vlog -sv ../inputSerializer.sv
 
 # compile the Verilog code of the testbench
 vlog -sv *.sv
@@ -19,4 +20,4 @@ vsim work.testbench -Lf 220model -Lf altera_mf_ver -Lf verilog
 do wave.do
 
 # advance the simulation the desired amount of time
-run 700 ns
+run 8000 ns

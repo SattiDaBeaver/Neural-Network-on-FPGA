@@ -19,7 +19,7 @@ module layer0 #(
     logic [dataWidth-1:0] serializerOut;
     logic counterValid;
 
-    logic neuronOutValid;
+    logic [numNeurons-1:0] neuronOutValid;
 
     // Serializer Instance
     inputSerializer #(
@@ -100,7 +100,7 @@ module layer0 #(
                 .neuronValid(layerValid),
 
                 .neuronOut(layerOut[(i+1)*dataWidth-1 -: dataWidth]),
-                .neuronOutValid(neuronOutValid)
+                .neuronOutValid(neuronOutValid[i])
             );
         end
     endgenerate

@@ -49,16 +49,41 @@ R8
 R9
 !i113 1
 R10
-vneuron
+vinputSerializer
 Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z12 !s110 1748974477
+Z12 !s110 1748996993
+!i10b 1
+!s100 7]bkcUY6TbDB:[L3kkGh83
+Ih7zEToLblD90g1?fUiARi0
+R2
+!s105 inputSerializer_sv_unit
+S1
+Z13 dC:/Projects/Neural Network on FPGA/ModelSim/Neuron/ModelSim
+w1748994497
+8../inputSerializer.sv
+F../inputSerializer.sv
+L0 1
+R6
+r1
+!s85 0
+31
+Z14 !s108 1748996993.000000
+!s107 ../inputSerializer.sv|
+!s90 -reportprogress|300|-sv|../inputSerializer.sv|
+!i113 1
+o-sv
+R10
+ninput@serializer
+vneuron
+R11
+R12
 !i10b 1
 !s100 L[61C<1_?YgZCe2lz9=a02
 IoYQnZXc4oTV]?:KKinz_W1
 R2
 !s105 neuron_sv_unit
 S1
-Z13 dC:/Projects/Neural Network on FPGA/ModelSim/Neuron/ModelSim
+R13
 w1748971494
 8../neuron.sv
 F../neuron.sv
@@ -67,7 +92,7 @@ R6
 r1
 !s85 0
 31
-Z14 !s108 1748974477.000000
+R14
 !s107 ../neuron.sv|
 !s90 -reportprogress|300|-sv|../neuron.sv|
 !i113 1
@@ -142,13 +167,13 @@ vtestbench
 R11
 R12
 !i10b 1
-!s100 lJk4e10_dP;7G:;?VE:=T2
-IiF`7K[fNl<`?XfSZD[M5o3
+!s100 PM2zC?;TinQKVW[Kd6O:R2
+IYd^g_[^93akech9ci5Xoi3
 R2
 !s105 testbench_sv_unit
 S1
 R13
-w1748974002
+w1748996992
 8testbench.sv
 Ftestbench.sv
 L0 4
