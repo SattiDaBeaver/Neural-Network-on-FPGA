@@ -27,7 +27,7 @@ module testbench ( );
 
 
     // Weight Memory
-    logic [15:0]       weightMem [0:255];
+    logic [15:0]       weightMem [0:numInputs-1];
 
     initial begin
         $readmemb("weight_L0_N0.mif", weightMem);
@@ -54,29 +54,25 @@ module testbench ( );
         ;   
         #20
 		neuronValid <= 1'b1;
-        // #300
-
-        // reset <= 1'b0;
-        // #10
-        // reset <= 1'b1;
-		// #10 
-        // reset <= 1'b0;
-		// neuronIn <= 16'h8FFF; // Test with a negative input
-		// #10
-		// neuronValid <= 1'b1;
         
 	end // initial
+
+    always_ff @(posedge CLOCK_50) begin
+        if (neuronOutValid)
+            $display("Time=%t | neuronOut = %h", $time, neuronOut);
+    end
+
 	
 	neuron #(
         .layerNumber(0),
         .neuronNumber(0),
         .numWeights(numInputs),
-        .dataWidth(16),
-        .dataIntWidth(6),
-        .dataFracWidth(10),
+        .dataWidth(dataWidth),
+        .dataIntWidth(8),
+        .dataFracWidth(8),
         .weightWidth(16),
-        .weightIntWidth(6),
-        .weightFracWidth(10),
+        .weightIntWidth(8),
+        .weightFracWidth(8),
         .biasFile("bias_L0_N0.mif"),
         .weightFile("weight_L0_N0.mif")
     ) U1 (

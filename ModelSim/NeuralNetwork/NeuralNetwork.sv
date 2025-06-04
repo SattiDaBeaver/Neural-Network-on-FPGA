@@ -1,5 +1,7 @@
 module NeuralNetwork #(
-    parameter dataWidth = 16, numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10
+    parameter   numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10,
+                dataWidth = 16, dataIntWidth = 8, dataFracWidth = 8,
+                weightWidth = 16, weightIntWidth = 8, weightFracWidth = 8
 ) (
     input   logic                               clk,
     input   logic                               reset, 
@@ -22,9 +24,14 @@ logic                           layer1OutValid;
 
 layer0 #(
     .layerNumber(0), 
-    .dataWidth(16), 
-    .numInputs(784), 
-    .numNeurons(16)
+    .numInputs(numInputs), 
+    .numNeurons(L0neurons),
+    .dataWidth(dataWidth), 
+    .dataIntWidth(dataIntWidth),
+    .dataFracWidth(dataFracWidth),
+    .weightWidth(weightWidth),
+    .weightIntWidth(weightIntWidth),
+    .weightFracWidth(weightFracWidth)
 ) layer0_inst (
     // Inputs
     .clk(clk),
@@ -38,9 +45,14 @@ layer0 #(
 
 layer1 #(
     .layerNumber(1), 
-    .dataWidth(16), 
-    .numInputs(16), 
-    .numNeurons(10)
+    .numInputs(L0neurons), 
+    .numNeurons(L1neurons),
+    .dataWidth(dataWidth), 
+    .dataIntWidth(dataIntWidth),
+    .dataFracWidth(dataFracWidth),
+    .weightWidth(weightWidth),
+    .weightIntWidth(weightIntWidth),
+    .weightFracWidth(weightFracWidth)
 ) layer1_inst (
     // Inputs
     .clk(clk),
