@@ -1,5 +1,7 @@
-module layer #(
-    parameter layerNumber = 0, dataWidth = 8, numInputs = 784, numNeurons = 16
+module layer0 #(
+    parameter   layerNumber = 0, numInputs = 784, numNeurons = 16,
+                dataWidth = 16, dataIntWidth = 6, dataFracWidth = 10, 
+                weightWidth = 16, weightIntWidth = 6, weightFracWidth = 10
 ) (
     input   logic                               clk,
     input   logic                               reset, 
@@ -17,13 +19,14 @@ module layer #(
     logic [dataWidth-1:0] serializerOut;
     logic counterValid;
 
-    logic neuronOutValid;
+    logic [numNeurons-1:0] neuronOutValid;
 
     // Serializer Instance
     inputSerializer #(
         .numInputs(numInputs), 
         .dataWidth(dataWidth), 
-        .counterWidth(counterWidth)
+        .counterWidth(counterWidth),
+        .isFirstLayer(1) // This is the first layer
     ) serializer (
         .clk(clk),
         .reset(reset),
@@ -83,6 +86,12 @@ module layer #(
                 .neuronNumber(i),
                 .numWeights(numInputs),
                 .dataWidth(dataWidth),
+                .dataIntWidth(dataIntWidth),
+                .dataFracWidth(dataFracWidth),
+                .weightWidth(weightWidth),
+                .weightIntWidth(weightIntWidth),
+                .weightFracWidth(weightFracWidth),
+                // File paths for weights and biases
                 .weightFile(weightFile),
                 .biasFile(biasFile)
             ) Neuron (
@@ -91,8 +100,8 @@ module layer #(
                 .neuronIn(serializerOut),
                 .neuronValid(layerValid),
 
-                .neuronOut(layerOut[(i+1)*dataWidth-1 -: dataWidth]),
-                .neuronOutValid(neuronOutValid)
+                .neuronOut(layerOut[i*dataWidth +: dataWidth]),
+                .neuronOutValid(neuronOutValid[i])
             );
         end
     endgenerate

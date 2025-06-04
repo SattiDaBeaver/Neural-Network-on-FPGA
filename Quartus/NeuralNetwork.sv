@@ -1,87 +1,82 @@
-`define PRETRAINED
+module NeuralNetwork #(
+    parameter   numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10,
+                dataWidth = 16, dataIntWidth = 8, dataFracWidth = 8,
+                weightWidth = 16, weightIntWidth = 8, weightFracWidth = 8
+) (
+    input   logic                               clk,
+    input   logic                               reset, 
+    input   logic   [dataWidth*numInputs-1:0]   NNin,
+    input   logic                               NNvalid,
 
-module NeuralNetwork(
-	input  logic    [9:0]   SW,
-	input  logic    [1:0]   KEY,
-	input  logic            CLOCK_50,
+    output  logic   [dataWidth*numOutputs-1:0]  NNout,
+    output  logic                               NNoutValid,
+    output  logic   [3:0]                       maxIndex,
+    output  logic   [dataWidth-1:0]             maxValue,
+    output  logic                               maxValid
 
-	output logic    [6:0]   HEX5,
-	output logic    [6:0]   HEX4,
-	output logic    [6:0]   HEX3,
-	output logic    [6:0]   HEX2,
-	output logic    [6:0]   HEX1,
-	output logic    [6:0]   HEX0,
-	output logic    [9:0]   LEDR 
 );
-    // Internal signals
-    logic   [9:0]   dataIn;
-    logic   [5:0]   dataOut;
-    logic   [7:0]   addr;
-    logic           readEn;
-    logic           writeEn;
 
-    layer layer1 ();
+logic [dataWidth*L0neurons-1:0] layer0Out;
+logic                           layer0OutValid;
+logic [dataWidth*L1neurons-1:0] layer1Out;
+logic                           layer1OutValid;
 
-    // Neuron Test
-    neuron #(
-        .layerNumber(0),
-        .neuronNumber(0),
-        .numWeights(16),
-        .dataWidth(8),
-        .weightIntWidth(4),
-        .biasFile("bias_L0_N0.mif"),
-        .weightFile("weight_L0_N0.mif")
-    ) Neuron (
-        .clk(CLOCK_50),
-        .reset(~KEY[0]),
-        .neuronIn(SW[7:0]),
-        .neuronValid(~KEY[1]),
-        .weightValid(),
-        .weightWriteEn(),
-        .biasWriteEn(),
-        .weightData(32'h0),
-        .biasData(32'h0),
-        .config_layer_number(32'h0),
-        .config_neuron_number(32'h0),
-        .neuronOut(LEDR[7:0]),
-        .neuronOutValid(LEDR[9])
-    );
 
-    // // Multiplier Test
-    // always_comb begin
-    //     LEDR[9:0] = $signed(SW[4:0]) * $signed(SW[9:5]);
-    // end
+layer0 #(
+    .layerNumber(0), 
+    .numInputs(numInputs), 
+    .numNeurons(L0neurons),
+    .dataWidth(dataWidth), 
+    .dataIntWidth(dataIntWidth),
+    .dataFracWidth(dataFracWidth),
+    .weightWidth(weightWidth),
+    .weightIntWidth(weightIntWidth),
+    .weightFracWidth(weightFracWidth)
+) layer0_inst (
+    // Inputs
+    .clk(clk),
+    .reset(reset),
+    .layerIn(NNin),
+    .layerValid(NNvalid),
+    // Outputs
+    .layerOut(layer0Out),
+    .layerOutValid(layer0OutValid)
+);
 
-    // assign readEn = ~KEY[0];
-    // assign writeEn = ~KEY[1];
-    // // assign dataIn = SW[9:0];
-    // assign addr = SW[7:0];
-    // assign LEDR[7:0] = dataOut;
+layer1 #(
+    .layerNumber(1), 
+    .numInputs(L0neurons), 
+    .numNeurons(L1neurons),
+    .dataWidth(dataWidth), 
+    .dataIntWidth(dataIntWidth),
+    .dataFracWidth(dataFracWidth),
+    .weightWidth(weightWidth),
+    .weightIntWidth(weightIntWidth),
+    .weightFracWidth(weightFracWidth)
+) layer1_inst (
+    // Inputs
+    .clk(clk),
+    .reset(reset),
+    .layerIn(layer0Out),
+    .layerValid(layer0OutValid),
+    // Outputs
+    .layerOut(NNout),
+    .layerOutValid(NNoutValid)
+);
 
-    // // Instantiate the weights module
-
-    // weights #(
-    //     .numWeights(256),
-    //     .neuronNumber(0),
-    //     .layerNumber(1),
-    //     .addressWidth(8),
-    //     .dataWidth(8),
-    //     .weightFile("w_l0_n0.mif")
-    // ) Weight (
-    //     .clk(CLOCK_50),
-    //     .readEn(readEn),
-    //     .writeEn(writeEn),
-    //     .addr(addr),
-    //     .dataIn(dataIn),
-    //     .dataOut(dataOut)
-    // );
-
-    // reLU #(
-    //     .sumWidth(10),
-    //     .dataWidth(6)
-    // ) ReLU (
-    //     .dataIn(dataIn),
-    //     .dataOut(dataOut)
-    // );
-
-endmodule: NeuralNetwork
+hardmax #(
+    .dataWidth(dataWidth), 
+    .numOutputs(10)
+) hardmax_inst (
+    // Inputs
+    .clk(clk),
+    .reset(reset),
+    .dataIn(NNout),
+    .enable(NNoutValid),
+    // Outputs
+    .maxIndex(maxIndex),
+    .maxValue(maxValue),
+    .maxValid(maxValid)
+);
+    
+endmodule

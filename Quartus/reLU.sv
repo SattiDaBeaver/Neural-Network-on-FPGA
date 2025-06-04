@@ -1,17 +1,19 @@
 module reLU #(
-    parameter sumWidth = 16, dataWidth = 8
+    parameter   sumWidth = 32, sumIntWidth = 15, sumFracWidth = 17,
+                dataWidth = 16, dataIntWidth = 6, dataFracWidth = 10,
+                weightWidth = 16, weightIntWidth = 6, weightFracWidth = 10
 )(
     input   logic   [sumWidth-1:0]     dataIn,
     output  logic   [dataWidth-1:0]     dataOut
 );
 
     always_comb begin
-        if (dataIn[sumWidth-1] == 0) begin
-            if (dataOut >= 8'h7F) begin
-                dataOut = 8'h7F;
+        if (dataIn[sumWidth-1] == 0) begin // positive input
+            if (dataIn >= {1'b0, {(dataIntWidth + sumFracWidth - 1){1'b1}}}) begin
+                dataOut = {1'b0, {(dataWidth-1){1'b1}}}; // Saturate to Max
             end
             else begin
-                dataOut = dataIn[dataWidth-1:0];
+                dataOut = dataIn[(dataWidth + weightFracWidth - 1) : weightFracWidth];
             end
         end 
         else begin

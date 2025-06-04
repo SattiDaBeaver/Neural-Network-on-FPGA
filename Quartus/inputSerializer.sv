@@ -1,5 +1,5 @@
 module inputSerializer #(
-    parameter numInputs = 16, dataWidth = 8, counterWidth = $clog2(numInputs+1)
+    parameter numInputs = 16, dataWidth = 16, counterWidth = $clog2(numInputs), isFirstLayer = 0
 ) (
     input    logic                              clk,
     input    logic                              reset,
@@ -41,12 +41,26 @@ module inputSerializer #(
     end
 
     // Output Data Logic
-    always_comb begin
-        if (!counterValid && enable && delay) begin
-            serializerOut = serializerIn[(counterOut + 1) * dataWidth - 1 -: dataWidth]; // Extract the next input data
+    logic [dataWidth-1:0] serializerOut_reg;
+
+    generate
+        if (isFirstLayer) begin
+            always_comb begin
+                if (!counterValid && enable && delay)
+                    serializerOut_reg = serializerIn[(numInputs - 1 - counterOut) * dataWidth +: dataWidth];
+                else
+                    serializerOut_reg = '0;
+            end
         end else begin
-            serializerOut = '0; // Default value when not valid
+            always_comb begin
+                if (!counterValid && enable && delay)
+                    serializerOut_reg = serializerIn[counterOut * dataWidth +: dataWidth];
+                else
+                    serializerOut_reg = '0;
+            end
         end
-    end
-    
+    endgenerate
+
+    assign serializerOut = serializerOut_reg;
+
 endmodule
