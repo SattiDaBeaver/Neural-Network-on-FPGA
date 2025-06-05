@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at top.sv(13): object "HEX0" differs only in case from object "hex0" in the same scope File: C:/Projects/Neural Network on FPGA/Quartus/top.sv Line: 13

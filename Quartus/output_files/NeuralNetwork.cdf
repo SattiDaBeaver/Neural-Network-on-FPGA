@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(10M50DAF484) Path("C:/Projects/Neural Network on FPGA/NeuralNetwork_Quartus/output_files/") File("NeuralNetwork.sof") MfrSpec(OpMask(1));
+		Device PartName(10M50DAF484) Path("C:/Projects/Neural Network on FPGA/Quartus/output_files/") File("NeuralNetwork.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

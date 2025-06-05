@@ -13,21 +13,27 @@ module top (
 	output logic    [6:0]   HEX0,
 	output logic    [9:0]   LEDR 
 );
+
+    // Neural Network Parameters
+    parameter   dataWidth = 16, dataIntWidth = 8, dataFracWidth = 8;
+    parameter   weightWidth = 16, weightIntWidth = 8, weightFracWidth = 8;
+    parameter   numInputs = 784, numOutputs = 10, L0neurons = 16, L1neurons = 10;
+
+    // Input Parameters
+    parameter   inputMemSize = 2;
+    parameter   addressWidth = $clog2(inputMemSize);
+
     // Internal signals
-    logic   [5:0]   dataIn;
-    logic   [5:0]   dataOut;
-    logic   [7:0]   addr;
-    logic           readEn;
-    logic           writeEn;
+    logic   start;
 
-
-	parameter CLOCK_PERIOD = 10;
-
-	logic CLOCK_50;
+    // Memory
+    logic   [dataWidth * numInputs - 1:0]   mem         [0:inputMemSize - 1];
+    logic   [addressWidth - 1:0]            addr;
 
 	// Layer Test
 	logic 				reset;
 	logic [784*16-1:0] 	NNin;
+
 	logic [10*16-1:0] 	NNout;
 	logic 			    NNvalid;
 	logic 			    NNoutValid;
@@ -35,22 +41,46 @@ module top (
     logic [15:0]        maxValue;
     logic               maxValid;
 
+    // Instantiate the memory
+    initial begin
+        $readmemh("input_data.txt", mem);
+    end
+
+    assign start = ~KEY[0];
+    assign reset = ~KEY[1];
+    assign addr  = SW[9:0];
+	 assign NNin = mem[addr];
+
+    always_ff @ (posedge CLOCK_50) begin
+        if (reset) begin
+            NNvalid <= 1'b0;
+        end
+        else if (NNoutValid) begin
+            NNvalid <= 1'b0;
+        end 
+        else if (start) begin
+            NNvalid <= 1'b1;
+        end
+
+    end
+
     NeuralNetwork #(
-        .numInputs(784), 
-        .numOutputs(10), 
-        .L0neurons(16), 
-        .L1neurons(10),
-        .dataWidth(16), 
-        .dataIntWidth(8),
-        .dataFracWidth(8),
-        .weightWidth(16),
-        .weightIntWidth(8),
-        .weightFracWidth(8)
+        .numInputs(numInputs), 
+        .numOutputs(numOutputs), 
+        .L0neurons(L0neurons), 
+        .L1neurons(L1neurons),
+        .dataWidth(dataWidth), 
+        .dataIntWidth(dataIntWidth),
+        .dataFracWidth(dataFracWidth),
+        .weightWidth(weightWidth),
+        .weightIntWidth(weightIntWidth),
+        .weightFracWidth(weightFracWidth)
     ) nn (
         .clk(CLOCK_50),
         .reset(reset),
         .NNin(NNin),
         .NNvalid(NNvalid),
+
         .NNout(NNout),
         .NNoutValid(NNoutValid),
         .maxIndex(maxIndex),
@@ -58,4 +88,50 @@ module top (
         .maxValue(maxValue)
     );
 
-endmodule
+    hex7seg hex0 (
+        .hex(maxIndex),
+        .display(HEX0)
+    );
+
+endmodule: top
+
+
+module hex7seg (hex, display);
+    input [3:0] hex;
+    output [6:0] display;
+
+    reg [6:0] display;
+
+    /*
+     *       0  
+     *      ---  
+     *     |   |
+     *    5|   |1
+     *     | 6 |
+     *      ---  
+     *     |   |
+     *    4|   |2
+     *     |   |
+     *      ---  
+     *       3  
+     */
+    always @ (hex)
+        case (hex)
+            4'h0: display = 7'b1000000;
+            4'h1: display = 7'b1111001;
+            4'h2: display = 7'b0100100;
+            4'h3: display = 7'b0110000;
+            4'h4: display = 7'b0011001;
+            4'h5: display = 7'b0010010;
+            4'h6: display = 7'b0000010;
+            4'h7: display = 7'b1111000;
+            4'h8: display = 7'b0000000;
+            4'h9: display = 7'b0011000;
+            4'hA: display = 7'b0001000;
+            4'hB: display = 7'b0000011;
+            4'hC: display = 7'b1000110;
+            4'hD: display = 7'b0100001;
+            4'hE: display = 7'b0000110;
+            4'hF: display = 7'b0001110;
+        endcase
+endmodule: hex7seg

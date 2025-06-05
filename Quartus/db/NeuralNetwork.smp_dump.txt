@@ -1,117 +1,180 @@
 
-State Machine - |NeuralNetwork|neuron:Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[9].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[15].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[8].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[14].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[7].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[13].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[6].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[12].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[5].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[11].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[4].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[10].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[3].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[9].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[2].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[8].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[1].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[7].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[0].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[6].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[15].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[5].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[14].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[4].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[13].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[3].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[12].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[2].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[11].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[1].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[10].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
 state.DELAY_STATE 0 1 0 1 
 state.OUTPUT_STATE 1 0 0 1 
 
-State Machine - |NeuralNetwork|layer:layer1|neuron:gen_neurons[0].Neuron|state
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[9].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[8].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[7].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[6].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[5].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[4].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[3].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[2].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[1].Neuron|state
+Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
+state.IDLE 0 0 0 0 
+state.MAC_STATE 0 0 1 1 
+state.DELAY_STATE 0 1 0 1 
+state.OUTPUT_STATE 1 0 0 1 
+
+State Machine - |top|NeuralNetwork:nn|layer0:layer0_inst|neuron:gen_neurons[0].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
 state.MAC_STATE 0 0 1 1 
