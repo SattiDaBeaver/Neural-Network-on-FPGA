@@ -9,6 +9,7 @@ MCUFRIEND_kbv tft;       // hard-wired for UNO shields anyway.
 #include <TouchScreen.h>
 
 const int XP=8,XM=A2,YP=A3,YM=9; //320x480 ID=0x9486
+// Calibration
 const int TS_LEFT=130,TS_RT=903,TS_TOP=954,TS_BOT=95;
 
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
@@ -53,6 +54,7 @@ uint8_t Orientation = 0;    //PORTRAIT
 #define PIXEL_SIZE 11 // Size of each pixel in the display
 
 #define CLEAR_HEIGHT 60
+#define PUSH_HEIGHT 60
 
 // Internal Buffer
 uint8_t buffer[MNIST_WIDTH * MNIST_HEIGHT]; // 28x28 pixels, 16 bits per pixel
@@ -65,9 +67,11 @@ uint16_t xpos, ypos;  //screen coordinates
 void TFTsetup(void);
 void initializeBuffer(void);
 void drawBuffer(void);
+void drawFullBuffer(void);
 void getPosition(void);
 void clearScreenBuffer(void);
 void drawPixelMNIST(void);
+void shiftBuffer(void);
 
 void setup(void){
     pinMode(SHIFT_CLK, OUTPUT);
@@ -77,8 +81,6 @@ void setup(void){
     TFTsetup(); // Initialize the TFT display
     clearScreenBuffer();
     drawBuffer(); // Draw the initial buffer on the display
-
-    delay(1000); // Wait for 1 seconds to see the initial state
 }
 
 void loop()
@@ -97,18 +99,26 @@ void loop()
 
             // are we in drawing area ?
             if ((ypos > Y_PADDING) && (ypos < (Y_PADDING + PIXEL_SIZE * MNIST_HEIGHT))) {
+                
                 drawPixelMNIST();
             }
-            // are we in erase area ?
-            // Plain Touch panels use bottom 10 pixels e.g. > h - 10
-            // Touch panels with icon area e.g. > h - 0
+
+            // Push Buffer Button
+            if ((ypos > SCREEN_HEIGHT - PUSH_HEIGHT - CLEAR_HEIGHT) && (ypos < SCREEN_HEIGHT - CLEAR_HEIGHT)) {
+                tft.setCursor(30, 200);
+                tft.setTextColor(GREY, RED);
+                tft.setTextSize(3);
+                tft.print("Pushing Buffer");
+                shiftBuffer();
+                drawFullBuffer();
+            }
+
+            // Clear Screen Button
             if (ypos > SCREEN_HEIGHT - CLEAR_HEIGHT) {
-                // press the bottom of the screen to erase
                 clearScreenBuffer();
             }
         }
     }
-
     drawBuffer();
 }
 
@@ -145,6 +155,17 @@ void drawBuffer(void) {
     }
 }
 
+void drawFullBuffer(void){
+    for (int y = 0; y < MNIST_HEIGHT; y++) {
+        for (int x = 0; x < MNIST_WIDTH; x++) {
+            uint16_t color = (buffer[y * MNIST_WIDTH + x] == 0xFF) ? WHITE : BLACK;
+            uint16_t xScreen = x * PIXEL_SIZE + X_PADDING;
+            uint16_t yScreen = y * PIXEL_SIZE + Y_PADDING; 
+            tft.fillRect(xScreen, yScreen, PIXEL_SIZE, PIXEL_SIZE, color);
+        }
+    }
+}
+
 void getPosition(void){
     switch (Orientation) {
         case 0:
@@ -170,8 +191,16 @@ void clearScreenBuffer(void){
     initializeBuffer();
     tft.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, GREY);
     tft.fillRect(X_PADDING, Y_PADDING, MNIST_WIDTH * PIXEL_SIZE, MNIST_HEIGHT * PIXEL_SIZE, BLACK);
-    tft.fillRect(0, SCREEN_HEIGHT - CLEAR_HEIGHT, SCREEN_WIDTH, CLEAR_HEIGHT, CYAN);
 
+    // Push Buffer Button
+    tft.fillRect(0, SCREEN_HEIGHT - CLEAR_HEIGHT - PUSH_HEIGHT, SCREEN_WIDTH, PUSH_HEIGHT, YELLOW);
+    tft.setCursor(28, SCREEN_HEIGHT - CLEAR_HEIGHT - PUSH_HEIGHT + 15);
+    tft.setTextColor(BLACK);
+    tft.setTextSize(4);
+    tft.print("Push Buffer");
+
+    // Clear Screen Button
+    tft.fillRect(0, SCREEN_HEIGHT - CLEAR_HEIGHT, SCREEN_WIDTH, CLEAR_HEIGHT, CYAN);
     tft.setCursor(17, SCREEN_HEIGHT - CLEAR_HEIGHT + 15);
     tft.setTextColor(BLACK);
     tft.setTextSize(4);
@@ -198,6 +227,16 @@ void drawPixelMNIST(void){
             }
         }
     } 
+}
+
+void shiftBuffer(void){
+    for (int i = 0; i < MNIST_PIXELS; i++){
+        // A pixel is either a 1 or 0
+        // in Q8.8: either 0x10 or 0x00
+        uint8_t pixelBits = (buffer[i] == 0xFF) ? 0x1 : 0x0;
+        shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
+        shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, pixelBits);
+    }
 }
 
 
