@@ -51,14 +51,14 @@ R9
 R10
 vinputCounter
 Z11 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z12 !s110 1748308530
+!s110 1748308530
 !i10b 1
 !s100 A08bWEGl;]fjkB7mYf@1A1
 IW_3nOI0aneEAL<n^5RlZe2
 R2
 !s105 inputCounter_sv_unit
 S1
-Z13 dC:/Projects/Neural Network on FPGA/ModelSim/inputCounter/ModelSim
+dC:/Projects/Neural Network on FPGA/ModelSim/inputCounter/ModelSim
 w1748308525
 8../inputCounter.sv
 F../inputCounter.sv
@@ -67,13 +67,38 @@ R6
 r1
 !s85 0
 31
-Z14 !s108 1748308530.000000
+!s108 1748308530.000000
 !s107 ../inputCounter.sv|
 !s90 -reportprogress|300|-sv|../inputCounter.sv|
 !i113 1
 o-sv
 R10
 ninput@counter
+vinputShiftRegister
+R11
+Z12 !s110 1749246021
+!i10b 1
+!s100 >lme1Q]2eSP08PC]<U=Y70
+IJffDSi4LX6oBQGJZg`o5G3
+R2
+!s105 inputShiftRegister_sv_unit
+S1
+Z13 dC:/Projects/Neural Network on FPGA/ModelSim/InputShiftRegister/ModelSim
+w1749245771
+8../inputShiftRegister.sv
+F../inputShiftRegister.sv
+L0 1
+R6
+r1
+!s85 0
+31
+Z14 !s108 1749246021.000000
+!s107 ../inputShiftRegister.sv|
+!s90 -reportprogress|300|-sv|../inputShiftRegister.sv|
+!i113 1
+o-sv
+R10
+ninput@shift@register
 vneuron
 R11
 Z15 !s110 1748234659
@@ -167,13 +192,13 @@ vtestbench
 R11
 R12
 !i10b 1
-!s100 nO?o41YjFN`6]Y?z9>]]81
-ImE^6Igej^<`f0BL2Je:WG0
+!s100 9K4d<eAjg>B<EX3m>92i11
+IlAHFhmJ;Pj44]W[a34]b71
 R2
 !s105 testbench_sv_unit
 S1
 R13
-w1748308396
+w1749245990
 8testbench.sv
 Ftestbench.sv
 L0 4

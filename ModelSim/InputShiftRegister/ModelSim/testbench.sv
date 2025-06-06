@@ -4,77 +4,89 @@
 module testbench ( );
 
 	parameter CLOCK_PERIOD = 10;
+    parameter serialClockPeriod = 15;
 
 	logic CLOCK_50;
-    logic [0:0] KEY;
-    logic [6:0] HEX0;
+    logic serialClock;
 
-	// Neuron Test
+	// Shift Register Test
 	logic 				reset;
-	logic [7:0] 		neuronIn;
-	logic [7:0] 		neuronOut;
-	logic 				neuronValid;
-	logic 				neuronOutValid;
-
-    // Input Counter
-    logic [3:0]       inputCounterOut;
-    logic             inputCounterValid;
-
-    // Weight Memory
-    logic [7:0]       weightMem [0:255];
+    logic               pushBuffer;
+	logic               serialData;
+    logic [31:0]        dataOut;
 
 	initial begin
         CLOCK_50 <= 1'b0;
+        serialClock <= 1'b0;
 	end // initial
 	always @ (*)
 	begin : Clock_Generator
 		#((CLOCK_PERIOD) / 2) CLOCK_50 <= ~CLOCK_50;
 	end
+    always @ (*)
+	begin : Clock_Generator_2
+		#((serialClockPeriod) / 2) serialClock <= ~serialClock;
+	end
+    
 	
 	initial begin
+        pushBuffer <= 1'b0;
         reset <= 1'b0;
         #10
         reset <= 1'b1;
-		#10 
+		#20 
 		reset <= 1'b0;
-		neuronIn <= 8'h02;
-		#10
-		neuronValid <= 1'b1;
+		serialData <= 1'b0;
+		#15
+		serialData <= 1'b1;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b0;
+		#15
+        serialData <= 1'b1;
+		#15
+        serialData <= 1'b1;
+		#15
+        pushBuffer <= 1'b1;
+        #10
+        pushBuffer <= 1'b0;
 	end // initial
 
-    inputCounter #(
-        .numInputs(16), 
-        .counterWidth()
+    inputShiftRegister # (
+        .numInputs(8),
+        .dataWidth(4)
     ) U1 (
-        .clk(CLOCK_50),
         .reset(reset),
-        .enable(neuronValid),
-        .counterOut(inputCounterOut),
-        .counterValid(inputCounterValid)
-    );
-	
-	// neuron #(
-    //     .layerNumber(0),
-    //     .neuronNumber(0),
-    //     .numWeights(16),
-    //     .dataWidth(8),
-    //     .weightIntWidth(4),
-    //     .biasFile("b_l0_n0.mif"),
-    //     .weightFile("w_l0_n0.mif")
-    // ) U1 (
-    //     .clk(CLOCK_50),
-    //     .reset(reset),
-    //     .neuronIn(neuronIn),
-    //     .neuronValid(neuronValid),
-    //     .weightValid(),
-    //     .weightWriteEn(),
-    //     .biasWriteEn(),
-    //     .weightData(32'h0),
-    //     .biasData(32'h0),
-    //     .config_layer_number(32'h0),
-    //     .config_neuron_number(32'h0),
-    //     .neuronOut(neuronOut),
-    //     .neuronOutValid(neuronOutValid)
-    // );
+        .CLOCK_50(CLOCK_50),
+        .serialClock(serialClock),
+        .serialData(serialData),
+        .pushBuffer(pushBuffer),
 
+        .dataOut(dataOut)
+    );
 endmodule

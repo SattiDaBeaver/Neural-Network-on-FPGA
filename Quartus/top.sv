@@ -11,7 +11,9 @@ module top (
 	output logic    [6:0]   HEX2,
 	output logic    [6:0]   HEX1,
 	output logic    [6:0]   HEX0,
-	output logic    [9:0]   LEDR 
+	output logic    [9:0]   LEDR, 
+
+    input  logic    [15:0]  ARDUINO_IO    
 );
 
     // Neural Network Parameters
@@ -26,12 +28,9 @@ module top (
     // Internal signals
     logic   start;
 
-    // Memory
-    logic   [dataWidth * numInputs - 1:0]   mem         [0:inputMemSize - 1];
-    logic   [addressWidth - 1:0]            addr;
-
 	// Layer Test
 	logic 				reset;
+    logic               NNreset;
 	logic [784*16-1:0] 	NNin;
 
 	logic [10*16-1:0] 	NNout;
@@ -41,28 +40,46 @@ module top (
     logic [15:0]        maxValue;
     logic               maxValid;
 
-    // Instantiate the memory
-    initial begin
-        $readmemh("input_data.txt", mem);
-    end
+    // Input Shift Register
+    logic               serialClock;
+    logic               serialData;
+    logic               pushBuffer;
 
-    assign start = ~KEY[0];
+    assign serialClock = ARDUINO_IO[0];
+    assign serialData = ARDUINO_IO[1];
+
+    assign NNreset = reset | pushBuffer;
+
     assign reset = ~KEY[1];
     assign addr  = SW[9:0];
-	 assign NNin = mem[addr];
 
     always_ff @ (posedge CLOCK_50) begin
         if (reset) begin
             NNvalid <= 1'b0;
+            pushBuffer <= 1'b1;
         end
         else if (NNoutValid) begin
             NNvalid <= 1'b0;
+            pushBuffer <= 1'b1;
         end 
-        else if (start) begin
+        else begin
             NNvalid <= 1'b1;
+            pushBuffer <= 1'b0;
         end
-
     end
+
+    inputShiftRegister # (
+        .numInputs(numInputs),
+        .dataWidth(dataWidth)
+    ) shiftReg (
+        .reset(reset),
+        .CLOCK_50(CLOCK_50),
+        .serialClock(serialClock),
+        .serialData(serialData),
+        .pushBuffer(pushBuffer),
+
+        .dataOut(NNin)
+    );
 
     NeuralNetwork #(
         .numInputs(numInputs), 
@@ -77,7 +94,7 @@ module top (
         .weightFracWidth(weightFracWidth)
     ) nn (
         .clk(CLOCK_50),
-        .reset(reset),
+        .reset(NNreset),
         .NNin(NNin),
         .NNvalid(NNvalid),
 
@@ -87,6 +104,12 @@ module top (
         .maxValid(maxValid),
         .maxValue(maxValue)
     );
+
+    assign HEX1 = 7'b00;
+    assign HEX2 = 7'b00;
+    assign HEX3 = 7'b00;
+    assign HEX4 = 7'b00;
+    assign HEX5 = 7'b00;
 
     hex7seg hex0 (
         .hex(maxIndex),

@@ -1,18 +1,19 @@
 onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate -label CLOCK_50 -radix binary /testbench/CLOCK_50
+add wave -noupdate -label SCK -radix binary /testbench/serialClock
 add wave -noupdate -label Reset -radix binary /testbench/reset
 
 add wave -noupdate -divider Inputs
-add wave -noupdate -label neuronValid -radix hexadecimal /testbench/neuronValid
+add wave -noupdate -label pushBuffer -radix hexadecimal /testbench/pushBuffer
+add wave -noupdate -label serialData -radix hexadecimal /testbench/serialData
+
 
 add wave -noupdate -divider "Internal Nets"
-
-
+add wave -noupdate -label internalRegister -radix hexadecimal /testbench/U1/internalRegister
 
 add wave -noupdate -divider Outputs
-add wave -noupdate -label counterOut -radix hexadecimal /testbench/inputCounterOut
-add wave -noupdate -label counterValid -radix hexadecimal /testbench/inputCounterValid
+add wave -noupdate -label dataOut -radix hexadecimal /testbench/dataOut
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {10000 ps} 0}
@@ -31,4 +32,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {300 ns}
+WaveRestoreZoom {0 ps} {400 ns}

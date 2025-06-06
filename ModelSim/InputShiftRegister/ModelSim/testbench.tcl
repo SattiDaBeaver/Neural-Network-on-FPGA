@@ -5,7 +5,7 @@ quit -sim
 vlib work;
 
 # compile the Verilog source code in the parent folder
-vlog -sv ../inputCounter.sv
+vlog -sv ../inputShiftRegister.sv
 
 # compile the Verilog code of the testbench
 vlog -sv *.sv
@@ -17,4 +17,4 @@ vsim work.testbench -Lf 220model -Lf altera_mf_ver -Lf verilog
 do wave.do
 
 # advance the simulation the desired amount of time
-run 300 ns
+run 400 ns

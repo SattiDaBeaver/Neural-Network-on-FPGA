@@ -235,7 +235,7 @@ void shiftBuffer(void){
         // A pixel is either a 1 or 0
         // in Q8.8: either 0x10 or 0x00
         #ifdef REVERSE_INPUT    // Left Shift : First input at MSB
-            uint8_t pixelBits = (buffer[i] == 0xFF) ? 0x1 : 0x0;
+            uint8_t pixelBits = (buffer[MNIST_PIXELS - i - 1] == 0xFF) ? 0x1 : 0x0;
             shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, pixelBits);
             shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
         #else                   // Right Shift : First input at LSB
