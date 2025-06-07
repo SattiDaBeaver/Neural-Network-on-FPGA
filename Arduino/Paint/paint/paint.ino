@@ -15,8 +15,9 @@ const int TS_LEFT=130,TS_RT=903,TS_TOP=954,TS_BOT=95;
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 TSPoint tp;
 
-#define MINPRESSURE 350
-#define MAXPRESSURE 1000
+#define MINPRESSURE 200
+#define MIDPRESSURE 550
+#define MAXPRESSURE 1200
 #define REVERSE_INPUT
 
 int16_t BOXSIZE;
@@ -75,6 +76,7 @@ void getPosition(void);
 void clearScreenBuffer(void);
 void setPixelBit(uint16_t index);
 void drawPixelMNIST(void);
+void drawSmallPixelMNIST(void);
 void shiftBuffer(void);
 
 void setup(void){
@@ -103,8 +105,12 @@ void loop()
 
             // are we in drawing area ?
             if ((ypos > Y_PADDING) && (ypos < (Y_PADDING + PIXEL_SIZE * MNIST_HEIGHT))) {
-                
-                drawPixelMNIST();
+                if (tp.z < MIDPRESSURE){
+                    drawPixelMNIST();
+                }
+                else {
+                    drawSmallPixelMNIST();
+                }
             }
 
             // Push Buffer Button
@@ -248,6 +254,13 @@ void drawPixelMNIST(void) {
             setPixelBit(pixel[i]);
         }
     }
+}
+
+void drawSmallPixelMNIST(void){
+    uint8_t xbuf = (xpos - X_PADDING) / PIXEL_SIZE;
+    uint8_t ybuf = (ypos - Y_PADDING) / PIXEL_SIZE;
+
+    setPixelBit(ybuf * MNIST_WIDTH + xbuf);
 }
 
 void shiftBuffer(void){

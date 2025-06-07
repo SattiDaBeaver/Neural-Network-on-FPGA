@@ -22,7 +22,7 @@ def float_to_q6_10_hex(val):
 (_, _), (x_test, y_test) = mnist.load_data()
 
 # Parameters
-num_images = 8  # Choose how many images
+num_images = 10  # Choose how many images
 
 with open("flattened_inputs_hex.txt", "w") as data_file, open("labels.txt", "w") as label_file:
     for idx in range(num_images):

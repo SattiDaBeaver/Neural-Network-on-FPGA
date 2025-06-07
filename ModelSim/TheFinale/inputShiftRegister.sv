@@ -1,15 +1,13 @@
 module inputShiftRegister #(
-    parameter numInputs = 784, dataWidth = 16
+    parameter numInputs = 784, dataWidth = 16, dataFracWidth = 8, dataIntWidth = 8
 ) ( 
     input  logic                                reset,
-    input  logic                                CLOCK_50,
     input  logic                                serialClock,
     input  logic                                serialData,
-    input  logic                                pushBuffer,
 
     output  logic [numInputs * dataWidth - 1:0]  dataOut
 );
-    logic [numInputs * dataWidth - 1:0]     internalRegister;
+    logic [numInputs - 1:0]     internalRegister;
     
 
     always_ff @(posedge serialClock or posedge reset) begin
@@ -17,19 +15,17 @@ module inputShiftRegister #(
             internalRegister <= 0;
         end
         else begin
-            internalRegister <= {internalRegister[numInputs * dataWidth - 2 : 0], serialData};
+            internalRegister <= {internalRegister[numInputs - 2 : 0], serialData};
         end
     end
 
-    always_ff @(posedge CLOCK_50) begin
-        if (reset) begin
-            dataOut <= 0;
+    integer i;
+    always_comb begin   // Make output signed fixed point Qm.n format
+        for (i = 0; i < numInputs; i = i + 1) begin
+            if (internalRegister[i])
+                dataOut[dataWidth*i +: dataWidth] = {{(dataIntWidth-1){1'b0}}, 1'b1, {dataFracWidth{1'b0}}}; // 1.0
+            else
+                dataOut[dataWidth*i +: dataWidth] = '0; // 0.0
         end
-        else begin
-            if (pushBuffer == 1'b1) begin
-                dataOut <= internalRegister;
-            end
-        end 
     end
-    
 endmodule
