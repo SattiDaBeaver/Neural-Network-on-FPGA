@@ -57,8 +57,10 @@ uint8_t Orientation = 0;    //PORTRAIT
 #define CLEAR_HEIGHT 60
 #define PUSH_HEIGHT 60
 
+#define NUM_BYTES 98 // 98 * 8 = 784
+
 // Internal Buffer
-uint8_t buffer[MNIST_WIDTH * MNIST_HEIGHT]; // 28x28 pixels, 16 bits per pixel
+uint8_t buffer[NUM_BYTES]; // 28x28 pixels, 1 bit per pixel
 // uint8_t pixelSize = SCREEN_WIDTH / MNIST_WIDTH; // Size of each pixel in the display
 
 // Global Variables
@@ -71,6 +73,7 @@ void drawBuffer(void);
 void drawFullBuffer(void);
 void getPosition(void);
 void clearScreenBuffer(void);
+void setPixelBit(uint16_t index);
 void drawPixelMNIST(void);
 void shiftBuffer(void);
 
@@ -133,20 +136,20 @@ void TFTsetup(void){
 }
 
 void initializeBuffer(void) {
-    for (int i = 0; i < MNIST_PIXELS; i++) {
-        // if (i / MNIST_WIDTH == i % MNIST_WIDTH) {
-        //     buffer[i] = WHITE & 0xFF; // Initialize diagonal pixels with white
-        // } else {
-        //     buffer[i] = BLACK & 0xFF; // Initialize non-diagonal pixels with black
-        // }
-        buffer[i] = BLACK & 0xFF;
+    for (int i = 0; i < NUM_BYTES; i++) {
+        buffer[i] = 0x00;
     }
 }
 
 void drawBuffer(void) {
     for (int y = 0; y < MNIST_HEIGHT; y++) {
         for (int x = 0; x < MNIST_WIDTH; x++) {
-            uint16_t color = (buffer[y * MNIST_WIDTH + x] == 0xFF) ? WHITE : BLACK;
+            uint16_t index = y * MNIST_WIDTH + x;
+            uint8_t byteIndex = index / 8;
+            uint8_t bitIndex  = index % 8;
+
+            uint16_t color = ((buffer[byteIndex] >> bitIndex) & 1) ? WHITE : BLACK;
+
             uint16_t xScreen = x * PIXEL_SIZE + X_PADDING;
             uint16_t yScreen = y * PIXEL_SIZE + Y_PADDING; 
             if ((color != BLACK) && (tft.readPixel(xScreen + 1, yScreen + 1) == BLACK)){
@@ -159,7 +162,12 @@ void drawBuffer(void) {
 void drawFullBuffer(void){
     for (int y = 0; y < MNIST_HEIGHT; y++) {
         for (int x = 0; x < MNIST_WIDTH; x++) {
-            uint16_t color = (buffer[y * MNIST_WIDTH + x] == 0xFF) ? WHITE : BLACK;
+            uint16_t index = y * MNIST_WIDTH + x;
+            uint8_t byteIndex = index / 8;
+            uint8_t bitIndex  = index % 8;
+
+            uint16_t color = ((buffer[byteIndex] >> bitIndex) & 1) ? WHITE : BLACK;
+
             uint16_t xScreen = x * PIXEL_SIZE + X_PADDING;
             uint16_t yScreen = y * PIXEL_SIZE + Y_PADDING; 
             tft.fillRect(xScreen, yScreen, PIXEL_SIZE, PIXEL_SIZE, color);
@@ -209,40 +217,54 @@ void clearScreenBuffer(void){
 
 }
 
-void drawPixelMNIST(void){
+// Helper to set a bit in the buffer
+void setPixelBit(uint16_t index) {
+    if (index >= MNIST_PIXELS) return;
+    uint8_t byteIndex = index / 8;
+    uint8_t bitIndex  = index % 8;
+    buffer[byteIndex] |= (1 << bitIndex);
+}
+
+void drawPixelMNIST(void) {
     uint8_t xbuf = (xpos - X_PADDING) / PIXEL_SIZE;
     uint8_t ybuf = (ypos - Y_PADDING) / PIXEL_SIZE;
-    uint16_t pixel[5] = {ybuf * MNIST_WIDTH + xbuf,         // Central Pixel
-                        (ybuf - 1) * MNIST_WIDTH + xbuf,    // Top Pixel
-                        (ybuf + 1) * MNIST_WIDTH + xbuf,    // Bottom Pixel
-                        ybuf * MNIST_WIDTH + (xbuf - 1),    // Left Pixel
-                        ybuf * MNIST_WIDTH + (xbuf + 1)};   // Right Pixel
+    
+    // Pixel indices in flat [0..783] buffer
+    uint16_t pixel[5] = {
+        ybuf * MNIST_WIDTH + xbuf,         // Center
+        (ybuf - 1) * MNIST_WIDTH + xbuf,   // Top
+        (ybuf + 1) * MNIST_WIDTH + xbuf,   // Bottom
+        ybuf * MNIST_WIDTH + (xbuf - 1),   // Left
+        ybuf * MNIST_WIDTH + (xbuf + 1)    // Right
+    };
 
-    for (int i = 0; i < 5; i++){
-        if ((pixel[i] >= 0) && (pixel[i] < MNIST_PIXELS)){
-            if ((i == 3 || i == 4) && (pixel[0] / MNIST_WIDTH) != (pixel[i] / MNIST_WIDTH)){
-                ;
+    for (int i = 0; i < 5; i++) {
+        // Bounds check
+        if (pixel[i] < MNIST_PIXELS) {
+            // Prevent horizontal wrap from left/right neighbors
+            if ((i == 3 || i == 4) && (pixel[0] / MNIST_WIDTH) != (pixel[i] / MNIST_WIDTH)) {
+                continue;
             }
-            else {
-                buffer[pixel[i]] = 0xFF;
-            }
+            setPixelBit(pixel[i]);
         }
-    } 
+    }
 }
 
 void shiftBuffer(void){
-    for (int i = 0; i < MNIST_PIXELS; i++){
+    for (int i = 0; i < NUM_BYTES; i++){
         // A pixel is either a 1 or 0
-        // in Q8.8: either 0x10 or 0x00
-        #ifdef REVERSE_INPUT    // Left Shift : First input at MSB
-            uint8_t pixelBits = (buffer[MNIST_PIXELS - i - 1] == 0xFF) ? 0x1 : 0x0;
-            shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, pixelBits);
-            shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
-        #else                   // Right Shift : First input at LSB
-            uint8_t pixelBits = (buffer[i] == 0xFF) ? 0x1 : 0x0;
-            shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
-            shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, pixelBits);
-        #endif
+        
+        shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, buffer[i]);
+
+        // #ifdef REVERSE_INPUT    // Left Shift : First input at MSB
+        //     uint8_t pixelBits = (buffer[MNIST_PIXELS - i - 1] == 0xFF) ? 0x1 : 0x0;
+        //     shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, pixelBits);
+        //     shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
+        // #else                   // Right Shift : First input at LSB
+        //     uint8_t pixelBits = (buffer[i] == 0xFF) ? 0x1 : 0x0;
+        //     shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
+        //     shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, pixelBits);
+        // #endif
     }
 }
 
