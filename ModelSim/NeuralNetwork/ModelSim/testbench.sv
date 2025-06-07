@@ -24,7 +24,7 @@ module testbench ( );
     logic [784*16-1:0] inputMem [0:0];
 
     initial begin
-        $readmemh("Inputs/input_9_q8_8.txt", inputMem);
+        $readmemh("Inputs/input_0_q8_8.txt", inputMem);
     end
 
     initial begin

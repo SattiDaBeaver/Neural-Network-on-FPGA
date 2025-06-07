@@ -11,7 +11,10 @@ add wave -noupdate -label KEY -radix binary /testbench/KEY
 add wave -noupdate -label ARDUINO_IO -radix binary /testbench/ARDUINO_IO
 
 add wave -noupdate -divider Internal
-add wave -noupdate -label reset -radix hexadecimal /testbench/U1/reset
+add wave -noupdate -label State -radix hexadecimal /testbench/U1/state
+add wave -noupdate -label Layer0out -radix hexadecimal /testbench/U1/nn/layer0Out
+add wave -noupdate -label internalReg -radix hexadecimal /testbench/U1/shiftReg/internalRegister
+
 
 add wave -noupdate -divider "Neural Network"
 add wave -noupdate -label NNreset -radix hexadecimal /testbench/U1/NNreset

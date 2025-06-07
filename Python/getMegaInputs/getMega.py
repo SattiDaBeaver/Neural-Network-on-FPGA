@@ -1,63 +1,42 @@
-import numpy as np
 import os
+import numpy as np
 from tensorflow.keras.datasets import mnist
-
-def float_to_q8_8_hex(val):
-    val = np.clip(val, -128.0, 127.99609375)
-    q_val = int(round(val * 256))
-    if q_val < 0:
-        q_val += 65536
-    return format(q_val & 0xFFFF, '04x')
-
-# Load MNIST test data
-(_, _), (x_test, y_test) = mnist.load_data()
 
 # Create output directory
 output_dir = "GetInputs"
 os.makedirs(output_dir, exist_ok=True)
 
-# File paths
-hex_path = os.path.join(output_dir, "q8_8_hex_inputs.txt")
-bin_path = os.path.join(output_dir, "binary_inputs.txt")
-label_path = os.path.join(output_dir, "labels.txt")
+# Load MNIST test set
+(_, _), (x_test, y_test) = mnist.load_data()
 
-# Number of test images to convert
-num_images = 10
+# Choose image index
+index = 0
+image = x_test[index]
 
-with open(hex_path, "w") as hex_file, \
-     open(bin_path, "w") as bin_file, \
-     open(label_path, "w") as label_file:
+# Binarize: threshold at 128
+binary_image = (image > 128).astype(np.uint8)
+flattened = binary_image.flatten()
+bit_string = ''.join(str(bit) for bit in flattened)
 
-    for idx in range(num_images):
-        image = x_test[idx].astype(np.float32) / 255.0
-        flattened = image.flatten()
+# Save flat 784-bit string
+with open(os.path.join(output_dir, "mnist_binary.txt"), "w") as f:
+    f.write(bit_string)
 
-        # Q8.8 hex string
-        hex_vals = [float_to_q8_8_hex(pix) for pix in flattened]
-        hex_file.write(''.join(hex_vals) + '\n')
+# Save readable 28x28 format
+with open(os.path.join(output_dir, "mnist_readable.txt"), "w") as f:
+    for i in range(28):
+        row = ''.join(str(bit) for bit in binary_image[i])
+        f.write(row + '\n')
 
-        # Binary thresholded string
-        bin_vals = ['1' if pix >= 0.5 else '0' for pix in flattened]
-        bin_file.write(''.join(bin_vals) + '\n')
+# Convert to Q8.8 hex (0 -> 0x0000, 1 -> 0x0100)
+hex_vals = ['0100' if b else '0000' for b in flattened]
+hex_string = ''.join(hex_vals)
 
-        # Label
-        label_file.write(f"{y_test[idx]}\n")
+# Save Q8.8 hex string
+with open(os.path.join(output_dir, "mnist_q88_hex.txt"), "w") as f:
+    f.write(hex_string)
 
-print(f"✅ Saved files to folder: '{output_dir}'")
-print(" - q8_8_hex_inputs.txt")
-print(" - binary_inputs.txt")
-print(" - labels.txt")
-
-# Sample preview
-print("\nSample conversion for first image (first 5 pixels):")
-image = x_test[0].astype(np.float32) / 255.0
-flattened = image.flatten()
-for i in range(5):
-    pix = flattened[i]
-    hex_val = float_to_q8_8_hex(pix)
-    bin_val = '1' if pix >= 0.5 else '0'
-    int_val = int(hex_val, 16)
-    if int_val >= 32768:
-        int_val -= 65536
-    recon = int_val / 256.0
-    print(f"  Pixel {i}: {pix:.6f} -> 0x{hex_val} -> {recon:.6f} (binary: {bin_val})")
+print(f"Saved 784-bit binary to '{output_dir}/mnist_binary.txt'")
+print(f"Saved readable 28x28 image to '{output_dir}/mnist_readable.txt'")
+print(f"Saved Q8.8 hex string to '{output_dir}/mnist_q88_hex.txt'")
+print(f"Label: {y_test[index]}")
