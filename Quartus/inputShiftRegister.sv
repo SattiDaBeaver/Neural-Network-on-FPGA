@@ -23,7 +23,7 @@ module inputShiftRegister #(
     always_comb begin   // Make output signed fixed point Qm.n format
         for (i = 0; i < numInputs; i = i + 1) begin
             if (internalRegister[i])
-                dataOut[dataWidth*i +: dataWidth] = 16'h2000; // 1.0
+                dataOut[dataWidth*i +: dataWidth] = 16'h2000; // 32.0
             else
                 dataOut[dataWidth*i +: dataWidth] = '0; // 0.0
         end

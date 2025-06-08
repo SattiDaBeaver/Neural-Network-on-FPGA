@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Jun  7 20:45:08 2025
+Fitter Status : Successful - Sat Jun  7 22:11:00 2025
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : NeuralNetwork
 Top-level Entity Name : top
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 14,196 / 49,760 ( 29 % )
-    Total combinational functions : 13,717 / 49,760 ( 28 % )
+Total logic elements : 14,886 / 49,760 ( 30 % )
+    Total combinational functions : 14,382 / 49,760 ( 29 % )
     Dedicated logic registers : 2,083 / 49,760 ( 4 % )
 Total registers : 2083
 Total pins : 81 / 360 ( 23 % )

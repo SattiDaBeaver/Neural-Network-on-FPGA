@@ -91,9 +91,7 @@ module top (
                 nextState = DELAY_1;
             end
             DELAY_1: begin
-                if (serialClock) begin
                     nextState = START_NN;
-                end
             end
             START_NN: begin
                 NNvalid = 1'b1;
