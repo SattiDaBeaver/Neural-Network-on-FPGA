@@ -37,6 +37,7 @@ module top (
 	logic 			    NNvalid;
 	logic 			    NNoutValid;
     logic [3:0]         maxIndex;
+    logic [3:0]         maxIndexReg;
     logic [15:0]        maxValue;
     logic               maxValid;
 
@@ -50,6 +51,16 @@ module top (
 
     assign reset = ~KEY[1];
     assign addr  = SW[9:0];
+
+    // Max Index Reg
+    always_ff @(posedge CLOCK_50) begin
+        if (reset) begin
+            maxIndexReg <= 0;
+        end
+        else if (maxValid) begin
+            maxIndexReg <= maxIndex;
+        end
+    end
 
     // Control FSM
     typedef enum logic [2:0] {
@@ -80,8 +91,9 @@ module top (
                 nextState = DELAY_1;
             end
             DELAY_1: begin
-                NNreset = 1'b0;
-                nextState = START_NN;
+                if (serialClock) begin
+                    nextState = START_NN;
+                end
             end
             START_NN: begin
                 NNvalid = 1'b1;
@@ -150,7 +162,7 @@ module top (
     assign HEX5 = 7'h7F;
 
     hex7seg hex0 (
-        .hex(maxIndex),
+        .hex(maxIndexReg),
         .display(HEX0)
     );
 

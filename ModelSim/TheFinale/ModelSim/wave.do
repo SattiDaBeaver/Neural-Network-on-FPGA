@@ -12,6 +12,7 @@ add wave -noupdate -label ARDUINO_IO -radix binary /testbench/ARDUINO_IO
 
 add wave -noupdate -divider Internal
 add wave -noupdate -label State -radix hexadecimal /testbench/U1/state
+add wave -noupdate -label counter -radix hexadecimal /testbench/U1/serialCounter
 add wave -noupdate -label Layer0out -radix hexadecimal /testbench/U1/nn/layer0Out
 add wave -noupdate -label internalReg -radix hexadecimal /testbench/U1/shiftReg/internalRegister
 

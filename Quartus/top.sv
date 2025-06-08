@@ -26,7 +26,7 @@ module top (
     parameter   addressWidth = $clog2(inputMemSize);
 
     // Internal signals
-    logic   start;
+
 
 	// Layer Test
 	logic 				reset;
@@ -37,6 +37,7 @@ module top (
 	logic 			    NNvalid;
 	logic 			    NNoutValid;
     logic [3:0]         maxIndex;
+    logic [3:0]         maxIndexReg;
     logic [15:0]        maxValue;
     logic               maxValid;
 
@@ -48,35 +49,84 @@ module top (
     assign serialClock = ARDUINO_IO[0];
     assign serialData = ARDUINO_IO[1];
 
-    assign NNreset = reset | pushBuffer;
-
     assign reset = ~KEY[1];
     assign addr  = SW[9:0];
 
-    always_ff @ (posedge CLOCK_50) begin
+    // Max Index Reg
+    always_ff @(posedge CLOCK_50) begin
         if (reset) begin
-            NNvalid <= 1'b0;
-            pushBuffer <= 1'b1;
+            maxIndexReg <= 0;
         end
-        else if (NNoutValid) begin
-            NNvalid <= 1'b0;
-            pushBuffer <= 1'b1;
-        end 
-        else begin
-            NNvalid <= 1'b1;
-            pushBuffer <= 1'b0;
+        else if (maxValid) begin
+            maxIndexReg <= maxIndex;
         end
     end
 
+    // Control FSM
+    typedef enum logic [2:0] {
+        IDLE, RESET_NN, DELAY_1, START_NN, WAIT_NN, DELAY_2
+    } state_t;
+
+    state_t state, nextState;
+
+    always_ff @(posedge CLOCK_50) begin
+        if (reset) begin
+            state <= IDLE;
+        end
+        else begin
+            state <= nextState;
+        end
+    end
+
+    always_comb begin
+        nextState = state;  // Default to hold state
+        NNreset = 1'b0;
+        NNvalid = 1'b0;
+        case (state)
+            IDLE: begin
+                nextState = RESET_NN;
+            end
+            RESET_NN: begin
+                NNreset = 1'b1;
+                nextState = DELAY_1;
+            end
+            DELAY_1: begin
+                if (serialClock) begin
+                    nextState = START_NN;
+                end
+            end
+            START_NN: begin
+                NNvalid = 1'b1;
+                nextState = WAIT_NN;
+            end
+            WAIT_NN: begin
+                if (maxValid) begin
+                    NNvalid = 1'b0;
+                    nextState = DELAY_2;
+                end
+                else begin
+                    NNvalid = 1'b1;
+                    nextState = WAIT_NN;
+                end
+            end
+            DELAY_2: begin
+                nextState = IDLE;
+            end
+            default: nextState = IDLE;
+        endcase
+    end
+
+    // Module Instantiation
+
     inputShiftRegister # (
         .numInputs(numInputs),
-        .dataWidth(dataWidth)
+        .dataWidth(dataWidth),
+        .dataFracWidth(dataFracWidth),
+        .dataIntWidth(dataIntWidth)
     ) shiftReg (
         .reset(reset),
-        .CLOCK_50(CLOCK_50),
         .serialClock(serialClock),
         .serialData(serialData),
-        .pushBuffer(pushBuffer),
 
         .dataOut(NNin)
     );
@@ -105,14 +155,14 @@ module top (
         .maxValue(maxValue)
     );
 
-    assign HEX1 = 7'b00;
-    assign HEX2 = 7'b00;
-    assign HEX3 = 7'b00;
-    assign HEX4 = 7'b00;
-    assign HEX5 = 7'b00;
+    assign HEX1 = 7'h7F;
+    assign HEX2 = 7'h7F;
+    assign HEX3 = 7'h7F;
+    assign HEX4 = 7'h7F;
+    assign HEX5 = 7'h7F;
 
     hex7seg hex0 (
-        .hex(maxIndex),
+        .hex(maxIndexReg),
         .display(HEX0)
     );
 

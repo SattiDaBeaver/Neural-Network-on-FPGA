@@ -7,10 +7,15 @@ from tensorflow.keras.utils import to_categorical
 
 # ========== 1. Load & preprocess ==========
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-x_train = np.clip(x_train.astype(np.float32) / 255.0 * 32.0, -128, 127.996)
-x_test = np.clip(x_test.astype(np.float32) / 255.0 * 32.0, -128, 127.996)
+
+# Binarize: if pixel > threshold → 32, else → 0
+threshold = 128
+x_train = ((x_train > threshold).astype(np.float32)) * 32.0
+x_test = ((x_test > threshold).astype(np.float32)) * 32.0
+
 y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
+
 
 # ========== 2. Model ==========
 model = Sequential([

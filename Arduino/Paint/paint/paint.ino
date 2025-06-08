@@ -18,7 +18,7 @@ TSPoint tp;
 #define MINPRESSURE 200
 #define MIDPRESSURE 550
 #define MAXPRESSURE 1200
-#define REVERSE_INPUT
+// #define REVERSE_INPUT
 
 int16_t BOXSIZE;
 int16_t PENRADIUS = 1;
@@ -66,6 +66,7 @@ uint8_t buffer[NUM_BYTES]; // 28x28 pixels, 1 bit per pixel
 
 // Global Variables
 uint16_t xpos, ypos;  //screen coordinates
+bool bufferChanged = false; // Flag to track if buffer has changed
 
 // Function Prototypes
 void TFTsetup(void);
@@ -79,6 +80,7 @@ void drawPixelMNIST(void);
 void drawSmallPixelMNIST(void);
 void shiftBuffer(void);
 
+
 void setup(void){
     pinMode(SHIFT_CLK, OUTPUT);
     pinMode(SHIFT_DATA, OUTPUT);
@@ -89,47 +91,55 @@ void setup(void){
     drawBuffer(); // Draw the initial buffer on the display
 }
 
-void loop()
-{
-    for (int i = 0; i < 10; i++){
-        tp = ts.getPoint();   //tp.x, tp.y are ADC values
+void loop(){
+    for (int i = 0; i < 30; i++){
+        for (int i = 0; i < 10; i++){
+            tp = ts.getPoint();   //tp.x, tp.y are ADC values
 
-        // if sharing pins, you'll need to fix the directions of the touchscreen pins
-        pinMode(XM, OUTPUT);
-        pinMode(YP, OUTPUT);
-        // we have some minimum pressure we consider 'valid'
-        // pressure of 0 means no pressing!
+            // if sharing pins, you'll need to fix the directions of the touchscreen pins
+            pinMode(XM, OUTPUT);
+            pinMode(YP, OUTPUT);
+            // we have some minimum pressure we consider 'valid'
+            // pressure of 0 means no pressing!
 
-        if (tp.z > MINPRESSURE && tp.z < MAXPRESSURE) {
-            getPosition();
+            if (tp.z > MINPRESSURE && tp.z < MAXPRESSURE) {
+                getPosition();
 
-            // are we in drawing area ?
-            if ((ypos > Y_PADDING) && (ypos < (Y_PADDING + PIXEL_SIZE * MNIST_HEIGHT))) {
-                if (tp.z < MIDPRESSURE){
-                    drawPixelMNIST();
+                // are we in drawing area ?
+                if ((ypos > Y_PADDING) && (ypos < (Y_PADDING + PIXEL_SIZE * MNIST_HEIGHT))) {
+                    if (tp.z < MIDPRESSURE){
+                        drawSmallPixelMNIST();
+                    }
+                    else {
+                        drawSmallPixelMNIST();
+                    }
+                    bufferChanged = true;
                 }
-                else {
-                    drawSmallPixelMNIST();
+
+                // Push Buffer Button
+                if ((ypos > SCREEN_HEIGHT - PUSH_HEIGHT - CLEAR_HEIGHT) && (ypos < SCREEN_HEIGHT - CLEAR_HEIGHT)) {
+                    tft.setCursor(30, 200);
+                    tft.setTextColor(GREY, RED);
+                    tft.setTextSize(3);
+                    tft.print("Pushing Buffer");
+                    shiftBuffer();
+                    drawFullBuffer();
                 }
-            }
 
-            // Push Buffer Button
-            if ((ypos > SCREEN_HEIGHT - PUSH_HEIGHT - CLEAR_HEIGHT) && (ypos < SCREEN_HEIGHT - CLEAR_HEIGHT)) {
-                tft.setCursor(30, 200);
-                tft.setTextColor(GREY, RED);
-                tft.setTextSize(3);
-                tft.print("Pushing Buffer");
-                shiftBuffer();
-                drawFullBuffer();
-            }
-
-            // Clear Screen Button
-            if (ypos > SCREEN_HEIGHT - CLEAR_HEIGHT) {
-                clearScreenBuffer();
+                // Clear Screen Button
+                if (ypos > SCREEN_HEIGHT - CLEAR_HEIGHT) {
+                    bufferChanged = true;
+                    clearScreenBuffer();
+                }
             }
         }
+        drawBuffer();
     }
-    drawBuffer();
+    if (bufferChanged) {
+        bufferChanged = false;
+        shiftBuffer();
+    }
+    
 }
 
 // Function Definitions
@@ -263,22 +273,32 @@ void drawSmallPixelMNIST(void){
     setPixelBit(ybuf * MNIST_WIDTH + xbuf);
 }
 
-void shiftBuffer(void){
-    for (int i = 0; i < NUM_BYTES; i++){
-        // A pixel is either a 1 or 0
-        
-        shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, buffer[i]);
+void shiftBuffer(void) {
+#ifdef REVERSE_INPUT
+    // MSB-first across bitstream
+    for (int byteIdx = 0; byteIdx < 98; byteIdx++) {
+        uint8_t b = 0;
+        for (int i = 0; i < 8; i++) {
+            int bitIdx = 783 - (byteIdx * 8 + i);
+            if (bitIdx < 0) break;
 
-        // #ifdef REVERSE_INPUT    // Left Shift : First input at MSB
-        //     uint8_t pixelBits = (buffer[MNIST_PIXELS - i - 1] == 0xFF) ? 0x1 : 0x0;
-        //     shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, pixelBits);
-        //     shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
-        // #else                   // Right Shift : First input at LSB
-        //     uint8_t pixelBits = (buffer[i] == 0xFF) ? 0x1 : 0x0;
-        //     shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, 0x00);    // Lower 8 bits are 0 in Q8.8
-        //     shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, pixelBits);
-        // #endif
+            int srcByte = bitIdx / 8;
+            int srcBit = bitIdx % 8;
+            uint8_t bit = (buffer[srcByte] >> srcBit) & 0x1;
+            b |= (bit << (7 - i));
+        }
+        shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, b);
     }
+#else
+    // LSB-first across bitstream
+    for (int byteIdx = 0; byteIdx < 98; byteIdx++) {
+        shiftOut(SHIFT_DATA, SHIFT_CLK, LSBFIRST, buffer[byteIdx]);
+    }
+#endif
 }
+
+
+
+
 
 

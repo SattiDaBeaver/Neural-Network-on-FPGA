@@ -42,7 +42,7 @@ module testbench ( );
 		reset <= 1'b0;
 		#10
 		for (i = 0; i < 784; i = i + 1) begin
-            serialData = data[i];  // sends LSB first (data[0] → first)
+            serialData = data[783 - i];  // sends LSB first (data[0] → first)
             
             #5 serialClock = 1;  // rising edge
             #5 serialClock = 0;  // falling edge

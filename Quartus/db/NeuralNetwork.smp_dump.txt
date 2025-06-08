@@ -1,4 +1,13 @@
 
+State Machine - |top|state
+Name state.DELAY_2 state.WAIT_NN state.START_NN state.DELAY_1 state.RESET_NN state.IDLE 
+state.IDLE 0 0 0 0 0 0 
+state.RESET_NN 0 0 0 0 1 1 
+state.DELAY_1 0 0 0 1 0 1 
+state.START_NN 0 0 1 0 0 1 
+state.WAIT_NN 0 1 0 0 0 1 
+state.DELAY_2 1 0 0 0 0 1 
+
 State Machine - |top|NeuralNetwork:nn|layer1:layer1_inst|neuron:gen_neurons[9].Neuron|state
 Name state.OUTPUT_STATE state.DELAY_STATE state.MAC_STATE state.IDLE 
 state.IDLE 0 0 0 0 
