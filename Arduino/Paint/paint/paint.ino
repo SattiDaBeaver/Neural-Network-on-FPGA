@@ -77,6 +77,7 @@ void getPosition(void);
 void clearScreenBuffer(void);
 void setPixelBit(uint16_t index);
 void drawPixelMNIST(void);
+void drawPixel2MNIST(void);
 void drawSmallPixelMNIST(void);
 void shiftBuffer(void);
 
@@ -108,10 +109,12 @@ void loop(){
                 // are we in drawing area ?
                 if ((ypos > Y_PADDING) && (ypos < (Y_PADDING + PIXEL_SIZE * MNIST_HEIGHT))) {
                     if (tp.z < MIDPRESSURE){
-                        drawSmallPixelMNIST();
+                        // drawSmallPixelMNIST();
+                        drawPixel2MNIST();
                     }
                     else {
-                        drawSmallPixelMNIST();
+                        // drawSmallPixelMNIST();
+                        drawPixel2MNIST();
                     }
                     bufferChanged = true;
                 }
@@ -259,6 +262,30 @@ void drawPixelMNIST(void) {
         if (pixel[i] < MNIST_PIXELS) {
             // Prevent horizontal wrap from left/right neighbors
             if ((i == 3 || i == 4) && (pixel[0] / MNIST_WIDTH) != (pixel[i] / MNIST_WIDTH)) {
+                continue;
+            }
+            setPixelBit(pixel[i]);
+        }
+    }
+}
+
+void drawPixel2MNIST(void) {
+    uint8_t xbuf = (xpos - X_PADDING) / PIXEL_SIZE;
+    uint8_t ybuf = (ypos - Y_PADDING) / PIXEL_SIZE;
+    
+    // Pixel indices in flat [0..783] buffer
+    uint16_t pixel[4] = {
+        ybuf * MNIST_WIDTH + xbuf,         // Center
+        (ybuf + 1) * MNIST_WIDTH + xbuf,   // Bottom
+        (ybuf + 1) * MNIST_WIDTH + (xbuf + 1),   // BottomRight
+        ybuf * MNIST_WIDTH + (xbuf + 1)    // Right
+    };
+
+    for (int i = 0; i < 4; i++) {
+        // Bounds check
+        if (pixel[i] < MNIST_PIXELS) {
+            // Prevent horizontal wrap from left/right neighbors
+            if ((i == 2 || i == 3) && (pixel[0] / MNIST_WIDTH) != (pixel[i] / MNIST_WIDTH)) {
                 continue;
             }
             setPixelBit(pixel[i]);
